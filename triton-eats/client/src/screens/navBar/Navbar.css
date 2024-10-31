@@ -1,11 +1,20 @@
 /* Navbar.css */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
+:root {
+	--body-bg-color: #DFF2C7;
+	--color-0: #f3edf7d3;
+	--color-1: #F6FBF1;
+	--color-2: #A9C683;
+	--color-3: #6B7D53;
+	--color-4: #E9A125;
+}
+
 .navbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #A9C683; /* Light green */
+    background-color: var(--color-2); /* Light green */
     padding: 10px 30px;
     font-family: 'Inter', sans-serif;
   }

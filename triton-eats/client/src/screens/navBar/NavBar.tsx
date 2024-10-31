@@ -2,7 +2,7 @@ import React from 'react';
 import './Navbar.css';
 import logo from './logo.png';
 
-const Navbar: React.FC = () => {
+export const Navbar: React.FC = () => {
   return (
     <nav className="navbar">
       <div className="navbar-logo">
