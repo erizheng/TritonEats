@@ -1,0 +1,70 @@
+/* Navbar.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #A9C683; /* Light green */
+    padding: 10px 30px;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .navbar-logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo-icon {
+    width: 310px;
+    height: 75px;
+    margin-right: 80px;
+  }
+  
+  .navbar-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navbar-item {
+    margin: 0px 15px;
+    color: #333;
+    cursor: pointer;
+    font-size: 1rem;  
+    padding: 5px 0;
+  }
+  
+  .navbar-item.selected {
+    background-color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+  
+  .navbar-auth {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .signin-btn,
+  .register-btn {
+    padding: 5px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .signin-btn {
+    background-color: #f2f2f2; /* Light gray */
+    color: #333;
+    border: 1px solid #333;
+  }
+  
+  .register-btn {
+    background-color: #333;
+    color: #fff;
+  }
+  
