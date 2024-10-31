@@ -1,12 +1,11 @@
 import React from 'react';
-import './Navbar.css';
-import logo from './logo.png';
+
 
 const Navbar: React.FC = () => {
   return (
     <nav className="navbar">
       <div className="navbar-logo">
-        <img src={ logo } alt="Triton Eats Logo" className="logo-icon" />
+        <img src={ "images/logo.png" } alt="Triton Eats Logo" className="logo-icon" />
       </div>
       <ul className="navbar-links">
         <li className="navbar-item">Homepage</li>
