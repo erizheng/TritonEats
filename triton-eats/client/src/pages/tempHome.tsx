@@ -1,13 +1,11 @@
+import HomepageSidebar from '../components/HomepageSideBar';
 import Navbar from '../components/NavBar';
 
-export const TempHome = () => {
-   
+export const TempHome: React.FC = () => {
     return (
-        <body>
-            <Navbar/>
-        </body>
-        
+        <div>
+            <Navbar />
+            <HomepageSidebar />
+        </div>
     );
-
-    
 }

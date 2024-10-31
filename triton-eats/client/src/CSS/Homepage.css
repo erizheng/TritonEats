@@ -1,0 +1,52 @@
+.home-sidebar {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start; /* Align items to the left */
+    width: 250px;
+    height: 100vh;
+    padding: 20px;
+    border-right: 1px solid #ddd;
+    background-color: white;
+    font-family: 'Inter', sans-serif;
+}
+  
+  .home-sidebar h2 {
+    font-size: 1em;
+    font-weight: normal;
+    color: grey;
+    margin-bottom: 0;
+  }
+  
+  .home-sidebar h3 {
+    font-weight: bold;
+    font-size: 1.5em;
+  }
+  
+  .divider {
+    border-bottom: 1px solid grey;
+    width: 100%; 
+    margin: 10px 0; 
+  }
+  
+  .dining-hall {
+    margin-bottom: 20px;
+  }
+  
+  .dining-hall-name {
+    font-weight: bold;
+  }
+  
+  .dining-hall-status, .menu-description {
+    display: block;
+    margin-top: 5px;
+    color: gray;
+    font-size: 0.9em;
+  }
+  
+  .progress-bar {
+    height: 5px;
+    background-color: #b392f0;
+    margin-top: 5px;
+    border-radius: 2px;
+  }
+  
