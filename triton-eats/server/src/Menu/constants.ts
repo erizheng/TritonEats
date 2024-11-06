@@ -36,4 +36,5 @@ export const dishes = [
     { food_id: 11, img: "./images/placeHolderImage.png", 
         food_name: "something", cost: 12, location: {name:"Revelle", location_id: 1}, allergens: {}, rating: 5 },
 
+
 ];

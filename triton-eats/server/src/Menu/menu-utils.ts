@@ -16,6 +16,7 @@ export function createDishesServer(req: Request, res: Response, expenses: dishIt
     res.status(201).send(newDish);
 }
 
+
 export function getDishes(req: Request, res: Response, dishes: dishItem[]) {
     res.status(200).send({ "data": dishes });
 }

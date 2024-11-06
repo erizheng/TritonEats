@@ -1,3 +1,4 @@
+
 import { getDishes, createDishesServer} from "./menu-utils";
 import { Request, Response } from 'express';
 
@@ -9,8 +10,10 @@ export function createDishEndpoints(app: any, dishes: any) {
 
     });
 
+
     // Get all dishes
     app.get("/dishes", (req: Request, res: Response) => {
+
 
         getDishes(req, res, dishes);
 
