@@ -1,7 +1,7 @@
 import MenuItems from "./MenuItems";
 import { MenuContext } from "../../context/MenuContext";
 import { useContext, useEffect } from "react";
-import { dishItem } from "../../tempConstantAndTypesFiles/menuTypes";
+import { dishItem } from "../../types/menuTypes";
 import { fetchDishes } from "../../utils/menu-utils";
 
 export const DishList = () => {

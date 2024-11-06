@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { dishItem } from "../tempConstantAndTypesFiles/menuTypes";
+import { dishItem } from "../types/menuTypes";
 
 interface MenuContextType {
     dishes: dishItem[];

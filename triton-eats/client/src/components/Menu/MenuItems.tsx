@@ -1,8 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { MenuContext } from '../../context/MenuContext';
-import { dishItem
-    
- } from '../../tempConstantAndTypesFiles/menuTypes';
+import { dishItem } from '../../types/menuTypes';
 export const MenuItems = (currentDish: dishItem) => {
 
     const {dishes, setDishes} = useContext(MenuContext);

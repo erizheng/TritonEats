@@ -1,7 +1,7 @@
 import React, { ChangeEventHandler } from "react";
 import { useState } from "react";
-import { FilterChecks } from "../../tempConstantAndTypesFiles/menuTypes";
-import { dummyCheckList1, dummyCheckList2 } from "../../tempConstantAndTypesFiles/menuConstants";
+import { FilterChecks } from "../../types/menuTypes";
+import { dummyCheckList1, dummyCheckList2 } from "../../constants/menuConstants";
 import { useParams } from "react-router-dom";
 
 export function MenuCheckBox() {

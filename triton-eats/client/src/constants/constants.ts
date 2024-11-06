@@ -1,13 +1,4 @@
-export interface Review {
-    datetime: Date;
-    food_id: number;
-    img: string;
-    food_name: string;
-    cost: number;
-    location: string;
-    rating: number;
-    review_text: string;
-}
+import { Review } from "../types/reviewTypes";
 
 // Mocked Review Item
 export const review: Review = {

@@ -1,5 +1,5 @@
-import { API_BASE_URL } from "../tempConstantAndTypesFiles/menuConstants";
-import { dishItem } from "../tempConstantAndTypesFiles/menuTypes";
+import { API_BASE_URL } from "../constants/menuConstants";
+import { dishItem } from "../types/menuTypes";
 
 export const createDish = async (dish: dishItem): Promise<dishItem> => {
 	const response = await fetch(`${API_BASE_URL}/dishes`, {

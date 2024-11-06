@@ -1,5 +1,5 @@
 import React from 'react';
-import { Review } from '../constants/constants'; 
+import { Review } from '../types/reviewTypes';
 
 interface FoodReviewProps {
     review: Review;

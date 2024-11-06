@@ -1,9 +1,10 @@
 
 import React from 'react'
-import { FoodReview } from '../components/FoodReview';
+import { FoodReview } from "../components/FoodReview"
 import NavBar from '../components/NavBar';
+import { Review } from '../types/reviewTypes';
+import { review } from '../constants/constants'; // Dynamically get an array of reviews instead of calling the mock, get from sql database
 
-import { Review, review } from '../constants/constants'; // Dynamically get an array of reviews instead of calling the mock, get from sql database
 export const FoodReviewPage = () => {
 
 
