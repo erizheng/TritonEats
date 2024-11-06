@@ -4,7 +4,7 @@ import './CSS/App.css';
 import './CSS/Navbar.css';
 import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
 import { Recommend } from './pages/Recommend';
-import { TempHome } from './pages/tempHome';
+import { HomePage } from './pages/HomePage';
 import './CSS/Recommend.css';
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         {/*HomePage*/ }
-        <Route path="/" element={<TempHome />} />
+        <Route path="/" element={<HomePage/>} />
       
         {/*Recommendation Page*/ }
       <Route path="/recommend" element={<Recommend />} />
