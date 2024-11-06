@@ -4,8 +4,9 @@ import './CSS/App.css';
 import './CSS/Navbar.css';
 import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
 import { Menu } from './pages/Menu';
-import { TempHome } from './pages/tempHome';
+import { HomePage } from './pages/HomePage';
 import './CSS/Menu.css';
+
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         {/*HomePage*/ }
-        <Route path="/" element={<TempHome />} />
+        <Route path="/" element={<HomePage/>} />
       
         {/*Recommendation Page*/ }
       <Route path="/menu" element={<Menu />} />
