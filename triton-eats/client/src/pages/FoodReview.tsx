@@ -14,7 +14,7 @@ export const FoodReviewPage = () => {
             <head>
                 <title>Food Reviews</title>
             </head>
-            <NavBar /> 
+            <NavBar selected='Reviews'/> 
             <div className="gridContainer">
                 
                 

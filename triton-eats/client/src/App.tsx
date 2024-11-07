@@ -24,8 +24,8 @@ function App() {
         <Route path="/home" element={<HomePage/>} />
       
         {/*Recommendation Page*/ }
-      <Route path="/menu" element={<Menu />} />
-      <Route path="/review" element={<FoodReviewPage/>}/>
+        <Route path="/menu" element={<Menu />} />
+        <Route path="/review" element={<FoodReviewPage/>}/>
       </Routes>
     </BrowserRouter>
   );
