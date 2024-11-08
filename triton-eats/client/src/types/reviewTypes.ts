@@ -7,4 +7,8 @@ export interface Review {
     location: string;
     rating: number;
     review_text: string;
+
+    recommend: boolean;
+    like: boolean; 
+    //reviewer_id: number; ---> When we include user accounts, add this to track who reviews what
 }
