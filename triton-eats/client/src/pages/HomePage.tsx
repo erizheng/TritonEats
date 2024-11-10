@@ -7,7 +7,7 @@ export const HomePage = () => {
    
     return (
         <body>
-            <Navbar/>
+            <Navbar selected='Homepage'/>
             <div className="homepage">
                 <h2>Recommended Items:</h2>
                 <div className="recommended-items">

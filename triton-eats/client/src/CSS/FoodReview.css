@@ -1,0 +1,111 @@
+:root {
+	--body-bg-color: #DFF2C7;
+	--color-0: #f3edf7d3;
+	--color-1: #F6FBF1;
+	--color-2: #A9C683;
+	--color-3: #6B7D53;
+	--color-4: #E9A125;
+}
+
+body {
+	background-color: var(--body-bg-color);
+}
+
+
+.FoodReview {
+
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+
+
+    /** Editable later without potentially severely impacting structure */
+    margin-bottom: 10px;
+    height: 100%; 
+    
+    /**  Delete the margins if you want the review item to fit into the entire div it is in */
+    margin-left: 5%;
+    margin-right: 5%;
+
+  
+}
+
+
+.reviewContent {
+
+    display: flex;
+    flex-direction: row;    
+    justify-content: center; 
+    align-items: center;
+    flex-grow: 1;
+
+
+    /** Editable later without potentially severely impacting structure */
+    background-color: var(--color-1);
+    border-radius: 10px;
+    border: 3px solid var(--color-2); 
+    height: 200px;
+
+}
+
+
+
+.reviewInformation {
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+    /** Editable later without potentially severely impacting structure */
+    width: 500px;
+    padding: 1rem;
+
+
+}
+
+.reviewLink:hover {
+    /** Editable later without potentially severely impacting structure */
+
+    background-color: var(--color-2);
+}
+
+
+
+.reviewBody {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+    /** Editable later without potentially severely impacting structure */
+    margin: 10px;
+    margin-top: 20px;
+    padding: 1rem;
+    width: 200%;
+}
+
+
+.reviewText {
+
+    max-height: 150px;       
+    overflow-y: auto;     
+
+
+    /** Editable later without potentially severely impacting structure */
+    padding: 1rem;
+    padding-bottom: 0rem;
+}
+
+.revPic {
+
+    /** Editable later without potentially severely impacting structure */
+    width: 250px;
+
+    margin: 5px;
+    margin-right: 15px;
+
+	border: 3px solid var(--color-4);
+	border-radius: 10px;
+    
+	
+}
