@@ -9,10 +9,18 @@ interface DiningHallSearchSortProps {
 const DiningHallSearchSort: React.FC<DiningHallSearchSortProps> = ({ onSearch, onSortByDistance, onSortByBusyness }) => {
     const [searchItem, setSearchItem] = useState('');
 
-    const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const value = event.target.value;
         setSearchItem(value);
-        onSearch(value);
+        onSearch(value); 
+    };
+
+    const handleDistanceSort = () => {
+        onSortByDistance(); 
+    };
+
+    const handleBusynessSort = () => {
+        onSortByBusyness(); 
     };
 
     return (
@@ -21,11 +29,11 @@ const DiningHallSearchSort: React.FC<DiningHallSearchSortProps> = ({ onSearch, o
                 type="text" 
                 placeholder="Search..." 
                 value={searchItem} 
-                onChange={handleSearch} 
+                onChange={handleSearchChange} 
             />
             <div className="sort-buttons-container">
-                <button className="sort-button" onClick={onSortByDistance}>Distance</button>
-                <button className="sort-button" onClick={onSortByBusyness}>Busyness</button>
+                <button className="sort-button" onClick={handleDistanceSort}>Distance</button>
+                <button className="sort-button" onClick={handleBusynessSort}>Busyness</button>
             </div>
         </div>
     );
