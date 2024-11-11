@@ -11,9 +11,6 @@ export type dishItem = {
     
     numReviews: number;
     numRecommend: number;
-    numRecommendResp: number;
-    numLike: number;
-    numLikeResp: number;
 };
 
 

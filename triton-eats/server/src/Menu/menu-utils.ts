@@ -2,14 +2,16 @@ import { dishItem } from "./types";
 import { Request, Response } from "express";
 
 export function createDishesServer(req: Request, res: Response, expenses: dishItem[]) {
-    const { food_id, img, food_name, cost, location, allergens, rating } = req.body;
+    const { food_id, img, food_name, cost, location, allergens, rating,description } = req.body;
 
-    if (!food_id || !img || !food_name || !cost || !location || !allergens || !rating) {
+    if (!food_id || !img || !food_name || !cost || !location || !allergens || !rating || !description) {
         return res.status(400).send({ error: "Missing required fields" });
     }
 
     const newDish: dishItem = {
-        food_id, img, food_name, cost, location, allergens, rating
+        food_id, img, food_name, cost, location, allergens, rating, description,
+        numReviews: 0,
+        numRecommend: 0,
     };
 
     expenses.push(newDish);
