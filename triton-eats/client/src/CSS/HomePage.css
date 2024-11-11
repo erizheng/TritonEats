@@ -67,6 +67,7 @@
     background-color: var(--color-1);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     position: relative;
+    min-height: 100px; 
 }
 
 .dining-hall-card h2 {
@@ -75,6 +76,8 @@
 
 .dining-hall-card p {
     margin: 5px 0;
+    font-size: 1.5rem;
+    color: #666;
 }
 
 .dining-hall-distance {
@@ -83,9 +86,10 @@
     right: 20px;
     display: flex;
     align-items: center;
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: #666;
 }
+
 .dining-hall-distance img {
     width: 16px;
     height: 16px;
@@ -101,7 +105,7 @@
 .busyness-text {
     margin-right: 10px;
     color: #666;
-    font-size: 0.9rem;
+    font-size: 1rem;
 }
 
 .progress-bar-container {
