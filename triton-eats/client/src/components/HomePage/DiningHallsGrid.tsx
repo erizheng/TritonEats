@@ -10,7 +10,9 @@ const DiningHallsGrid: React.FC<DiningHallsGridProps> = ({ diningHalls }) => {
     return (
         <div className="dining-hall-grid">
             {diningHalls.map(hall => (
-                <DiningHall key={hall.id} {...hall} />
+                 <div key={hall.id} data-testid={`dining-hall-${hall.id}`}>
+                    <DiningHall {...hall} />
+                </div>
             ))}
         </div>
     );
