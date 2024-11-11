@@ -34,9 +34,7 @@ export const DishList = () => {
                 description={dish.description} 
                 numReviews={dish.numReviews} 
                 numRecommend={dish.numRecommend} 
-                numRecommendResp={dish.numRecommendResp} 
-                numLike={dish.numLike} 
-                numLikeResp={dish.numLikeResp} />
+ />
             ))}
         </div>
     );
