@@ -9,6 +9,9 @@ import { FoodReviewPage } from './pages/FoodReview';
 import './CSS/Menu.css';
 import './CSS/FoodReview.css';
 import FoodReview from './components/FoodReview';
+import Preferences from './components/Preferences/Preferences';
+import PreferencesGrid from './components/Preferences/PreferenceGrid';
+import { PreferencesPage } from './pages/PreferencesPage';
 
 
 function App() {
@@ -24,8 +27,9 @@ function App() {
         <Route path="/home" element={<HomePage/>} />
       
         {/*Recommendation Page*/ }
-      <Route path="/menu" element={<Menu />} />
-      <Route path="/review" element={<FoodReviewPage/>}/>
+        <Route path="/menu" element={<Menu />} />
+        <Route path="/review" element={<FoodReviewPage/>}/>
+        <Route path="/preferences" element={<PreferencesPage/>} />
       </Routes>
     </BrowserRouter>
   );
