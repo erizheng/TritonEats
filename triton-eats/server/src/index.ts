@@ -1,10 +1,24 @@
-import * as fs from 'fs';
+import { Request, Response } from "express";
+import { createMenuEndpoints } from "./menu/menu-endpoints";
 
-import { fetchMenuItems } from './menu/menu-utils';
-import { DiningHalls } from './types';
+const express = require("express");
+const cors = require("cors");
 
-(async () => {
+const app = express();
+const port = 8080;
 
-    fs.writeFileSync('menu.json', JSON.stringify(await fetchMenuItems(DiningHalls.sixtyfour, 1), null, 2));
+app.use(cors());
+app.use(express.json());
 
-})();
+// Start the server
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}`);
+});
+
+// Root endpoint to get test if the server is running
+app.get("/", (req: Request, res: Response) => {
+  res.send({ "data": "Hello, TypeScript Express!" });
+  res.status(200);
+});
+
+createMenuEndpoints(app);

@@ -1,11 +1,11 @@
 export enum DiningHalls {
 
-    sixtyfour = "64 Degrees",
-    cafeventanas = "Cafe Ventanas",
-    foodworx = "Foodworx",
-    ovt = "Oceanview Terrace",
-    pines = "Pines",
-    roots = "Roots",
+    sixtyfour = "64degrees",
+    cafeventanas = "cafeventanas",
+    foodworx = "foodworx",
+    ovt = "ovt",
+    pines = "pines",
+    canyonvista = "canyonvista",
 
 }
 

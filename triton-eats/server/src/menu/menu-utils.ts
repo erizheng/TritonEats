@@ -3,30 +3,31 @@ import * as cheerio from 'cheerio';
 import { DiningHalls, MenuItem } from '../types';
 import { HDHEndpoints } from '../constants';
 
-function parseMenuItems(diningHall: DiningHalls, dom: cheerio.CheerioAPI, restaurant: string) {
+function parseMenuItems(diningHall: DiningHalls, dom: cheerio.CheerioAPI, restaurantElement: cheerio.Cheerio<any>) {
 
-    const menuItems = dom('.menU-item-row').toArray();
-
+    const menuItems = restaurantElement.find('.menU-item-row').toArray();
+    const restaurant = restaurantElement.find('h3').text().replace(/^ +/g, '');
+    
     let items = menuItems.flatMap(item => {
-    const name = dom(item).find('.sublocsitem').text();
-    let priceString = dom(item).find('.item-price').text()
-        .match(/\d+.\d+/g);
-    const price = priceString ? parseFloat(priceString[0]) : null;
-    const description = dom(item).find('.proI').text()
-            .replace(/\n +/g, '');
+        const name = dom(item).find('.sublocsitem').text();
+        let priceString = dom(item).find('.item-price').text()
+            .match(/\d+.\d+/g);
+        const price = priceString ? parseFloat(priceString[0]) : null;
+        const description = dom(item).find('.proI').text()
+                .replace(/\n +/g, '');
 
-        if(!name || !price || !description) {
-            return [];
-        }
+            if(!name || !price || !description) {
+                return [];
+            }
 
-        return <MenuItem> { name, price, description, diningHall, restaurant };
+            return <MenuItem> { name, price, description, diningHall, restaurant };
     });
 
     return items;
 
 }
 
-export async function fetchMenuItems(diningHall : DiningHalls, daysFromNow : number) {
+export async function fetchMenuItems(diningHall : DiningHalls) {
 
     const response = await fetch(HDHEndpoints[diningHall]);
     // wait for all the data to be fetched
@@ -38,9 +39,8 @@ export async function fetchMenuItems(diningHall : DiningHalls, daysFromNow : num
 
     let items : MenuItem[] = [];
     restaurants.forEach(restaurant => {
-        const restaurantName = dom(restaurant).find('h3').text();
-        console.log(restaurantName);
-        items = items.concat( parseMenuItems(diningHall, dom, restaurantName));
+        const restaurantElement = dom(restaurant);
+        items = items.concat( parseMenuItems(diningHall, dom, restaurantElement));
     });
 
     return items.filter((item, pos) => {
