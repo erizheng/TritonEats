@@ -21,7 +21,7 @@ describe("Menu CSS", () => {
     test("Sorting Buttons exists", () => {
         render(<Menu />);
    
-        const sortButtons = screen.getByText("Ratings");
+        const sortButtons = screen.getByText("Rate");
         expect(sortButtons).toBeInTheDocument();
     });
 
