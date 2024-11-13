@@ -1,5 +1,5 @@
 
-import { getDishes, createDishesServer} from "./menu-utils";
+import { getDishes, createDishesServer, updateDishListSort } from "./menu-utils";
 import { Request, Response } from 'express';
 
 export function createDishEndpoints(app: any, dishes: any) {
@@ -17,6 +17,10 @@ export function createDishEndpoints(app: any, dishes: any) {
 
         getDishes(req, res, dishes);
 
+    });
+
+    app.put("/dishes", (req: Request, res: Response) => {
+        updateDishListSort(req, res, dishes);
     });
 
 }
