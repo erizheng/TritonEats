@@ -14,7 +14,7 @@ describe("Menu CSS", () => {
     test("navBar exists", () => {
         render(<Menu />);
    
-        const navBar = screen.getByText("Reviews");
+        const navBar = screen.getByText("Name");
         expect(navBar).toBeInTheDocument();
     });
 
