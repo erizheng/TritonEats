@@ -1,10 +1,26 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import { MenuContext } from "../../context/MenuContext";
+import { sortDishes, fetchDishes } from '../../utils/menu-utils';
+import { dishItem } from "../../types/menuTypes";
+
+
 
 export const RecommendSearch = () => {
     const [searchItem, setSearchItem] = useState('');
+    const { dishes, setDishes } = useContext(MenuContext);
+    const [filteredOut, setFilteredOut] = useState<dishItem[]>([]);
 
-    const handleSearch = () => {
 
+
+    const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const revertBack = [...dishes, ...filteredOut].sort((a, b) => 
+            a.food_name.localeCompare(b.food_name));
+        const value = event.target.value;
+        setSearchItem(value);
+        const searchFiltered = revertBack.filter(i => i.food_name.includes(value));
+        const notSearched = revertBack.filter(i => !i.food_name.includes(value));
+        setFilteredOut(notSearched);
+        setDishes(searchFiltered);
     };
 
     return (

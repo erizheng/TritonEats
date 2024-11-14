@@ -30,3 +30,19 @@ export const fetchDishes = async (): Promise<dishItem[]> => {
 	console.log("response in fetchDishes", dishItemList);
 	return dishItemList;
 };
+
+export const sortDishes = async (sortedList: dishItem[]): Promise<dishItem[]> => {
+	const response = await fetch(`${API_BASE_URL}/dishes`, {
+    	method: "PUT",
+        headers: {
+        	"Content-Type": "application/json",
+    	},
+        body: JSON.stringify( {sortedList} ),
+	});
+
+	if (!response.ok) {
+    	throw new Error("Failed to sort list");
+	}
+
+	return sortedList;
+};

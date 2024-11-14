@@ -20,3 +20,10 @@ export function createDishesServer(req: Request, res: Response, expenses: dishIt
 export function getDishes(req: Request, res: Response, dishes: dishItem[]) {
     res.status(200).send({ "data": dishes });
 }
+
+export function updateDishListSort(req: Request, res: Response, dishes: dishItem[]) {
+    // const sortedItems = [...dishes].sort((a, b) => a.cost - b.cost); // Sort in ascending order
+    //const sortedItems = [...dishes].sort((a, b) => b.cost - a.cost); // Sort in decending order
+    
+    res.status(200).send({ "data":  dishes});
+}
