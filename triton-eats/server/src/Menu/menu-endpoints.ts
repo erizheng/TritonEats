@@ -1,19 +1,26 @@
-import { fetchMenuItems, fetchAllMenuItems } from "./menu-utils";
-import { DiningHalls } from "../types";
 
-export async function createMenuEndpoints(app: any) {
-    
-    app.get('/menu/:diningHall', async (req: any, res: any) => {
-        const diningHall = req.params.diningHall;
-        if (!Object.values(DiningHalls).includes(diningHall)) {
-            res.status(400).send('Invalid dining hall');
-            return;
-        }
-        res.send(await fetchMenuItems(diningHall));
+import { getDishes, createDishesServer, updateDishListSort } from "./menu-utils";
+import { Request, Response } from 'express';
+
+export function createDishEndpoints(app: any, dishes: any) {
+    // Create a new dish
+    app.post("/dishes", (req: Request, res: Response) => {
+
+        createDishesServer(req, res, dishes);
+
     });
 
-    app.get('/menu', async (req: any, res: any) => {
-        res.send(await fetchAllMenuItems());
+
+    // Get all dishes
+    app.get("/dishes", (req: Request, res: Response) => {
+
+
+        getDishes(req, res, dishes);
+
+    });
+
+    app.put("/dishes", (req: Request, res: Response) => {
+        updateDishListSort(req, res, dishes);
     });
 
 }
