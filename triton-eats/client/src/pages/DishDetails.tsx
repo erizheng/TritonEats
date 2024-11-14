@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { FoodReview } from "../components/DishDetails/FoodReview"
-import NavBar from '../components/NavBar';
+import  NavBar  from '../components/NavBar';
 import { Review } from '../types/reviewTypes';
 import { useParams } from 'react-router-dom';
 import { dishItem } from "../types/menuTypes";
@@ -87,7 +87,7 @@ export const DishDetails = () => {
     return (
         
         <div>
-            <NavBar />{/**<NavBar selected='DishDetails OR Reviews'/> */}
+            <NavBar selected="Reviews"/>{/**<NavBar selected='DishDetails OR Reviews'/> */}
             <div className="dishDetailsPage">
                 {/** SECTION ONE - BASIC DISH INFORMATION*/}
                 <DishDetailsDescription 
