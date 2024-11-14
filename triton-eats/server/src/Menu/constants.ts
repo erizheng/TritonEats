@@ -1,4 +1,3 @@
-
 export const dishes = [
     { food_id: 0, img: "images/placeHolderImage.png", 
         food_name: "a", cost: 1, location: {name:"Revelle", location_id: 1}, allergens: {}, rating: 4 },
