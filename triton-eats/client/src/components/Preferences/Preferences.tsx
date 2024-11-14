@@ -1,53 +1,3 @@
-// import React, { useState } from 'react';
-// import PreferencesGrid from './PreferenceGrid';
-
-// type PreferenceProps = {
-//     name: string;
-//     selected: boolean;
-//     onSelected: () => void;
-// };
-
-// const Preferences: React.FC<PreferenceProps> = ({ name, selected, onSelected }) => {
-//     // // const capacityColor = capacity > 70 ? 'red' : capacity > 40 ? 'orange' : 'green';
-
-//     // return (
-//     //     <div className="preferences">
-//     //         <h3>{name}</h3>
-//     //         <p>{selected}</p>
-//     //         {/* <p>{capacity}% Busy</p>
-//     //         <div className="capacity-bar" style={{ backgroundColor: capacityColor, width: `${capacity}%` }}></div>
-//     //         <button onClick={onFavorite}>{isFavorited ? '⭐' : '☆'}</button> */}
-//     //     </div>
-//     // );
-
-
-//     const [preferences, setPreferences] = useState<PreferenceProps[]>([]);
-
-//     // Handle the updated preferences coming from the grid
-//     const handlePreferencesChange = (updatedPreferences: PreferenceProps[]) => {
-//       setPreferences(updatedPreferences);
-//     };
-  
-//     return (
-//       <div>
-//         <h1>Preferences</h1>
-        
-//         {/* Render the Preferences Grid */}
-//         <PreferencesGrid  />
-  
-//         <div className="selected-preferences">
-//           <h2>Selected Preferences:</h2>
-//           <ul>
-//             {preferences.filter(p => p.selected).map((pref, index) => (
-//               <li key={index}>{pref.name}</li>
-//             ))}
-//           </ul>
-//         </div>
-//       </div>
-//     );
-// };
-
-// export default Preferences;
 import React, { useState } from 'react';
 import PreferenceGrid from './PreferenceGrid';
 import { PreferenceProps } from '../../types/preferenceTypes';
@@ -68,6 +18,27 @@ const Preferences: React.FC = () => {
     { id: 10, name: 'Gluten', selected: false }
   ]);
 
+  const [dietary, setDietary] = useState<PreferenceProps[]>([
+    { id: 11, name: 'Vegeterian', selected: false },
+    { id: 12, name: 'Vegan', selected: false },
+    { id: 13, name: 'Wellness', selected: false },
+    { id: 14, name: 'Sustainability', selected: false },
+  ]);
+
+  const [time, setTime] = useState<PreferenceProps[]>([
+    { id: 15, name: '>5 min', selected: false },
+    { id: 16, name: '5-10 min', selected: false },
+    { id: 17, name: '10-20 min', selected: false },
+    { id: 18, name: '20-30 min', selected: false },
+    { id: 19, name: '30-45 min', selected: false },
+  ]);
+
+  const [distance, setDistance] = useState<PreferenceProps[]>([
+    { id: 20, name: '30-45 min', selected: false },
+    { id: 21, name: '30-45 min', selected: false },
+
+  ]);
+
   // Handle the preferences selection change
   const handleSelectionChange = (id: number) => {
     setPreferences((prevPreferences) =>
@@ -79,15 +50,16 @@ const Preferences: React.FC = () => {
 
   return (
     <div>
-      <h1>Preferences</h1>
-      
+      {/* <h1>Preferences</h1> */}
+      <h2>Allergens:</h2>
+      <div className='preferences-grid'>
       {/* Pass preferences and the handler to PreferencesGrid */}
       <PreferenceGrid 
         preferences={preferences}
         onSelectionChange={handleSelectionChange}
       />
-      
-      <div className="selected-preferences">
+      </div>
+      {/* <div className="selected-preferences">
         <h2>Selected Preferences:</h2>
         <ul>
           {preferences
@@ -96,6 +68,24 @@ const Preferences: React.FC = () => {
               <li key={pref.id}>{pref.name}</li>
             ))}
         </ul>
+      </div> */}
+      <h2>Dietary Restrictions:</h2>
+      <div className = 'preferences-grid'>
+      <PreferenceGrid 
+        preferences={dietary}
+        onSelectionChange={handleSelectionChange}
+      />
+      </div>
+      <div>
+      <div><h2>Time:</h2></div>
+      <div className = 'preferences-grid'>
+        <PreferenceGrid 
+          preferences={time}
+          onSelectionChange={handleSelectionChange}
+        />
+      </div>
+      <div><h2>Distance:</h2></div>
+
       </div>
     </div>
   );

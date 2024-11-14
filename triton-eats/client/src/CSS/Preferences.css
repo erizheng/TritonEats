@@ -1,6 +1,57 @@
-.preferences-grid {
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+	--body-bg-color: #DFF2C7;
+	--color-0: #f3edf7d3;
+	--color-1: #F6FBF1;
+	--color-2: #A9C683;
+	--color-3: #6B7D53;
+	--color-4: #E9A125;
+}
+
+.preferences-page{
+	background-color: var(--body-bg-color);
+    /* #padding: 20px; */
+    padding-left: 20px;
+    padding-right: 20px;
+    font-family: 'Inter', sans-serif;
+
+}
+
+.preference{
+    height: 200px; 
+    width: 200px;
+    background-color: var(--color-1);
+    border-radius: 10px;
+    align-items: 'center';
+    justify-content: 'center';  
+}
+
+.image{
+    display:'block';
+    padding-left: '100px';
+    padding-bottom: '20px';
+    align-items:'center';
+    width:'100px';
+    height:'100px'
+}
+
+.preferences-grid{
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 20px;
-    padding: 20px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    
+
+}
+
+.preference:hover {
+    background-color: #A9C683;
+    /* color: white; */
+  }
+
+.preference:focus {     
+    background-color: #6B7D53;
 }
