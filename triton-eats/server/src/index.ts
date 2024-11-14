@@ -1,5 +1,8 @@
 import { Request, Response } from "express";
-import { createMenuEndpoints } from "./menu/menu-endpoints";
+
+import { createDishEndpoints } from "./Menu/menu-endpoints";
+import { dishes } from "./Menu/constants";
+
 
 const express = require("express");
 const cors = require("cors");
@@ -21,4 +24,6 @@ app.get("/", (req: Request, res: Response) => {
   res.status(200);
 });
 
-createMenuEndpoints(app);
+// create Endpoints
+createDishEndpoints(app, dishes);
+
