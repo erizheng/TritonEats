@@ -3,9 +3,13 @@ import Navbar from './components/NavBar';
 import './CSS/App.css';
 import './CSS/Navbar.css';
 import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
-import { Recommend } from './pages/Recommend';
-import { TempHome } from './pages/tempHome';
-import './CSS/Recommend.css';
+import { Menu } from './pages/Menu';
+import { HomePage } from './pages/HomePage';
+import { FoodReviewPage } from './pages/FoodReview';
+import './CSS/Menu.css';
+import './CSS/FoodReview.css';
+import FoodReview from './components/FoodReview';
+
 
 function App() {
   return (
@@ -16,10 +20,12 @@ function App() {
     <BrowserRouter>
       <Routes>
         {/*HomePage*/ }
-        <Route path="/" element={<TempHome />} />
+        <Route path="/" element={<HomePage/>} />
+        <Route path="/home" element={<HomePage/>} />
       
         {/*Recommendation Page*/ }
-      <Route path="/recommend" element={<Recommend />} />
+        <Route path="/menu" element={<Menu />} />
+        <Route path="/review" element={<FoodReviewPage/>}/>
       </Routes>
     </BrowserRouter>
   );

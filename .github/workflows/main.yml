@@ -1,0 +1,21 @@
+name: Unit Tests # name of the test
+
+on:
+ push:
+   branches: [ main ] 
+ pull_request:
+   branches: [ main ] 
+
+jobs: # the things being executed
+ tests:
+   runs-on: ubuntu-latest # which device on Github's server that you are running the Actions on
+   steps:
+     - uses: actions/checkout@v4 # using version 4 of Actions
+     - name: Install Dependencies
+       run: |
+        cd triton-eats/client
+        npm install
+     - name: Unit Test
+       run: |
+        cd triton-eats/client
+        npm test # the actual testing line
