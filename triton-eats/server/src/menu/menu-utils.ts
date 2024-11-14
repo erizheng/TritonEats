@@ -62,3 +62,13 @@ export async function fetchMenuItems(diningHall : DiningHalls) {
     })
 
 }
+
+export async function fetchAllMenuItems() {
+    const diningHalls = Object.values(DiningHalls);
+    let items : MenuItem[] = [];
+    for(const diningHall of diningHalls) {
+        items = items.concat(await fetchMenuItems(diningHall));
+    }
+
+    return items;
+}

@@ -1,4 +1,4 @@
-import { fetchMenuItems } from "./menu-utils";
+import { fetchMenuItems, fetchAllMenuItems } from "./menu-utils";
 import { DiningHalls } from "../types";
 
 export async function createMenuEndpoints(app: any) {
@@ -10,6 +10,10 @@ export async function createMenuEndpoints(app: any) {
             return;
         }
         res.send(await fetchMenuItems(diningHall));
+    });
+
+    app.get('/menu', async (req: any, res: any) => {
+        res.send(await fetchAllMenuItems());
     });
 
 }
