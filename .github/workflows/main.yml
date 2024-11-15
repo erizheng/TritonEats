@@ -9,6 +9,11 @@ on:
 jobs: # the things being executed
  tests:
    runs-on: ubuntu-latest # which device on Github's server that you are running the Actions on
+   #env:
+     #$DB_HOST: ${{ secrets.DB_HOST }}
+      #DB_USER: ${{ secrets.DB_USER }}
+      #DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+      #JWT_SECRET: ${{ secrets.JWT_SECRET }}
    steps:
      - uses: actions/checkout@v4 # using version 4 of Actions
      - name: Install Dependencies
