@@ -1,6 +1,6 @@
 import * as cheerio from 'cheerio';
 
-import { DiningHalls, MenuItem } from '../types';
+import { DiningHalls, dishItem, location } from './types';
 import { HDHEndpoints } from '../constants';
 
 function parseMenuItems(diningHall: DiningHalls, dom: cheerio.CheerioAPI, restaurantElement: cheerio.Cheerio<any>) {
@@ -20,10 +20,17 @@ function parseMenuItems(diningHall: DiningHalls, dom: cheerio.CheerioAPI, restau
                 return [];
             }
 
-            return <MenuItem> { name, price, description, diningHall, restaurant };
+            return mockDishItem(name, price, description, diningHall, restaurant);
     });
 
     return items;
+
+}
+
+function mockDishItem(food_name: string, cost: number, description: string, diningHall: DiningHalls, restaurant: string) {
+    
+    const location = <location> { name: restaurant, dining_hall: diningHall, location_id: 0 };
+    return <dishItem> { food_id: 0, img: '/images/placeHolderImage.png', food_name, cost, location, allergens: [], rating: 5, description, numReviews: 0, numRecommend: 0 };
 
 }
 
@@ -37,7 +44,7 @@ export async function fetchMenuItems(diningHall : DiningHalls) {
 
     const restaurants = dom('.menu-category-section').toArray();
 
-    let items : MenuItem[] = [];
+    let items : dishItem[] = [];
     restaurants.forEach(restaurant => {
         const restaurantElement = dom(restaurant);
         items = items.concat( parseMenuItems(diningHall, dom, restaurantElement));
@@ -54,7 +61,7 @@ export async function fetchMenuItems(diningHall : DiningHalls) {
                 return false;
             }
 
-            return i && i.name === item.name;
+            return i && i.food_name === item.food_name;
         });
 
         return index === pos;
@@ -65,7 +72,7 @@ export async function fetchMenuItems(diningHall : DiningHalls) {
 
 export async function fetchAllMenuItems() {
     const diningHalls = Object.values(DiningHalls);
-    let items : MenuItem[] = [];
+    let items : dishItem[] = [];
     for(const diningHall of diningHalls) {
         items = items.concat(await fetchMenuItems(diningHall));
     }
