@@ -16,7 +16,9 @@ const Navbar: React.FC<NavbarProps> = ({ selected }) => {
   return (
     <nav className="navbar">
       <div className="navbar-logo">
-        <img src={ "images/logo.png" } alt="Triton Eats Logo" className="logo-icon" />
+        <Link to="/">
+          <img src={ "images/logo.png" } alt="Triton Eats Logo" className="logo-icon" />
+        </Link>
       </div>
       <div className="navbar-links">
         {navbarItems.map(item => (
