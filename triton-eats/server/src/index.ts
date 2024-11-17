@@ -25,5 +25,5 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 // create Endpoints
-createDishEndpoints(app, dishes);
+createDishEndpoints(app);
 
