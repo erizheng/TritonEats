@@ -1,7 +1,8 @@
-import { diningHallCoordinates, DiningHall, EarthRadius } from "./location-constants";
-import { Location } from "./location-types";
+import { diningHallCoordinates, EarthRadius } from "./location-constants";
+import { DiningHalls } from "../Menu/types";
+import { Coordinates } from "./location-types";
 
-function getCoords(diningHall: DiningHall) {
+function getCoords(diningHall: DiningHalls) {
     return diningHallCoordinates[diningHall];
 }
 
@@ -9,7 +10,7 @@ function deg2rad(deg: number) {
     return deg * (Math.PI / 180);
 }
 
-export function getDistance(position: Location, diningHall: DiningHall) {
+export function getDistance(position: Coordinates, diningHall: DiningHalls) {
     const coords = getCoords(diningHall);
     let dLat = deg2rad(coords.lat - position.lat);
     let dLng = deg2rad(coords.lng - position.lng);
@@ -21,10 +22,10 @@ export function getDistance(position: Location, diningHall: DiningHall) {
     return EarthRadius * c;
 }
 
-export function getAllDistances(position: Location) {
+export function getAllDistances(position: Coordinates) {
     let distances: { [hall: string]: number } = {};
     for (let hall in diningHallCoordinates) {
-        distances[hall] = getDistance(position, hall as DiningHall);
+        distances[hall] = getDistance(position, hall as DiningHalls);
     }
     return distances;
 }
