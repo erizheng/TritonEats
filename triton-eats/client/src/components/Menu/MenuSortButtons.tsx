@@ -10,21 +10,7 @@ export const MenuSortButtons = () => {
     const [clickCountCost, setClickCountCost] = useState(0);
     const [clickCountName, setClickCountName] = useState(0);
     const [clickCountRate, setClickCountRate] = useState(0);
-
-    useEffect(() => {
-        loadMenu();
-    }, []);
-
-    // Function to load expenses and handle errors
-    const loadMenu = async () => {
-        try {
-            const dishList = await fetchDishes();
-            setDishes(dishList);
-        } catch (err: any) {
-            console.log(err.message);
-        }
-    };
-
+    
     //COST SORTING
     const handleCost = () => {
         setClickCountCost(clickCountCost + 1);
