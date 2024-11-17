@@ -1,7 +1,7 @@
 import { fetchMenuItems, fetchAllMenuItems } from "./menu-utils";
 import { DiningHalls } from "./types";
 
-export async function createMenuEndpoints(app: any) {
+export async function createDishEndpoints(app: any) {
     
     app.get('/dishes/:diningHall', async (req: any, res: any) => {
         const diningHall = req.params.diningHall;
