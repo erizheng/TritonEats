@@ -7,10 +7,7 @@ export type dishItem = {
     location: location;
     allergens: string[];
     rating: number;
-    description: string;
-    
-    numReviews: number;
-    numRecommend: number;
+    // reviews: Reviews;
 };
 
 export interface location {

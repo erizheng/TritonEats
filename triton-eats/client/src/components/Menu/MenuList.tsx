@@ -24,17 +24,13 @@ export const DishList = () => {
     return (
         <div className="image-grid">
             {dishes.map((dish: dishItem) => (
-            <MenuItems food_id={dish.food_id}
-                img={dish.img}
-                food_name={dish.food_name}
-                cost={dish.cost}
-                location={dish.location}
-                allergens={dish.allergens}
-                rating={dish.rating}
-                description={dish.description} 
-                numReviews={dish.numReviews} 
-                numRecommend={dish.numRecommend} 
- />
+            <MenuItems food_id={dish.food_id} 
+                            img= {dish.img} 
+                            food_name= {dish.food_name} 
+                            cost= {dish.cost} 
+                            location= {dish.location} 
+                            allergens= {dish.allergens} 
+                            rating= {dish.rating} />
             ))}
         </div>
     );

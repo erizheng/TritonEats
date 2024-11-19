@@ -1,28 +1,29 @@
-import { useDiningHallSearchSort } from '../components/HomePage/useDiningHallSearchSort';
 import DiningHallsGrid from '../components/HomePage/DiningHallsGrid';
-import DiningHallSearchSort from '../components/HomePage/DiningHallSearchSort';
+import RecommendedItem from '../components/HomePage/TempRecommendedItem';
 import Navbar from '../components/NavBar';
 import '../CSS/HomePage.css';
 
-export const HomePage: React.FC = () => {
-    const {
-        filteredHalls,
-        handleSearch,
-        handleSortByDistance,
-        handleSortByBusyness
-    } = useDiningHallSearchSort(); // Use custom hook for logic
-
+export const HomePage = () => {
+   
     return (
-        <div>
-            <Navbar selected='Homepage' />
-            <DiningHallSearchSort 
-                onSearch={handleSearch} 
-                onSortByDistance={handleSortByDistance} 
-                onSortByBusyness={handleSortByBusyness} 
-            />
-            <DiningHallsGrid diningHalls={filteredHalls} />
-        </div>
-    );
-};
+        <body>
+            <Navbar selected='Homepage'/>
+            <div className="homepage">
+                <h2>Recommended Items:</h2>
+                <div className="recommended-items">
+                    <RecommendedItem name="Umi Roll" price="$$$" rating={3} />
+                    <RecommendedItem name="Achiote Chikcen Nachos" price="$$" rating={5} />
+                    <RecommendedItem name="Chicken Tenders" price="$" rating={4} />
+                    <RecommendedItem name="Chicken Katsu" price="$$" rating={3} />
+                    <RecommendedItem name="Acai Bowl" price="$" rating={4} />
+                    {/* Temp ReconmmendedItems untill integrated with reccomendations page */}
+                </div>
 
-export default HomePage;
+                <h2>Dining hall capacity:</h2>
+                <DiningHallsGrid />
+            </div>
+        </body>
+        
+    );
+
+}
