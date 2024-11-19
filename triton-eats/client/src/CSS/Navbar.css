@@ -34,7 +34,6 @@
     cursor: pointer;
     font-size: 1rem;  
     padding: 5px 0;
-    text-decoration: none;
   }
   
   .navbar-item.selected {
@@ -43,7 +42,7 @@
     border-radius: 5px;
   }
   
-  /* .navbar-auth {
+  .navbar-auth {
     display: flex;
     gap: 10px;
   }
@@ -59,7 +58,7 @@
   }
   
   .signin-btn {
-    background-color: #f2f2f2;
+    background-color: #f2f2f2; /* Light gray */
     color: #333;
     border: 1px solid #333;
   }
@@ -67,5 +66,5 @@
   .register-btn {
     background-color: #333;
     color: #fff;
-  } */
+  }
   
