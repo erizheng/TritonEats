@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 
 import { createDishEndpoints } from "./Menu/menu-endpoints";
+import { createLocationEndpoints } from "./location/location-endpoints";
 import { dishes } from "./Menu/constants";
 
 
@@ -25,5 +26,5 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 // create Endpoints
-createDishEndpoints(app, dishes);
-
+createDishEndpoints(app);
+createLocationEndpoints(app);
