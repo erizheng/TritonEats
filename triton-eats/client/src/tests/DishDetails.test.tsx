@@ -145,7 +145,17 @@ function fillOutReviewFormText(text: string){
     expect(reviewTextArea.value).toBe(text);
 }
 
+const checkReviews = (expectedTexts: string[], expectedStars: string[]) => {
+    const foodReviewContent = screen.getAllByLabelText('foodReviewText');
+    const foodReviewStars = screen.getAllByLabelText('foodReviewStars');
 
+    expectedTexts.forEach((text, index) => {
+        expect(foodReviewContent[index]).toHaveTextContent(text);
+    });
+    expectedStars.forEach((stars, index) => {
+        expect(foodReviewStars[index]).toHaveTextContent(stars);
+    });
+};
 
 // CURRENTLY, USE MOCKING TO TEST EVERYTHING
 const dish_id = -1; // change this to the mocked dish id eventually once we establish that
@@ -691,126 +701,44 @@ describe('reviewForm functions as expected, build on mocked dish', () => {
 
 describe('ReviewList displays correctly', () => {
   
+    
     test('check the sorting functionality works', () => {
         render(
             <MemoryRouter initialEntries={[`/dish_details/${dish_id}`]}>
-              <DishDetails />
+                <DishDetails />
             </MemoryRouter>
         );
 
-        // render buttons
+        // Render buttons
         const recYes = renderRecommendYes();
-        const recNo = renderRecommendNo();
         const submit = renderSubmitReviewButton();
-        const firstStar = renderReviewFormStar(1);
-        const secondStar = renderReviewFormStar(2);
-        const thirdStar = renderReviewFormStar(3);
-        const fourthStar = renderReviewFormStar(4);
-        const fifthStar = renderReviewFormStar(5);
+        const stars = [renderReviewFormStar(1), renderReviewFormStar(2),renderReviewFormStar(5), renderReviewFormStar(3)];
 
-        // Create four different reviews
-
-        fireEvent.click(recYes);
-        fillOutReviewFormText('Review 1');
-        fireEvent.click(firstStar);
-        fireEvent.click(submit);
-
-        fireEvent.click(recYes);
-        fillOutReviewFormText('Review 2');
-        fireEvent.click(secondStar);
-        fireEvent.click(submit);
-
-        fireEvent.click(recYes);
-        fillOutReviewFormText('Review 3');
-        fireEvent.click(fifthStar);
-        fireEvent.click(submit);
-
-        fireEvent.click(recYes);
-        fillOutReviewFormText('Review 4');
-        fireEvent.click(thirdStar);
-        fireEvent.click(submit);
+        // Create reviews with different star ratings
+        const reviewTexts = ['Review 1', 'Review 2', 'Review 3', 'Review 4'];
+        reviewTexts.forEach((text, index) => {
+            fireEvent.click(recYes);
+            fillOutReviewFormText(text);
+            fireEvent.click(stars[index]);
+            fireEvent.click(submit);
+        });
 
         const sortDropdown = screen.getByLabelText('foodReviewsSortOptions') as HTMLSelectElement;
 
-        // Go through every single review and make sure the order is correct
+        // Test cases for each sort option
+        const sortOptions = [
+            { value: 'mostRecent', texts: ['Review 4', 'Review 3', 'Review 2', 'Review 1'], stars: ['★★★☆☆', '★★★★★', '★★☆☆☆', '★☆☆☆☆'] },
+            { value: 'mostCritical', texts: ['Review 1', 'Review 2', 'Review 4', 'Review 3'], stars: ['★☆☆☆☆', '★★☆☆☆', '★★★☆☆', '★★★★★'] },
+            { value: 'highestRated', texts: ['Review 3', 'Review 4', 'Review 2', 'Review 1'], stars: ['★★★★★', '★★★☆☆', '★★☆☆☆', '★☆☆☆☆'] },
+            { value: 'oldest', texts: ['Review 1', 'Review 2', 'Review 3', 'Review 4'], stars: ['★☆☆☆☆', '★★☆☆☆', '★★★★★', '★★★☆☆'] },
+        ];
 
-        // Simulate selecting "Most Recent"
-        fireEvent.change(sortDropdown, { target: { value: 'mostRecent' } });
-        expect(sortDropdown.value).toBe('mostRecent');
-
-        let foodReviewContent = screen.getAllByLabelText('foodReviewText');
-        expect(foodReviewContent[0]).toHaveTextContent('Review 4');
-        expect(foodReviewContent[1]).toHaveTextContent('Review 3');
-        expect(foodReviewContent[2]).toHaveTextContent('Review 2');
-        expect(foodReviewContent[3]).toHaveTextContent('Review 1');
-
-        let foodReviewStars = screen.getAllByLabelText('foodReviewStars');
-        expect(foodReviewStars[0]).toHaveTextContent('★★★☆☆');
-        expect(foodReviewStars[1]).toHaveTextContent('★★★★★');
-        expect(foodReviewStars[2]).toHaveTextContent('★★☆☆☆');
-        expect(foodReviewStars[3]).toHaveTextContent('★☆☆☆☆');
-
-
-
-        // Simulate selecting "Most Critical"
-        fireEvent.change(sortDropdown, { target: { value: 'mostCritical' } });
-        expect(sortDropdown.value).toBe('mostCritical');
-
-        foodReviewContent = screen.getAllByLabelText('foodReviewText');
-        expect(foodReviewContent[0]).toHaveTextContent('Review 1');
-        expect(foodReviewContent[1]).toHaveTextContent('Review 2');
-        expect(foodReviewContent[2]).toHaveTextContent('Review 4');
-        expect(foodReviewContent[3]).toHaveTextContent('Review 3');
-
-        foodReviewStars = screen.getAllByLabelText('foodReviewStars');
-        expect(foodReviewStars[0]).toHaveTextContent('★☆☆☆☆');
-        expect(foodReviewStars[1]).toHaveTextContent('★★☆☆☆');
-        expect(foodReviewStars[2]).toHaveTextContent('★★★☆☆');
-        expect(foodReviewStars[3]).toHaveTextContent('★★★★★');
-
-
-
-        // Simulate selecting "Highest Rated"
-        fireEvent.change(sortDropdown, { target: { value: 'highestRated' } });
-        expect(sortDropdown.value).toBe('highestRated');
-
-        foodReviewContent = screen.getAllByLabelText('foodReviewText');
-        expect(foodReviewContent[3]).toHaveTextContent('Review 1');
-        expect(foodReviewContent[2]).toHaveTextContent('Review 2');
-        expect(foodReviewContent[1]).toHaveTextContent('Review 4');
-        expect(foodReviewContent[0]).toHaveTextContent('Review 3');
-
-        foodReviewStars = screen.getAllByLabelText('foodReviewStars');
-        expect(foodReviewStars[3]).toHaveTextContent('★☆☆☆☆');
-        expect(foodReviewStars[2]).toHaveTextContent('★★☆☆☆');
-        expect(foodReviewStars[1]).toHaveTextContent('★★★☆☆');
-        expect(foodReviewStars[0]).toHaveTextContent('★★★★★');
-
-
-
-        // Simulate selecting "Oldest"
-        fireEvent.change(sortDropdown, { target: { value: 'oldest' } });
-        expect(sortDropdown.value).toBe('oldest');
-
-        foodReviewContent = screen.getAllByLabelText('foodReviewText');
-        expect(foodReviewContent[3]).toHaveTextContent('Review 4');
-        expect(foodReviewContent[2]).toHaveTextContent('Review 3');
-        expect(foodReviewContent[1]).toHaveTextContent('Review 2');
-        expect(foodReviewContent[0]).toHaveTextContent('Review 1');
-
-       foodReviewStars = screen.getAllByLabelText('foodReviewStars');
-        expect(foodReviewStars[3]).toHaveTextContent('★★★☆☆');
-        expect(foodReviewStars[2]).toHaveTextContent('★★★★★');
-        expect(foodReviewStars[1]).toHaveTextContent('★★☆☆☆');
-        expect(foodReviewStars[0]).toHaveTextContent('★☆☆☆☆');
-
+        // Loop through each sorting option and validate
+        sortOptions.forEach(({ value, texts, stars }) => {
+            fireEvent.change(sortDropdown, { target: { value } });
+            expect(sortDropdown.value).toBe(value);
+            checkReviews(texts, stars);
+        });
     });
     
 });
-
-
-
-
-
-
-
