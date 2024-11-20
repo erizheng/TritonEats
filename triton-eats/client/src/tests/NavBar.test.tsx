@@ -1,7 +1,8 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
-import App from '../App';
 import { AppProvider } from '../context/MenuContext';
+import App from '../App';
+
 
 describe('render tests', () => {
   test('renders navbar with logo and navigation links', () => {
