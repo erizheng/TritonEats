@@ -19,7 +19,7 @@ export const RecommendSearch = () => {
         setFilteredOut(notSearched);
         setDishes(searchFiltered);
 
-        console.log(dishes);
+        //console.log(dishes);
     };
 
     return (
