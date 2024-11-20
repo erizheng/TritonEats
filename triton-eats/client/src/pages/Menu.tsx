@@ -11,10 +11,10 @@ export const Menu = () => {
 
     return (
         <AppProvider>
-        <body>
-            <head>
+        {/* <body> */}
+            {/* <head> */}
                 <title>Menu</title>
-            </head>
+            {/* </head> */}
             {/* <div className='recNavBar'><Navbar selected='Recipes'/></div> */}
             <NavBar selected='Menu'/>
 
@@ -26,7 +26,7 @@ export const Menu = () => {
                     <DishList/>
                 
             </div>
-        </body>
+        {/* </body> */}
         </AppProvider>
         
     );}
