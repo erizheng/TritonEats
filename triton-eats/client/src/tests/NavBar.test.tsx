@@ -2,7 +2,6 @@ import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { AppProvider } from '../context/MenuContext';
 import App from '../App';
-import { AppProvider } from '../context/MenuContext';
 
 
 describe('render tests', () => {
