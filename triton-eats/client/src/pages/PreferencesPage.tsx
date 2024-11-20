@@ -14,7 +14,7 @@ export const PreferencesPage = () => {
                 <head>
                     <title>Preferences</title>
                 </head>
-                <div className='NavBar'><Navbar /></div>
+                <div className='NavBar'><Navbar selected = "Homepage"/></div>
                 <div className="preferences-page">
                     <Preferences />
                 </div>

@@ -1,9 +1,6 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { MenuContext } from "../../context/MenuContext";
-import { sortDishes, fetchDishes } from '../../utils/menu-utils';
 import { dishItem } from "../../types/menuTypes";
-
-
 
 export const RecommendSearch = () => {
     const [searchItem, setSearchItem] = useState('');
@@ -21,6 +18,8 @@ export const RecommendSearch = () => {
         const notSearched = revertBack.filter(i => !i.food_name.includes(value));
         setFilteredOut(notSearched);
         setDishes(searchFiltered);
+
+        console.log(dishes);
     };
 
     return (

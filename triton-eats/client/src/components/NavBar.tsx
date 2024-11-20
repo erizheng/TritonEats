@@ -4,7 +4,7 @@ interface NavbarProps {
   selected: string; // Expect a string that denotes the selected item
 }
 
-const Navbar: React.FC<NavbarProps> = ({ selected }) => {
+export const Navbar: React.FC<NavbarProps> = ({ selected }) => {
   const navbarItems = ['Homepage', 'Reviews', 'Capacity', 'Menu', 'Recipes'];
 
   return (

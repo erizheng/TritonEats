@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import App from './App';
-import { Menu } from './pages/Menu';
+import App from '../App';
+import { Menu } from '../pages/Menu';
 
 describe("Menu CSS", () => {
     test("Search Bar exists", () => {

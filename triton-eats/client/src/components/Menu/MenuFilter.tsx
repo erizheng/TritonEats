@@ -12,24 +12,24 @@ export const RecommendFilter = () => {
     }; 
 
     return (
-        <div className='RecommendFilter'>
-            <div className='filterPref'>
-                <ul className="navbar-links">
-                    <li className="sortItem">Distance  x</li>
-                    <li className="sortItem">Allergens  x</li>
-                    <li className="sortItem">Price  x</li>
-                </ul>
-            </div>
+        <div className='MenuFilter'>
+            <h1>
+                Filter:
+            </h1>
 
             <div>Price</div>
-            <Slider
-                getAriaLabel={() => 'Temperature range'}
-                value={value}
-                onChange={handleChange}
-                valueLabelDisplay="auto"
-            />
+            <div className="slider">
+                <Slider
+                    getAriaLabel={() => 'Temperature range'}
+                    value={value}
+                    onChange={handleChange}
+                    valueLabelDisplay="auto"
+                />
+            </div>
+            
 
-            <div>Location <MenuCheckBox/></div>
+            <div className='filterLocations'>Location <MenuCheckBox/></div>
+            <div className='filterAllergens'>Allergens </div>
 
         </div>
     );
