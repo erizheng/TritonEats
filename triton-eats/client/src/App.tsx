@@ -28,7 +28,6 @@ function App() {
       
         {/*Recommendation Page*/ }
         <Route path="/menu" element={<Menu />} />
-        <Route path="/review" element={<FoodReviewPage/>}/>
         <Route path="/preferences" element={<PreferencesPage/>} />
 
         {/*Dish Details Page*/ }
