@@ -1,10 +1,11 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
+import { AppProvider } from '../context/MenuContext';
 import App from '../App';
 
 describe('render tests', () => {
   test('renders navbar with logo and navigation links', () => {
-    render(<App />);
+    render(<AppProvider><App /></AppProvider>);
     expect(screen.getByRole('link', { name: /Triton Eats Logo/i })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Homepage' })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Menu' })).toBeInTheDocument();
