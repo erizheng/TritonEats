@@ -1,5 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import HomePage from '../pages/HomePage';
+import { BrowserRouter } from 'react-router-dom';
+import { AppProvider } from '../context/MenuContext';
 
 // Mock the DiningHall data
 jest.mock('../constants/homepageConstants', () => ({
@@ -13,7 +15,14 @@ jest.mock('../constants/homepageConstants', () => ({
 
 describe('Search Functionality', () => {
     test('filters dining halls by name', () => {
-        render(<HomePage />);
+        // render(<HomePage />);
+        render(
+            <BrowserRouter>
+                <AppProvider>
+                    <HomePage />
+                </AppProvider>
+            </BrowserRouter>
+        );
 
         const searchInput = screen.getByPlaceholderText('Search...');
         
@@ -27,7 +36,14 @@ describe('Search Functionality', () => {
     });
 
     test('search returns no matches', () => {
-        render(<HomePage />);
+        // render(<HomePage />);
+        render(
+            <BrowserRouter>
+                <AppProvider>
+                    <HomePage />
+                </AppProvider>
+            </BrowserRouter>
+        );
 
         const searchInput = screen.getByPlaceholderText('Search...');
         
@@ -40,7 +56,14 @@ describe('Search Functionality', () => {
     });
 
     test('search for partial name matches dining halls', () => {
-        render(<HomePage />);
+        // render(<HomePage />);
+        render(
+            <BrowserRouter>
+                <AppProvider>
+                    <HomePage />
+                </AppProvider>
+            </BrowserRouter>
+        );
 
         const searchInput = screen.getByPlaceholderText('Search...');
         
@@ -59,7 +82,14 @@ describe('Search Functionality', () => {
 
 describe('Sorting by Busyness', () => {
     test('sorts by busyness in descending order', () => {
-        render(<HomePage />);
+        // render(<HomePage />);
+        render(
+            <BrowserRouter>
+                <AppProvider>
+                    <HomePage />
+                </AppProvider>
+            </BrowserRouter>
+        );
 
         const sortByBusynessButton = screen.getByText('Busyness');
         
@@ -76,7 +106,14 @@ describe('Sorting by Busyness', () => {
     });
 
     test('sorts by busyness in ascending order', () => {
-        render(<HomePage />);
+        // render(<HomePage />);
+        render(
+            <BrowserRouter>
+                <AppProvider>
+                    <HomePage />
+                </AppProvider>
+            </BrowserRouter>
+        );
 
         const sortByBusynessButton = screen.getByText('Busyness');
         
@@ -96,7 +133,14 @@ describe('Sorting by Busyness', () => {
     });
 
     test('closed dining halls are always at the end after sorting', () => {
-        render(<HomePage />);
+        // render(<HomePage />);
+        render(
+            <BrowserRouter>
+                <AppProvider>
+                    <HomePage />
+                </AppProvider>
+            </BrowserRouter>
+        );
 
         // Sort by distance and check that closed halls are always last
         const sortByBusynessButton = screen.getByText('Busyness');
@@ -112,7 +156,14 @@ describe('Sorting by Busyness', () => {
 
 describe('Sorting by Distance', () => {
     test('sorts by distance in ascending order', () => {
-        render(<HomePage />);
+        // render(<HomePage />);
+        render(
+            <BrowserRouter>
+                <AppProvider>
+                    <HomePage />
+                </AppProvider>
+            </BrowserRouter>
+        );
 
         const sortByDistanceButton = screen.getByText('Distance');
         
@@ -129,7 +180,14 @@ describe('Sorting by Distance', () => {
     });
 
     test('sorts by distance in descending order', () => {
-        render(<HomePage />);
+        // render(<HomePage />);
+        render(
+            <BrowserRouter>
+                <AppProvider>
+                    <HomePage />
+                </AppProvider>
+            </BrowserRouter>
+        );
 
         const sortByDistanceButton = screen.getByText('Distance');
         
@@ -149,7 +207,14 @@ describe('Sorting by Distance', () => {
     });
 
     test('closed dining halls are always at the end after sorting', () => {
-        render(<HomePage />);
+        // render(<HomePage />);
+        render(
+            <BrowserRouter>
+                <AppProvider>
+                    <HomePage />
+                </AppProvider>
+            </BrowserRouter>
+        );
 
         // Sort by distance and check that closed halls are always last
         const sortByDistanceButton = screen.getByText('Distance');
