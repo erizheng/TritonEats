@@ -3,6 +3,8 @@ import { Request, Response } from "express";
 import { createDishEndpoints } from "./Menu/menu-endpoints";
 import { createLocationEndpoints } from "./location/location-endpoints";
 import { dishes } from "./Menu/constants";
+import './firebaseConfig'; 
+import { createDishDetailsEndpoints } from "./dish-details/dish-information-endpoints";
 
 
 const express = require("express");
@@ -28,3 +30,4 @@ app.get("/", (req: Request, res: Response) => {
 // create Endpoints
 createDishEndpoints(app);
 createLocationEndpoints(app);
+createDishDetailsEndpoints(app);

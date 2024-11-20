@@ -22,20 +22,7 @@ export const DishList = () => {
         }
     };
 
-    const mockDish: dishItem = {
-        food_id: 0,
-        img: "/images/placeHolderImage.png",
-        food_name: "something",
-        cost: 1,
-        location: { name: "Revelle", location_id: 1 },
-        allergens: [],
-        rating: 3.25,
-        description: "something made with a bit of something cooked in a something topped with something with a side of something",
-        numReviews: 0,
-        numRecommend: 0,
-    };
-
-
+    
   
     return (
         <div className="image-grid">

@@ -1,6 +1,6 @@
 
 export type dishItem = {
-    food_id: number;
+    food_id: string;
     img: string;
     food_name: string;
     cost: number;
@@ -15,8 +15,20 @@ export type dishItem = {
 
 export interface location {
     name: string;
+    dining_hall: DiningHalls;
     location_id: number;
-};
+}
+
+export enum DiningHalls {
+
+    sixtyfour = "64degrees",
+    cafeventanas = "cafeventanas",
+    foodworx = "foodworx",
+    ovt = "ovt",
+    pines = "pines",
+    canyonvista = "canyonvista",
+
+}
 
 export type FilterChecks = { 
     name: string; 
