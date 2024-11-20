@@ -2,6 +2,7 @@ import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { AppProvider } from '../context/MenuContext';
 import App from '../App';
+import { AppProvider } from '../context/MenuContext';
 
 describe('render tests', () => {
   test('renders navbar with logo and navigation links', () => {
@@ -15,7 +16,7 @@ describe('render tests', () => {
 
 describe('accessibility tests', () => {
   test('navbar links are accessible', () => {
-    render(<App />);
+    render(<AppProvider><App /></AppProvider>);
     const links = screen.getAllByRole('link');
     expect(links.length).toBe(4); // 5 with reviews
   });
@@ -23,7 +24,7 @@ describe('accessibility tests', () => {
 
 describe('navigation tests', () => {
   test('navigate to homepage', () => {
-    render(<App />);
+    render(<AppProvider><App /></AppProvider>);
 
     const menuLink = screen.getByRole('link', { name: 'Homepage' });
     fireEvent.click(menuLink);
@@ -32,7 +33,7 @@ describe('navigation tests', () => {
   });
 
   test('navigate to menu', () => {
-    render(<App />);
+    render(<AppProvider><App /></AppProvider>);
 
     const menuLink = screen.getByRole('link', { name: 'Menu' });
     fireEvent.click(menuLink);
@@ -50,7 +51,7 @@ describe('navigation tests', () => {
   // });
 
   test('logo to homepage', () => {
-    render(<App />);
+    render(<AppProvider><App /></AppProvider>);
 
     const menuLink = screen.getByRole('link', { name: /Triton Eats Logo/i });
     fireEvent.click(menuLink);
@@ -61,7 +62,7 @@ describe('navigation tests', () => {
 
 describe('active link tests', () => {
   test('check homepage', () => {
-    render(<App />);
+    render(<AppProvider><App /></AppProvider>);
 
     const menuLink = screen.getByRole('link', { name: 'Homepage' });
     fireEvent.click(menuLink);
@@ -70,7 +71,7 @@ describe('active link tests', () => {
   });
 
   test('check menu', () => {
-    render(<App />);
+    render(<AppProvider><App /></AppProvider>);
 
     const menuLink = screen.getByRole('link', { name: 'Menu' });
     fireEvent.click(menuLink);
