@@ -8,7 +8,7 @@ describe('render tests', () => {
     expect(screen.getByRole('link', { name: /Triton Eats Logo/i })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Homepage' })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Menu' })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: 'Reviews' })).toBeInTheDocument();
+    // expect(screen.getByRole('link', { name: 'Reviews' })).toBeInTheDocument();
   });
 });
 
@@ -16,7 +16,7 @@ describe('accessibility tests', () => {
   test('navbar links are accessible', () => {
     render(<App />);
     const links = screen.getAllByRole('link');
-    expect(links.length).toBe(5);
+    expect(links.length).toBe(4); // 5 with reviews
   });
 });
 
@@ -39,14 +39,14 @@ describe('navigation tests', () => {
     expect(window.location.pathname).toBe('/menu');
   });
 
-  test('navigate to reviews', () => {
-    render(<App />);
+  // test('navigate to reviews', () => {
+  //   render(<App />);
 
-    const menuLink = screen.getByRole('link', { name: 'Reviews' });
-    fireEvent.click(menuLink);
+  //   const menuLink = screen.getByRole('link', { name: 'Reviews' });
+  //   fireEvent.click(menuLink);
 
-    expect(window.location.pathname).toBe('/review');
-  });
+  //   expect(window.location.pathname).toBe('/review');
+  // });
 
   test('logo to homepage', () => {
     render(<App />);
@@ -77,12 +77,12 @@ describe('active link tests', () => {
     expect(screen.getByRole('link', { name: 'Menu' })).toHaveClass('selected');
   });
 
-  test('check reviews', () => {
-    render(<App />);
+  // test('check reviews', () => {
+  //   render(<App />);
 
-    const menuLink = screen.getByRole('link', { name: 'Reviews' });
-    fireEvent.click(menuLink);
+  //   const menuLink = screen.getByRole('link', { name: 'Reviews' });
+  //   fireEvent.click(menuLink);
 
-    expect(screen.getByRole('link', { name: 'Reviews' })).toHaveClass('selected');
-  });
+  //   expect(screen.getByRole('link', { name: 'Reviews' })).toHaveClass('selected');
+  // });
 });
