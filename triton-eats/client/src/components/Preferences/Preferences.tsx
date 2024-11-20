@@ -26,7 +26,7 @@ const Preferences: React.FC = () => {
   ]);
 
   const [time, setTime] = useState<PreferenceProps[]>([
-    { id: 15, name: '>5 min', selected: false },
+    { id: 15, name: '< 5 min', selected: false },
     { id: 16, name: '5-10 min', selected: false },
     { id: 17, name: '10-20 min', selected: false },
     { id: 18, name: '20-30 min', selected: false },
@@ -34,10 +34,14 @@ const Preferences: React.FC = () => {
   ]);
 
   const [distance, setDistance] = useState<PreferenceProps[]>([
-    { id: 20, name: '30-45 min', selected: false },
-    { id: 21, name: '30-45 min', selected: false },
+    { id: 20, name: '0 - 0.5 miles', selected: false },
+    { id: 21, name: '0.5 - 1 miles', selected: false },
+    { id: 21, name: '1 - 1.5 miles', selected: false },
+    { id: 21, name: '1.5+ miles', selected: false },
 
   ]);
+
+  
 
   // Handle the preferences selection change
   const handleSelectionChange = (id: number) => {
@@ -51,7 +55,7 @@ const Preferences: React.FC = () => {
   return (
     <div>
       {/* <h1>Preferences</h1> */}
-      <h2>Allergens:</h2>
+      <h2 test-id= "Allergens">Allergens:</h2>
       <div className='preferences-grid'>
       {/* Pass preferences and the handler to PreferencesGrid */}
       <PreferenceGrid 
@@ -85,7 +89,12 @@ const Preferences: React.FC = () => {
         />
       </div>
       <div><h2>Distance:</h2></div>
-
+      <div className='preferences-grid'>
+      <PreferenceGrid 
+          preferences={distance}
+          onSelectionChange={handleSelectionChange}
+        />
+        </div>
       </div>
     </div>
   );

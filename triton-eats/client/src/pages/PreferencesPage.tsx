@@ -5,6 +5,7 @@ import { AppProvider } from '../context/MenuContext';
 import Preferences from '../components/Preferences/Preferences';
 import '../CSS/Preferences.css';
 
+// import NavBar from '../components/NavBar';
 
 export const PreferencesPage = () => {
 
