@@ -1,7 +1,7 @@
 import React from 'react';
 import { DiningHall as DiningHallType } from '../../types/homepageTypes';
 
-const DiningHall: React.FC<DiningHallType> = ({ name, distance, busyness, isOpen }) => {
+const DiningHall: React.FC<DiningHallType> = ({ name, distance, busyness, isOpen, hourSummary }) => {
     const getProgressBarClass = (busyness: number) => {
         if (busyness > 75) return 'progress-bar high';
         if (busyness > 50) return 'progress-bar medium';
@@ -23,7 +23,7 @@ const DiningHall: React.FC<DiningHallType> = ({ name, distance, busyness, isOpen
                     </div>
                 </div>
             ) : (
-                <p>{name} is Closed</p>
+                <p>{hourSummary}</p>
             )}
         </div>
     );

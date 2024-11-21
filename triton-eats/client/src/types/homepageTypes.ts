@@ -4,4 +4,5 @@ export interface DiningHall {
     distance: number;
     busyness: number;
     isOpen: boolean;
+    hourSummary: string;
   }
