@@ -27,7 +27,7 @@ export const useFetchDiningHalls = () => {
 
             const sortedHalls = transformedData.sort((a, b) => {
                 if (a.isOpen === b.isOpen) {
-                    return a.distance - b.distance;
+                    return a.busyness - b.busyness; // set default sorting
                 }
                 return a.isOpen ? -1 : 1;
             });
