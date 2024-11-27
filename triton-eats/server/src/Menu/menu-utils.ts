@@ -2,6 +2,7 @@ import * as cheerio from 'cheerio';
 
 import { DiningHalls, dishItem, location } from './types';
 import { HDHEndpoints } from './constants';
+import { findDish, updateDishDB, addDishToDB } from './menu-database';
 
 function parseMenuItems(diningHall: DiningHalls, dom: cheerio.Root, restaurantElement: cheerio.Cheerio) {
 
@@ -30,7 +31,7 @@ function parseMenuItems(diningHall: DiningHalls, dom: cheerio.Root, restaurantEl
 function mockDishItem(food_name: string, cost: number, description: string, diningHall: DiningHalls, restaurant: string) {
     
     const location = <location> { name: restaurant, dining_hall: diningHall, location_id: 0 };
-    return <dishItem> { food_id: 0, img: '/images/placeHolderImage.png', food_name, cost, location, allergens: [], rating: 5, description, numReviews: 0, numRecommend: 0 };
+    return <dishItem> { food_id: "0", img: '/images/placeHolderImage.png', food_name, cost, location, allergens: [], rating: 5, description, numReviews: 0, numRecommend: 0 };
 
 }
 
@@ -78,4 +79,13 @@ export async function fetchAllMenuItems() {
     }
 
     return items;
+}
+
+export async function populateDatabase() {
+    const dishes = await fetchAllMenuItems();
+
+    for(const dish of dishes) {
+        await addDishToDB(dish);
+    }
+
 }
