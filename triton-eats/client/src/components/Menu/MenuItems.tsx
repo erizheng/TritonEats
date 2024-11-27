@@ -41,7 +41,7 @@ export const MenuItems = (currentDish: dishItem) => {
                 {/* Dish Name and Location */}
 
               <div>
-                <Typography level="title-lg">
+                <Typography level="title-lg"> {currentDish.food_name}
                 </Typography>
                 <br></br>
                 <Typography level="body-sm">{currentDish.location.name}, {currentDish.location.dining_hall}</Typography>
