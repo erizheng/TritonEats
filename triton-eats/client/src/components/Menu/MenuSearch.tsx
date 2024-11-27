@@ -10,10 +10,12 @@ export const RecommendSearch = () => {
 
 
     const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+        //will fix this to sort based on what is active
         const revertBack = [...dishes, ...filteredOut].sort((a, b) => 
             a.food_name.localeCompare(b.food_name));
         const value = event.target.value;
         setSearchItem(value);
+        //caps matter
         const searchFiltered = revertBack.filter(i => i.food_name.includes(value));
         const notSearched = revertBack.filter(i => !i.food_name.includes(value));
         setFilteredOut(notSearched);

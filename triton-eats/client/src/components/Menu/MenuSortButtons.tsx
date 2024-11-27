@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { MenuContext } from "../../context/MenuContext";
 import { dishItem, sortArrows } from "../../types/menuTypes";
 // import { SortButtonCostAscend } from "./Buttons";
-import { sortDishes, fetchDishes } from '../../utils/menu-utils';
+//import { sortDishes, fetchDishes } from '../../utils/menu-utils';
 
 
 export const MenuSortButtons = () => {

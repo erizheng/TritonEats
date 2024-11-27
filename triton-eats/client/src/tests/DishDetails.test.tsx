@@ -2,18 +2,18 @@ import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { DishDetails } from '../pages/DishDetails'; 
 import { MemoryRouter, BrowserRouter as Router } from 'react-router-dom';
-import { DiningHalls, dishItem } from '../types/menuTypes';
+import { dishItem } from '../types/menuTypes';
 
 // Mock props for dish and reviews
 // Later on when backend is implemented, would be ideal to test with dish_ids
 // to see if backend fetches correct dish and it is displayed correct, current 
 // test suites are only to check if buttons work well. 
 const mockDish = {
-    food_id: -1,
+    food_id: "-1",
     img: "/images/placeHolderImage.png",
     food_name: "something",
     cost: 1,
-    location: { name: "Revelle", dining_hall: DiningHalls.sixtyfour ,location_id: 1 },
+    location: { name: "Revelle", dining_hall: "sixtyfour" ,location_id: 1 },
     allergens: ["asdfasdfasdfadsf", "John"],
     rating: 0,
     description: "something made with a bit of something cooked in a something topped with something with a side of something",
