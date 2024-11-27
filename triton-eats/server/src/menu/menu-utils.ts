@@ -2,6 +2,7 @@ import * as cheerio from 'cheerio';
 
 import { DiningHalls, dishItem, location } from './types';
 import { HDHEndpoints } from './constants';
+import { findDish, updateDishDB, addDishToDB } from './menu-database';
 
 function parseMenuItems(diningHall: DiningHalls, dom: cheerio.CheerioAPI, restaurantElement: cheerio.Cheerio<any>) {
 
@@ -78,4 +79,13 @@ export async function fetchAllMenuItems() {
     }
 
     return items;
+}
+
+export async function populateDatabase() {
+    const dishes = await fetchAllMenuItems();
+
+    for(const dish of dishes) {
+        await addDishToDB(dish);
+    }
+
 }

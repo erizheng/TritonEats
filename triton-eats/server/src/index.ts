@@ -5,6 +5,7 @@ import { createLocationEndpoints } from "./location/location-endpoints";
 import { dishes } from "./Menu/constants";
 import './firebaseConfig'; 
 import { createDishDetailsEndpoints } from "./dish-details/dish-information-endpoints";
+import { populateDatabase } from "./Menu/menu-utils";
 
 
 const express = require("express");
