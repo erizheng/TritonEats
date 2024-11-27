@@ -4,6 +4,7 @@ import { useContext, useEffect } from "react";
 import { DiningHalls, dishItem } from "../../types/menuTypes";
 import { fetchDishes } from "../../utils/menu-utils";
 import { Link } from "react-router-dom";
+import { mockDishes } from "../../constants/menuConstants";
 
 export const DishList = () => {
     const { dishes, setDishes } = useContext(MenuContext);
@@ -41,6 +42,19 @@ export const DishList = () => {
     };
 
     
+    // useEffect(() => {
+    //     loadMenu();
+    // }, []);
+
+    // // Function to load expenses and handle errors
+    // const loadMenu = async () => {
+    //     try {
+    //     const dishList = await fetchDishes();
+    //     setDishes(dishList);
+    //     } catch (err: any) {
+    //     console.log(err.message);
+    //     }
+    // };
   
     return (
         <div className="image-grid">

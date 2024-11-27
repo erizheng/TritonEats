@@ -13,12 +13,6 @@ export type dishItem = {
     numRecommend: number;
 };
 
-export interface location {
-    name: string;
-    dining_hall: DiningHalls;
-    location_id: number;
-}
-
 export enum DiningHalls {
 
     sixtyfour = "64degrees",
@@ -30,7 +24,26 @@ export enum DiningHalls {
 
 }
 
+export interface location {
+    name: string;
+    dining_hall: DiningHalls;
+    location_id: number;
+}
+
 export type FilterChecks = { 
     name: string; 
     checked: boolean;
 };
+
+
+export const sortArrows = {
+    empty: {
+      sym: ""
+    },
+    up: {
+      sym: "↑"
+    }, 
+    down: {
+      sym: "↓"
+    },
+  };

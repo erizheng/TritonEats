@@ -4,7 +4,7 @@ import { DiningHalls, dishItem, location } from './types';
 import { HDHEndpoints } from './constants';
 import { findDish, updateDishDB, addDishToDB } from './menu-database';
 
-function parseMenuItems(diningHall: DiningHalls, dom: cheerio.CheerioAPI, restaurantElement: cheerio.Cheerio<any>) {
+function parseMenuItems(diningHall: DiningHalls, dom: cheerio.Root, restaurantElement: cheerio.Cheerio) {
 
     const menuItems = restaurantElement.find('.menU-item-row').toArray();
     const restaurant = restaurantElement.find('h3').text().replace(/^ +/g, '');

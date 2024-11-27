@@ -5,18 +5,18 @@ import { RecommendSearch } from '../components/Menu/MenuSearch';
 import { MenuSortButtons } from '../components/Menu/MenuSortButtons'
 // import Navbar from '../components/NavBar';
 import { AppProvider } from '../context/MenuContext';
-import NavBar from '../components/NavBar';
+import Navbar from '../components/NavBar';
 
 export const Menu = () => {
 
     return (
         <AppProvider>
-        <body>
-            <head>
+        {/* <body> */}
+            {/* <head> */}
                 <title>Menu</title>
-            </head>
+            {/* </head> */}
             {/* <div className='recNavBar'><Navbar selected='Recipes'/></div> */}
-            <NavBar selected='Menu'/>
+            <Navbar selected='Menu'/>
 
             <div className="gridContainer">
                 <RecommendFilter/>
@@ -26,7 +26,7 @@ export const Menu = () => {
                     <DishList/>
                 
             </div>
-        </body>
+        {/* </body> */}
         </AppProvider>
         
     );}

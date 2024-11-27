@@ -23,6 +23,7 @@ export const DishDetails = () => {
             location_id: 1, 
             dining_hall: DiningHalls.sixtyfour // Correct reference to the enum value
         },
+        location: { name: "Revelle", dining_hall: DiningHalls.sixtyfour, location_id: 1 },
         allergens: [],
         rating: 3.25,
         description: "something made with a bit of something cooked in a something topped with something with a side of something",
