@@ -7,6 +7,15 @@ interface DiningHallsGridProps {
 }
 
 const DiningHallsGrid: React.FC<DiningHallsGridProps> = ({ diningHalls }) => {
+    if (!diningHalls || diningHalls.length === 0) {
+        return (
+            <div data-testid="loading" className="loading">
+                <div className="loading-spinner"></div>
+                Loading dining halls...
+            </div>
+        )
+    }
+    
     return (
         <div className="dining-hall-grid">
             {diningHalls.map(hall => (

@@ -19,25 +19,26 @@ export const useFetchDiningHalls = () => {
                 .map((item: any) => ({
                     id: item.id,
                     name: item.name,
-                    distance: 0, // Replace with actual distance when available
+                    distance: item.distance, // Replace with actual distance when available
                     busyness: item.busyness,
                     isOpen: item.isOpen,
                     hourSummary: item.hourSummary,
                 }));
 
+            // default sorting is busyness acsending
             const sortedHalls = transformedData.sort((a, b) => {
                 if (a.isOpen === b.isOpen) {
-                    return a.busyness - b.busyness; // set default sorting
+                    return a.busyness - b.busyness; 
                 }
                 return a.isOpen ? -1 : 1;
             });
             setAllHalls(sortedHalls);
             setFilteredHalls(sortedHalls);
 
-            // Testing
+            // Testing Constants
             // const sortedHalls2 = diningHalls.sort((a, b) => {
             //     if (a.isOpen === b.isOpen) {
-            //         return a.distance - b.distance;
+            //         return a.busyness - b.busyness;
             //     }
             //     return a.isOpen ? -1 : 1;
             // });
