@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import PreferenceGrid from './PreferenceGrid';
 import { PreferenceProps } from '../../types/preferenceTypes';
-
+import { Button } from '@mui/material';
+import { useCookies } from 'react-cookie';
 
 const Preferences: React.FC = () => {
   // Manage the preferences state in the parent (Preferences component)
@@ -26,11 +27,11 @@ const Preferences: React.FC = () => {
   ]);
 
   const [time, setTime] = useState<PreferenceProps[]>([
-    { id: 15, name: '< 5 min', selected: false },
-    { id: 16, name: '5-10 min', selected: false },
-    { id: 17, name: '10-20 min', selected: false },
-    { id: 18, name: '20-30 min', selected: false },
-    { id: 19, name: '30-45 min', selected: false },
+    { id: 15, name: '0 - 5 min', selected: false },
+    { id: 16, name: '5 - 10 min', selected: false },
+    { id: 17, name: '10 - 20 min', selected: false },
+    { id: 18, name: '20 - 30 min', selected: false },
+    { id: 19, name: '30 - 45 min', selected: false },
   ]);
 
   const [distance, setDistance] = useState<PreferenceProps[]>([
@@ -41,7 +42,8 @@ const Preferences: React.FC = () => {
 
   ]);
 
-  
+  const [cookies, setCookie, removeCookie] = useCookies(['cookie-name']);
+
 
   // Handle the preferences selection change
   const handleSelectionChange = (id: number) => {
@@ -51,7 +53,9 @@ const Preferences: React.FC = () => {
       )
     );
   };
+  const handleSetCookie = ()=>{
 
+  }
   return (
     <div>
       {/* <h1>Preferences</h1> */}
@@ -95,6 +99,9 @@ const Preferences: React.FC = () => {
           onSelectionChange={handleSelectionChange}
         />
         </div>
+      </div>
+      <div className ='preferences-grid-btn'>
+      <Button className='preferences-btn' onClick={()=>handleSetCookie()}>Submit</Button>
       </div>
     </div>
   );

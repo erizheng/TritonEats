@@ -56,3 +56,19 @@
 .preference:focus {     
     background-color: #6B7D53;
 }
+.preferences-grid-btn{
+    background: #A9C683;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    width: 200px;     
+}
+.preferences-btn{
+    background: #6B7D53;
+    color: #F6FBF1;
+    padding: 20px;
+    font-family: 'Inter', sans-serif;
+    font-size: large;
+    height: 50px;
+    width: 200px; 
+}

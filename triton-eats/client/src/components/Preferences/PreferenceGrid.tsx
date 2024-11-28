@@ -16,7 +16,7 @@ const PreferencesGrid: React.FC<PreferencesGridProps> = ({ preferences, onSelect
             onClick={() => onSelectionChange(preference.id)}
             >
               {
-              /^\d/.test(preference.name)  ?  ( 
+              preference.name.toLowerCase().includes("min")  ?  ( 
               <img src={`/${preference.name}.png`} className="image" 
                 style={{display:'block', paddingLeft: '40px', paddingBottom: '20px', alignItems:'center', width:'100px', height:'140px'}}
                 /> 
