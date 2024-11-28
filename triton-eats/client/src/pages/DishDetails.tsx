@@ -4,7 +4,7 @@ import { FoodReview } from "../components/DishDetails/FoodReview"
 import  NavBar  from '../components/NavBar';
 import { Review } from '../types/reviewTypes';
 import { useParams } from 'react-router-dom';
-import { dishItem } from "../types/menuTypes";
+import { DiningHalls, dishItem } from "../types/menuTypes";
 import DishDetailsDescription from '../components/DishDetails/DishDetailsDescription';
 import ReviewList from '../components/DishDetails/ReviewList';
 import ReviewForm from '../components/DishDetails/ReviewForm';
@@ -18,7 +18,7 @@ export const DishDetails = () => {
         img: "/images/placeHolderImage.png",
         food_name: "something",
         cost: 1,
-        location: { name: "Revelle", location_id: 1 },
+        location: { name: "Revelle", dining_hall: DiningHalls.sixtyfour, location_id: 1 },
         allergens: [],
         rating: 3.25,
         description: "something made with a bit of something cooked in a something topped with something with a side of something",

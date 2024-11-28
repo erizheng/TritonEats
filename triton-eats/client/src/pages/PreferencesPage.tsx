@@ -1,6 +1,6 @@
 import React from 'react'
 import PreferenceGrid from "../components/Preferences/PreferenceGrid"
-import { Navbar } from '../components/NavBar';
+import Navbar from '../components/NavBar';
 import { AppProvider } from '../context/MenuContext';
 import Preferences from '../components/Preferences/Preferences';
 import '../CSS/Preferences.css';
@@ -15,7 +15,7 @@ export const PreferencesPage = () => {
                 <head>
                     <title>Preferences</title>
                 </head>
-                <div className='NavBar'><Navbar /></div>
+                <div className='NavBar'><Navbar selected='Preferences'/></div>
                 <div className="preferences-page">
                     <Preferences />
                 </div>

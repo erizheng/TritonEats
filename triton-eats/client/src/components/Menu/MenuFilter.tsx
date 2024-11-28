@@ -1,35 +1,53 @@
 import React from 'react'
 import { Slider } from '@mui/material';
 import { MenuCheckBox } from './MenuCheckBox';
+import { useContext, useState } from 'react';
+import { MenuContext } from '../../context/MenuContext';
+import { dishItem } from '../../types/menuTypes';
 
 export const RecommendFilter = () => {
 
     //tempory for slider
-    const [value, setValue] = React.useState<number[]>([0, 100]);
+    const [value, setValue] = React.useState<number[]>([0, 30]);
+    const { dishes, setDishes } = useContext(MenuContext);
+    const [filteredOut, setFilteredOut] = useState<dishItem[]>([]);
 
     const handleChange = (event: Event, newValue: number | number[]) => {
         setValue(newValue as number[]);
+        //console.log(newValue)
+
+        //filtering
+        let range = newValue as number[];
+        const revertBack = [...dishes, ...filteredOut].sort((a, b) => 
+            a.food_name.localeCompare(b.food_name));
+
+        const searchFiltered = revertBack.filter(i => i.cost >= range[0] && i.cost <= range[1]);
+        const notSearched = revertBack.filter(i => (i.cost < range[0] || i.cost > range[1]));
+        setFilteredOut(notSearched);
+        setDishes(searchFiltered);
     }; 
 
     return (
-        <div className='RecommendFilter'>
-            <div className='filterPref'>
-                <ul className="navbar-links">
-                    <li className="sortItem">Distance  x</li>
-                    <li className="sortItem">Allergens  x</li>
-                    <li className="sortItem">Price  x</li>
-                </ul>
-            </div>
+        <div className='MenuFilter'>
+            <h1>
+                Filter:
+            </h1>
 
             <div>Price</div>
-            <Slider
-                getAriaLabel={() => 'Temperature range'}
-                value={value}
-                onChange={handleChange}
-                valueLabelDisplay="auto"
-            />
+            <div className="slider">
+                <Slider
+                    getAriaLabel={() => 'Cost range'}
+                    value={value}
+                    onChange={handleChange}
+                    valueLabelDisplay="auto"
+                    min={0}
+                    max={30}
+                />
+            </div>
+            
 
-            <div>Location <MenuCheckBox/></div>
+            <div className='filterLocations'>Location <MenuCheckBox/></div>
+            <div className='filterAllergens'>Allergens: nothing yet, need to decide on what to include for allergens</div>
 
         </div>
     );
