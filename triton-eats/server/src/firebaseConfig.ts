@@ -7,17 +7,17 @@ dotenv.config({ path: './.env' });
 
 const firebaseConfig = {
 
-  apiKey: "AIzaSyAeum9QrymFNfs8SCCXRygLXYo_Vd2ZS_Y",
+  apiKey: process.env.FIREBASE_API_KEY,
 
-  authDomain: "tritoneats-ce4d9.firebaseapp.com",
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
 
-  projectId: "tritoneats-ce4d9",
+  projectId: process.env.FIREBASE_PROJECT_ID,
 
-  storageBucket: "tritoneats-ce4d9.firebasestorage.app",
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
 
-  messagingSenderId: "534166052068",
+  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
 
-  appId: "1:534166052068:web:9bc417bd54a98971ec20f1"
+  appId: process.env.FIREBASE_APP_ID
 
 };
 

@@ -1,7 +1,6 @@
 
 import React, { useEffect, useState } from 'react'
 import { FoodReview } from "../components/DishDetails/FoodReview"
-import  NavBar  from '../components/NavBar';
 import { Review } from '../types/reviewTypes';
 import { useParams } from 'react-router-dom';
 import { DiningHalls, dishItem } from "../types/menuTypes";
@@ -9,6 +8,8 @@ import DishDetailsDescription from '../components/DishDetails/DishDetailsDescrip
 import ReviewList from '../components/DishDetails/ReviewList';
 import ReviewForm from '../components/DishDetails/ReviewForm';
 import { addDishToDB, addReviewAndUpdateDish, fetchDishDetails, fetchReviews }from '../utils/dish-details'
+import { Menu } from '@mui/material';
+import Navbar from '../components/NavBar';
 
 export const DishDetails = () => {
 
@@ -23,7 +24,6 @@ export const DishDetails = () => {
             location_id: 1, 
             dining_hall: DiningHalls.sixtyfour // Correct reference to the enum value
         },
-        location: { name: "Revelle", dining_hall: DiningHalls.sixtyfour, location_id: 1 },
         allergens: [],
         rating: 3.25,
         description: "something made with a bit of something cooked in a something topped with something with a side of something",
@@ -35,7 +35,7 @@ export const DishDetails = () => {
 
 
     const { dish_id } = useParams(); 
-    const [dish, setDish] = useState<dishItem>(mockDish);
+    const [dish, setDish] = useState<dishItem>();
     const [reviews, setReviews] = useState<Review[]>([]); // empty array
     const [sortOption, setSortOption] = useState("mostRecent");
 
@@ -43,13 +43,11 @@ export const DishDetails = () => {
         throw new Error("food_id is required");
     }
     
-
-      
-    //TODO: IMPLEMENT BACKEND LOGIC TO FETCH CORRECT DISH BASED ON THE DISH_ID PASSED 
-
+    
+    // Load the corresponding dish and it's reviews using backend API calls upon loading
     useEffect(() => {
         if (dish_id) {
-            fetchDishDetails(dish_id)
+            fetchDishDetails(dish_id) 
             .then((data) => setDish(data))
             .catch((err) => console.error(err));
 
@@ -60,7 +58,10 @@ export const DishDetails = () => {
     }, [dish_id]);
 
    
-
+    if (!dish) {
+        return <div>Loading dish details...</div>;
+    }
+      
 
     // Handle submitting the review and add it to the reviews list/db
     const handleReviewSubmit = async (reviewData: any) => {
@@ -98,7 +99,7 @@ export const DishDetails = () => {
     return (
         
         <div>
-            <NavBar selected="Reviews"/>{/**<NavBar selected='DishDetails OR Reviews'/> */}
+            <Navbar selected='Menu'/>
             <div className="dishDetailsPage">
                 {/** SECTION ONE - BASIC DISH INFORMATION*/}
                 <DishDetailsDescription 

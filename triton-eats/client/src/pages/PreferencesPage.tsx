@@ -1,7 +1,6 @@
 import React from 'react'
 import PreferenceGrid from "../components/Preferences/PreferenceGrid"
 import  Navbar  from '../components/NavBar';
-import Navbar from '../components/NavBar';
 import { AppProvider } from '../context/MenuContext';
 import Preferences from '../components/Preferences/Preferences';
 import '../CSS/Preferences.css';
