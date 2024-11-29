@@ -8,9 +8,10 @@ type FoodReviewProps = {
 /** Create a Review object based on a dynamic review item */
 export const FoodReview = ({ review }: FoodReviewProps) => {    
 
+    // Return div of stars based on rating
     const renderStars = (rating: number) => {
-        const roundedRating = Math.round(rating); // Round the rating to the nearest integer
-        const fullStars = Math.min(roundedRating, 5); // Cap at 5 stars
+        const roundedRating = Math.round(rating); 
+        const fullStars = Math.min(roundedRating, 5); 
         const emptyStars = 5 - fullStars;
 
         return (
@@ -33,6 +34,7 @@ export const FoodReview = ({ review }: FoodReviewProps) => {
                 }}
             />
 
+            
             <div className='reviewContent'>
                 <div className='reviewInformation'>
                     <h3>Anonymous User</h3>

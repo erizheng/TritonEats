@@ -5,7 +5,7 @@ import { dishItem } from "../Menu/types";
 
 export async function createDishDetailsEndpoints(app: any) {
 
-    // Fetch the dish with food_id
+    // Fetch the dish with dish_id
     app.get("/api/dishes/:dish_id", async (req:any, res: any) => {
         try {
             const dish = await fetchDishDetails(req.params.dish_id);
@@ -49,7 +49,7 @@ export async function createDishDetailsEndpoints(app: any) {
         }
     });
 
-    // Add a dish 
+    // Add a dish to the DB
     app.post("/api/dishes", async (req: any, res: any) => {
         try {
             const newDish: dishItem = req.body; 

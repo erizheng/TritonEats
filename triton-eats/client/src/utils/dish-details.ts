@@ -2,6 +2,8 @@ import { API_BASE_URL } from "../constants/menuConstants";
 import { dishItem } from "../types/menuTypes";
 import { Review } from "../types/reviewTypes";
 
+// Various API calls needed in the Dish_details page to read and write from DB for dish information and reviews. 
+
 export const fetchDishDetails = async (dishId: string) => {
 
     const response = await fetch(`${API_BASE_URL}/api/dishes/${dishId}`);
@@ -10,7 +12,7 @@ export const fetchDishDetails = async (dishId: string) => {
     return response.json();
 };
   
-export const fetchReviews = async (dishId: string) => {
+export const fetchReviewsByDishID = async (dishId: string) => {
 
     const response = await fetch(`${API_BASE_URL}/api/dishes/${dishId}/reviews`);
     if (!response.ok) throw new Error(`Failed to fetch reviews for ${dishId}`);
@@ -19,7 +21,7 @@ export const fetchReviews = async (dishId: string) => {
 };
 
 
-export const addReviewAndUpdateDish = async (updatedDish: dishItem, reviewData: Review) => {
+export const addReviewAndUpdateDishInformation = async (updatedDish: dishItem, reviewData: Review) => {
     try {
         const response = await fetch(`${API_BASE_URL}/api/dishes/${updatedDish.food_id}/review`, {
             method: "POST",

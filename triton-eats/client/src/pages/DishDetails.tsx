@@ -8,34 +8,14 @@ import { DiningHalls, dishItem } from "../types/menuTypes";
 import DishDetailsDescription from '../components/DishDetails/DishDetailsDescription';
 import ReviewList from '../components/DishDetails/ReviewList';
 import ReviewForm from '../components/DishDetails/ReviewForm';
-import { addDishToDB, addReviewAndUpdateDish, fetchDishDetails, fetchReviews }from '../utils/dish-details'
+import { addDishToDB, addReviewAndUpdateDishInformation, fetchDishDetails, fetchReviewsByDishID }from '../utils/dish-details'
 
 export const DishDetails = () => {
 
-    // Use Mocking for now
-    const mockDish: dishItem = {
-        food_id: "testDishID1234567890987654321",
-        img: "/images/placeHolderImage.png",
-        food_name: "something",
-        cost: 1,
-        location: { 
-            name: "Revelle", 
-            location_id: 1, 
-            dining_hall: DiningHalls.sixtyfour // Correct reference to the enum value
-        },
-        allergens: [],
-        rating: 3.25,
-        description: "something made with a bit of something cooked in a something topped with something with a side of something",
-        numReviews: 0,
-        numRecommend: 0,
-    };
-
-    
-
-
+    // states to hold dish, reviews, and the current sort option
     const { dish_id } = useParams(); 
-    const [dish, setDish] = useState<dishItem>(mockDish);
-    const [reviews, setReviews] = useState<Review[]>([]); // empty array
+    const [dish, setDish] = useState<dishItem>();
+    const [reviews, setReviews] = useState<Review[]>([]); 
     const [sortOption, setSortOption] = useState("mostRecent");
 
     if (!dish_id) {
@@ -44,21 +24,25 @@ export const DishDetails = () => {
     
 
       
-    //TODO: IMPLEMENT BACKEND LOGIC TO FETCH CORRECT DISH BASED ON THE DISH_ID PASSED 
-
+    // Upon loading the page, fetch the dish and reviews associated with dish_id using API calls
     useEffect(() => {
         if (dish_id) {
-            fetchDishDetails(dish_id)
+            fetchDishDetails(dish_id) // API call
             .then((data) => setDish(data))
             .catch((err) => console.error(err));
 
-            fetchReviews(dish_id)
-            .then((data) => setReviews(data))
+            fetchReviewsByDishID(dish_id)
+            .then((data) => setReviews(data)) // API call
             .catch((err) => console.error(err));
         }
     }, [dish_id]);
 
-   
+    
+
+    // Alt. screen to show when API calls being made
+    if (!dish) {
+        return <div>Loading Dish Details...</div>
+    }
 
 
     // Handle submitting the review and add it to the reviews list/db
@@ -84,20 +68,23 @@ export const DishDetails = () => {
             updatedDish.numRecommend += 1;
         }
 
+        // Recalculate Rating
         const totalRating = (updatedDish.rating * updatedDish.numReviews + reviewData.rating) / (updatedDish.numReviews + 1);
         updatedDish.rating = parseFloat(totalRating.toFixed(2)); 
         updatedDish.numReviews += 1;
 
+        // Update Reviews/Dishes locally
         setDish(updatedDish)
         setReviews([newReview, ...reviews]);
 
-        await addReviewAndUpdateDish(updatedDish, newReview);
+        // API call to update database
+        await addReviewAndUpdateDishInformation(updatedDish, newReview);
     };
 
     return (
         
         <div>
-            <NavBar selected="Reviews"/>{/**<NavBar selected='DishDetails OR Reviews'/> */}
+            <NavBar selected="Reviews"/>
             <div className="dishDetailsPage">
                 {/** SECTION ONE - BASIC DISH INFORMATION*/}
                 <DishDetailsDescription 

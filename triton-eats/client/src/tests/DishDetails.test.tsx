@@ -3,6 +3,7 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { DishDetails } from '../pages/DishDetails'; 
 import { MemoryRouter, BrowserRouter as Router } from 'react-router-dom';
 import { DiningHalls, dishItem } from '../types/menuTypes';
+import {addDishToDB} from '../utils/dish-details'
 
 // Mock props for dish and reviews
 // Later on when backend is implemented, would be ideal to test with dish_ids
@@ -26,6 +27,8 @@ const mockDish: dishItem = {
     numReviews: 0,
     numRecommend: 0,
 };
+
+
 
 const reviewFormAlertMessage = "Please rate the dish and indicate whether you recommend it before submitting. If you would like to give the dish 0 stars, please click one of the stars twice.";
 
@@ -132,24 +135,29 @@ function renderReviewFormStar(starNumber: number){
     return stars[starNumber - 1]
 }
 
+// Renders the Yes button
 function renderRecommendYes(){
     return screen.getByLabelText("YesButton");
 }
 
+// Renders the No button
 function renderRecommendNo(){
     return screen.getByLabelText("NoButton");
 }
 
+// Renders the Submit review Button 
 function renderSubmitReviewButton(){
     return screen.getByLabelText("SubmitButton");
 }
 
+//Fills our the review form with text 
 function fillOutReviewFormText(text: string){
     const reviewTextArea = screen.getByLabelText("reviewFormInput") as HTMLTextAreaElement;
     fireEvent.change(reviewTextArea, { target: { value: text } });
     expect(reviewTextArea.value).toBe(text);
 }
 
+// Check that the reviews/stars are seen in the reviews. 
 const checkReviews = (expectedTexts: string[], expectedStars: string[]) => {
     const foodReviewContent = screen.getAllByLabelText('foodReviewText');
     const foodReviewStars = screen.getAllByLabelText('foodReviewStars');
@@ -163,7 +171,7 @@ const checkReviews = (expectedTexts: string[], expectedStars: string[]) => {
 };
 
 // CURRENTLY, USE MOCKING TO TEST EVERYTHING
-const dish_id = -1; // change this to the mocked dish id eventually once we establish that
+const dish_id = 'testDishID1234567890987654321'; // change this to the mocked dish id eventually once we establish that
 
 describe('DishDetailsDescription Displays correctly', () => {
   
