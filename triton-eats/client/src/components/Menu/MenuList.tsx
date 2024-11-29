@@ -7,7 +7,8 @@ import { mockDishes } from "../../constants/menuConstants";
 
 export const DishList = () => {
     const { dishes, setDishes } = useContext(MenuContext);
- 
+    
+    //uses useEffect to load the Menu from the backend
     useEffect(() => {
         loadMenu();
     }, []);
@@ -24,7 +25,8 @@ export const DishList = () => {
             console.log(err.message);
         }
     };
-  
+    
+    //returns each item from the menu as a MenuItem through the use of a map
     return (
         <div className="image-grid">
             {dishes.map((dish: dishItem) => (
