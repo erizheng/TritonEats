@@ -1,7 +1,6 @@
 
 import React, { useEffect, useState } from 'react'
 import { FoodReview } from "../components/DishDetails/FoodReview"
-import  NavBar  from '../components/NavBar';
 import { Review } from '../types/reviewTypes';
 import { useParams } from 'react-router-dom';
 import { DiningHalls, dishItem } from "../types/menuTypes";
@@ -9,6 +8,7 @@ import DishDetailsDescription from '../components/DishDetails/DishDetailsDescrip
 import ReviewList from '../components/DishDetails/ReviewList';
 import ReviewForm from '../components/DishDetails/ReviewForm';
 import { addDishToDB, addReviewAndUpdateDishInformation, fetchDishDetails, fetchReviewsByDishID }from '../utils/dish-details'
+import Navbar from '../components/NavBar';
 
 export const DishDetails = () => {
 
@@ -84,7 +84,7 @@ export const DishDetails = () => {
     return (
         
         <div>
-            <NavBar selected="Reviews"/>
+            <Navbar selected='Menu'/>
             <div className="dishDetailsPage">
                 {/** SECTION ONE - BASIC DISH INFORMATION*/}
                 <DishDetailsDescription 

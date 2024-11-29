@@ -22,7 +22,7 @@ body {
 	border-radius: 10px;
 	width: 100%;
 }
-.RecommendFilter {
+.MenuFilter {
 	background-color: var(--color-1);
 	position: fixed;
 	width: 15%;
@@ -32,6 +32,17 @@ body {
 	border-radius: 10px;
 	margin-left: 20px;
 	margin-top: 30px;
+}
+.slider {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.filterAllergens {
+	margin-top: 20px;
+}
+.checkBoxLocations {
+	margin-bottom: 5px;
 }
 
 .filterPref .navbar-links {

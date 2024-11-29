@@ -22,6 +22,10 @@ export const updateDishDB = async (updatedDish: dishItem) => {
 
 // Add a new dish to the DB
 export const addDishToDB = async (newDish: dishItem) => {
-    const dishRef = doc(db, "dishes", newDish.food_id);
+    
+    const dishRef = doc(db, "/dishes", newDish.food_id);
+    if((await getDoc(dishRef)).exists()) {
+        throw new Error("Dish already exists!");
+    }
     await setDoc(dishRef, newDish);  
 };
