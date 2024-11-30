@@ -8,12 +8,11 @@ export const MenuItems = (currentDish: dishItem) => {
             <Link to={`/dish_details/${currentDish.food_id}`} key={currentDish.food_id}>
                 <img src={'images/placeHolderImage.png'} className='recPics'/>
             </Link>
-           <img src={currentDish.img} className='recPics'/>
 
            <div className='gridContainer'>
                 <div className='recImageText'>
                     <h3>{currentDish.food_name}</h3>
-                    <h2>${currentDish.cost}</h2>
+                    <h2>{currentDish.cost}</h2>
                     <p>{currentDish.location.dining_hall}</p>
                 </div>
                 <div className='recImageRating'>

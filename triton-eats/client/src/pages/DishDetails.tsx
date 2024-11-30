@@ -6,7 +6,7 @@ import { DiningHalls, dishItem } from "../types/menuTypes";
 import DishDetailsDescription from '../components/DishDetails/DishDetailsDescription';
 import ReviewList from '../components/DishDetails/ReviewList';
 import ReviewForm from '../components/DishDetails/ReviewForm';
-import { addDishToDB, addReviewAndUpdateDishInformation, fetchDishDetails, fetchReviewsByDishID }from '../utils/dish-details'
+import { addReviewAndUpdateDishInformation, fetchDishDetails, fetchReviewsByDishID }from '../utils/dish-details'
 import Navbar from '../components/NavBar';
 
 export const DishDetails = () => {
@@ -16,7 +16,6 @@ export const DishDetails = () => {
     const [dish, setDish] = useState<dishItem>();
     const [reviews, setReviews] = useState<Review[]>([]); 
     const [sortOption, setSortOption] = useState("mostRecent");
-    
     
  
     // Upon loading the page, fetch the dish and reviews associated with dish_id using API calls
@@ -87,7 +86,9 @@ export const DishDetails = () => {
         
         <div>
             <Navbar selected='Menu'/>
+
             <div className="dishDetailsPage">
+
                 {/** SECTION ONE - BASIC DISH INFORMATION*/}
                 <DishDetailsDescription 
                     dish={dish} 

@@ -22,6 +22,16 @@ export const FoodReview = ({ review }: FoodReviewProps) => {
         );
     };
 
+    // Format date as "Abbreviated Month Day, Year" (e.g., Sept. 16, 2025)
+    const formatDate = (date: Date) => {
+        const options: Intl.DateTimeFormatOptions = {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+        };
+        return new Date(date).toLocaleDateString('en-US', options);
+    };
+
     return (
         <div className='FoodReview'>
             {/** This image renders the placeHolder image if it can't find an associated image for the review */}
@@ -42,6 +52,7 @@ export const FoodReview = ({ review }: FoodReviewProps) => {
                     
                     <p>{renderStars(review.rating)}</p>
                     <p>Would Recommend: {review.recommend ? "Yes" : "No"}</p>
+                    <p>Posted on: {formatDate(review.datetime)}</p>
 
                 </div>
 
