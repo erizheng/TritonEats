@@ -48,6 +48,9 @@ afterEach(() =>{
 
     jest.clearAllMocks(); // Reset the mocks before each test
 
+    cleanup();
+
+    
 });
 
 
