@@ -13,7 +13,7 @@ const DiningHallSearchSort: React.FC<DiningHallSearchSortProps> = ({
     allHalls 
 }) => {
     const [searchItem, setSearchItem] = useState('');
-    const [distanceAsc, setDistanceAsc] = useState(true);
+    // const [distanceAsc, setDistanceAsc] = useState(true);
     const [busynessAsc, setBusynessAsc] = useState(true);
     const [activeSort, setActiveSort] = useState<'distance' | 'busyness' | null>(null);
 
@@ -31,17 +31,17 @@ const DiningHallSearchSort: React.FC<DiningHallSearchSortProps> = ({
     };
 
 
-    const handleSortByDistance = () => {
-        const sorted = [...filteredHalls].sort((a, b) => {
-            if (a.isOpen === b.isOpen) {
-                return distanceAsc ? a.distance - b.distance : b.distance - a.distance;
-            }
-            return a.isOpen ? -1 : 1;
-        });
-        setFilteredHalls(sorted);
-        setDistanceAsc(!distanceAsc);
-        setActiveSort('distance'); 
-    };
+    // const handleSortByDistance = () => {
+    //     const sorted = [...filteredHalls].sort((a, b) => {
+    //         if (a.isOpen === b.isOpen) {
+    //             return distanceAsc ? a.distance - b.distance : b.distance - a.distance;
+    //         }
+    //         return a.isOpen ? -1 : 1;
+    //     });
+    //     setFilteredHalls(sorted);
+    //     setDistanceAsc(!distanceAsc);
+    //     setActiveSort('distance'); 
+    // };
 
 
     const handleSortByBusyness = () => {
@@ -66,9 +66,9 @@ const DiningHallSearchSort: React.FC<DiningHallSearchSortProps> = ({
                 onChange={handleSearchChange} 
             />
             <div className="sort-buttons-container">
-                <button className="sort-button" onClick={handleSortByDistance}>
+                {/* <button className="sort-button" onClick={handleSortByDistance}>
                     Distance {activeSort === 'distance' && (distanceAsc ? '↑' : '↓')}
-                </button>
+                </button> */}
                 <button className="sort-button" onClick={handleSortByBusyness}>
                     Busyness {activeSort === 'busyness' && (busynessAsc ? '↑' : '↓')}
                 </button>

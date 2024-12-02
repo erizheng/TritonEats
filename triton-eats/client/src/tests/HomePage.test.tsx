@@ -94,36 +94,36 @@ describe('Sorting by Busyness', () => {
     });
 });
 
-describe('Sorting by Distance', () => {
-    test('sorts by distance in ascending order', () => { 
-        const sortByDistanceButton = screen.getByText('Distance');
-        fireEvent.click(sortByDistanceButton);
+// describe('Sorting by Distance', () => {
+//     test('sorts by distance in ascending order', () => { 
+//         const sortByDistanceButton = screen.getByText('Distance');
+//         fireEvent.click(sortByDistanceButton);
 
-        const diningHalls = screen.getAllByTestId(/^dining-hall-/);
-        expect(diningHalls[0].textContent).toContain('Hall A');
-        expect(diningHalls[1].textContent).toContain('Hall B');
-        expect(diningHalls[2].textContent).toContain('Hall C');
-        expect(diningHalls[3].textContent).toContain('Hall D');
-    });
+//         const diningHalls = screen.getAllByTestId(/^dining-hall-/);
+//         expect(diningHalls[0].textContent).toContain('Hall A');
+//         expect(diningHalls[1].textContent).toContain('Hall B');
+//         expect(diningHalls[2].textContent).toContain('Hall C');
+//         expect(diningHalls[3].textContent).toContain('Hall D');
+//     });
 
-    test('sorts by distance in descending order', () => {
-        const sortByDistanceButton = screen.getByText('Distance');
-        fireEvent.click(sortByDistanceButton);
-        fireEvent.click(sortByDistanceButton);
+//     test('sorts by distance in descending order', () => {
+//         const sortByDistanceButton = screen.getByText('Distance');
+//         fireEvent.click(sortByDistanceButton);
+//         fireEvent.click(sortByDistanceButton);
 
-        const diningHalls = screen.getAllByTestId(/^dining-hall-/);
-        expect(diningHalls[0].textContent).toContain('Hall C');
-        expect(diningHalls[1].textContent).toContain('Hall B');
-        expect(diningHalls[2].textContent).toContain('Hall A');
-        expect(diningHalls[3].textContent).toContain('Hall D');
-    });
+//         const diningHalls = screen.getAllByTestId(/^dining-hall-/);
+//         expect(diningHalls[0].textContent).toContain('Hall C');
+//         expect(diningHalls[1].textContent).toContain('Hall B');
+//         expect(diningHalls[2].textContent).toContain('Hall A');
+//         expect(diningHalls[3].textContent).toContain('Hall D');
+//     });
 
-    test('closed dining halls are always at the end after sorting', () => {
-        const sortByDistanceButton = screen.getByText('Distance');
-        fireEvent.click(sortByDistanceButton);
+//     test('closed dining halls are always at the end after sorting', () => {
+//         const sortByDistanceButton = screen.getByText('Distance');
+//         fireEvent.click(sortByDistanceButton);
 
-        const diningHalls = screen.getAllByTestId(/^dining-hall-/);
-        const lastDiningHall = diningHalls[diningHalls.length - 1];
-        expect(lastDiningHall.textContent).toContain('Hall D');
-    });
-});
+//         const diningHalls = screen.getAllByTestId(/^dining-hall-/);
+//         const lastDiningHall = diningHalls[diningHalls.length - 1];
+//         expect(lastDiningHall.textContent).toContain('Hall D');
+//     });
+// });

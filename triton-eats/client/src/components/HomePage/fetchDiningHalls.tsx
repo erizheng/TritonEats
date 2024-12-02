@@ -19,7 +19,7 @@ export const useFetchDiningHalls = () => {
                 .map((item: any) => ({
                     id: item.id,
                     name: item.name,
-                    distance: item.distance, // Replace with actual distance when available
+                    // distance: item.distance,
                     busyness: item.busyness,
                     isOpen: item.isOpen,
                     hourSummary: item.hourSummary,
