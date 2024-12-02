@@ -1,11 +1,15 @@
 import React, { createContext, useState } from "react";
 import { dishItem, sortArrows } from "../types/menuTypes";
-import { mockDishes } from "../constants/menuConstants";
+//import { mockDishes } from "../constants/menuConstants";
 
 
 interface MenuContextType {
     dishes: dishItem[];
     setDishes: React.Dispatch<React.SetStateAction<dishItem[]>>;
+    notShown: dishItem[];
+    setNotShown: React.Dispatch<React.SetStateAction<dishItem[]>>;
+
+    //used to keep track of which sorting arrangement is being used
     arrowCost: string;
     setArrowCost: React.Dispatch<React.SetStateAction<string>>;
     arrowRate: string;
@@ -15,7 +19,7 @@ interface MenuContextType {
 }
 
 const initialState: MenuContextType = {
-    dishes: mockDishes,
+    dishes: [],
     setDishes: () => {},
     arrowCost: "",
     setArrowCost: () => "",
@@ -23,6 +27,8 @@ const initialState: MenuContextType = {
     setArrowRate: () => "",
     arrowName: "",
     setArrowName: () => "",
+    notShown: [],
+    setNotShown: () => {},
 
 };
   
@@ -33,6 +39,7 @@ const [dishes, setDishes] = useState<dishItem[]>(initialState.dishes);
 const [arrowCost, setArrowCost] = useState<string>(initialState.arrowCost);
 const [arrowRate, setArrowRate] = useState<string>(initialState.arrowRate);
 const [arrowName, setArrowName] = useState<string>(initialState.arrowName);
+const [notShown, setNotShown] = useState<dishItem[]>(initialState.dishes);
 
     return (
       <MenuContext.Provider
@@ -45,6 +52,8 @@ const [arrowName, setArrowName] = useState<string>(initialState.arrowName);
           setArrowRate: setArrowRate,
           arrowName: arrowName,
           setArrowName: setArrowName,
+          notShown: notShown,
+          setNotShown: setNotShown,
         }}
       >
         {props.children}

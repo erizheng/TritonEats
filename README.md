@@ -23,13 +23,13 @@
 
 ## **Features**
 - **Live Menus and Dining Hall Operational Status:** Menus updated quarterly from UCSD HDH, busyness retrieved from Waitz.io API.
-- **Dietary Filters:** Filter options by dietary preferences, allergens, food wait times, and distance.
+- **Dietary Filters:** Filter options by price, dietary preferences, allergens, food wait times, and distance.
 - **User Reviews:** Submit and browse reviews for menu items.
 - **Accessible UI:** User-friendly navigation designed with responsiveness and simplicity in mind.
 
 
 ## **Tech Stack**
-- **Frontend:** React, TypeScript, React Router for routing.
+- **Frontend:** React, TypeScript, React Router for routing, Materials-UI for symbols, slider, and menu item cards. 
 - **Backend:** Node.js, Express.js.
 - **Database:** Firebase Realtime Database (NoSQL).
 - **Testing Tools:** Jest and React Testing Library for frontend tests, Supertest for backend tests.
@@ -64,7 +64,7 @@ This section goes over both key design and architecture decisions made throughou
 | **Page**  | **Description**                                |
 |----------------|------------------------------------------------|
 | `Login Page`       | Allows the user to Login    |
-| `Home Page`     | Displays UCSD Dining halls, their current busyness/capacity, and distance from current location.   |
+| `Home Page`     | Displays UCSD Dining halls and their current busyness/capacity.   |
 | `Preferences`  | Allows users to set dietary, busyness, and distance preferences for dining halls and menus.      |
 | `Menu`  | Displays the menu for all UCSD Dining Halls. Allows the user to sort and query by dining hall, price, rating, and name.      |
 | `Dish Details`  | Displays more detailed information about a specific menu item. Allows the user to view and sort existing reviews, as well as leave their own review.      |
@@ -73,8 +73,7 @@ This section goes over both key design and architecture decisions made throughou
 ### **Internal API Endpoints**
 | **Method** | **Endpoint**           | **Description**                  |
 |------------|------------------------|----------------------------------|
+| `GET`      | `/api/dishes`           | Retrieves all dishes from the database|
 | `GET`      | `/api/dishes/:dish_id`           | Retrieves a dish from the database by ID |
 | `GET`     | `/api/dishes/:dish_id/reviews`     | Retrieves the reviews associated with the dish with dish_id. |
 | `POST`      | `"/api/dishes/:dish_id/review"`     | Adds a review to the database.      |
-| `POST`      | `/api/dishes`| Adds a dish to the database.        |
-
