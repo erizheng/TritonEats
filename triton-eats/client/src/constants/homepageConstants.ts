@@ -1,6 +1,6 @@
 import { DiningHall } from "../types/homepageTypes";
 
-// Mocked Review Item
+// Mocked constants
 export const diningHalls: DiningHall[] = [
     { id: 1, name: '64 Degrees', busyness: 76, isOpen: true, hourSummary: "Closed until 7:00am",  },
     { id: 2, name: 'Ventanas' , busyness: 56, isOpen: true, hourSummary: "Closed until 7:00am", },

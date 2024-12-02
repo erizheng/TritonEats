@@ -2,16 +2,18 @@ import { useState, useEffect } from 'react';
 import { DiningHall } from '../../types/homepageTypes';
 import { diningHalls } from '../../constants/homepageConstants';
 
-// Fetch and filter dining hall data
+// Fetch and filter dining hall data from waitz.io
 export const useFetchDiningHalls = () => {
     const [filteredHalls, setFilteredHalls] = useState<DiningHall[]>([]);
     const [allHalls, setAllHalls] = useState<DiningHall[]>([]);
 
     const fetchDiningHalls = async () => {
         try {
+            // watiz.io external API call
             const response = await fetch('https://waitz.io/live/ucsd');
             const data = await response.json();
 
+            // Non dining hall data is included in waitz.io must be excluded
             const excludedIds = [204, 8, 12, 205, 13, 7];
 
             const transformedData: DiningHall[] = data.data
@@ -19,7 +21,6 @@ export const useFetchDiningHalls = () => {
                 .map((item: any) => ({
                     id: item.id,
                     name: item.name,
-                    // distance: item.distance,
                     busyness: item.busyness,
                     isOpen: item.isOpen,
                     hourSummary: item.hourSummary,
@@ -35,7 +36,7 @@ export const useFetchDiningHalls = () => {
             setAllHalls(sortedHalls);
             setFilteredHalls(sortedHalls);
 
-            // Testing Constants
+            // CONSTANTS TESTING
             // const sortedHalls2 = diningHalls.sort((a, b) => {
             //     if (a.isOpen === b.isOpen) {
             //         return a.busyness - b.busyness;

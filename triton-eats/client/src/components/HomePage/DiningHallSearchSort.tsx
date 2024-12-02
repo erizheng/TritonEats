@@ -7,17 +7,17 @@ interface DiningHallSearchSortProps {
     allHalls: DiningHall[];
 }
 
+// Handles both search and sorting features
 const DiningHallSearchSort: React.FC<DiningHallSearchSortProps> = ({ 
     filteredHalls, 
     setFilteredHalls, 
     allHalls 
 }) => {
     const [searchItem, setSearchItem] = useState('');
-    // const [distanceAsc, setDistanceAsc] = useState(true);
     const [busynessAsc, setBusynessAsc] = useState(true);
     const [activeSort, setActiveSort] = useState<'distance' | 'busyness' | null>(null);
 
-
+    // Looks for any changes in searchbar before calling handleSearch
     const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const value = event.target.value;
         setSearchItem(value);
@@ -30,23 +30,10 @@ const DiningHallSearchSort: React.FC<DiningHallSearchSortProps> = ({
         setFilteredHalls(filtered);
     };
 
-
-    // const handleSortByDistance = () => {
-    //     const sorted = [...filteredHalls].sort((a, b) => {
-    //         if (a.isOpen === b.isOpen) {
-    //             return distanceAsc ? a.distance - b.distance : b.distance - a.distance;
-    //         }
-    //         return a.isOpen ? -1 : 1;
-    //     });
-    //     setFilteredHalls(sorted);
-    //     setDistanceAsc(!distanceAsc);
-    //     setActiveSort('distance'); 
-    // };
-
-
     const handleSortByBusyness = () => {
         const sorted = [...filteredHalls].sort((a, b) => {
             if (a.isOpen === b.isOpen) {
+                // Checks for ascending vs descending for arrow rendering
                 return busynessAsc ? a.busyness - b.busyness : b.busyness - a.busyness;
             }
             return a.isOpen ? -1 : 1;
@@ -66,9 +53,6 @@ const DiningHallSearchSort: React.FC<DiningHallSearchSortProps> = ({
                 onChange={handleSearchChange} 
             />
             <div className="sort-buttons-container">
-                {/* <button className="sort-button" onClick={handleSortByDistance}>
-                    Distance {activeSort === 'distance' && (distanceAsc ? '↑' : '↓')}
-                </button> */}
                 <button className="sort-button" onClick={handleSortByBusyness}>
                     Busyness {activeSort === 'busyness' && (busynessAsc ? '↑' : '↓')}
                 </button>
