@@ -13,7 +13,7 @@ export const MenuItems = (currentDish: dishItem) => {
 
         //Resizeable container from https://mui.com/joy-ui/react-card/
         //Edit give_your_path to make it go to where you need
-        <Link to={'/give_your_path'}>
+        <Link to={`/dish_details/${currentDish.food_id}`}>
         <Box sx={{ minHeight: 350 }}>
         <Card
           variant="outlined"

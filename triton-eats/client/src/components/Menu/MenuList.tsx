@@ -30,7 +30,19 @@ export const DishList = () => {
     };
     
     //returns each item from the menu as a MenuItem through the use of a map
+
+    if (!dishes || dishes.length === 0) {
+        return (
+            <div data-testid="loading" className="loading">
+            <div className="loading-spinner"></div>
+                Loading Menu Items...
+            </div>
+    )
+    }
+
     return (
+        
+
         <div className="image-grid">
             {dishes.map((dish: dishItem) => (
             <div data-testid={`dish-${dish.food_id}`}>
