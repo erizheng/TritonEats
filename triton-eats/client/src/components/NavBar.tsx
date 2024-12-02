@@ -7,8 +7,8 @@ interface NavbarProps {
 }
 
 const Navbar: React.FC<NavbarProps> = ({ selected }) => {
-  // const { user, setUser } = useAuth();
-  // const navigate = useNavigate();
+  const { user, setUser } = useAuth();
+  const navigate = useNavigate();
   
   const navbarItems = [
     {name: 'Homepage', path: '/'},
@@ -17,10 +17,10 @@ const Navbar: React.FC<NavbarProps> = ({ selected }) => {
     {name: 'Preferences', path: '/preferences/'}
   ];
 
-  // const handleLogout = () => {
-  //   setUser(null); // Clears state and localStorage
-  //   navigate("/login"); // Redirect to login page
-  // };
+  const handleLogout = () => {
+    setUser(null); // Clears state and localStorage
+    navigate("/login"); // Redirect to login page
+  };
 
   return (
     <nav className="navbar">
@@ -36,11 +36,11 @@ const Navbar: React.FC<NavbarProps> = ({ selected }) => {
           </Link>
         ))}
       </div>
-      {/* <div className="navbar-auth">
-        <button className="signin-btn">Sign in</button>
+      <div className="navbar-auth">
+        {/* <button className="signin-btn">Sign in</button> */}
         <nav>{user && <button className="logout-btn" onClick={handleLogout}>Logout</button>}</nav>
-        <button className="register-btn">Register</button>
-      </div> */}
+        {/* <button className="register-btn">Register</button> */}
+      </div>
     </nav>
   );
 };

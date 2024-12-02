@@ -1,21 +1,22 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 
 interface AuthContextType {
-  user: any;
+  user: { email?: string | null } | null;
   setUser: (user: any) => void;
 }
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [user, setUser] = useState<any>(() => {
+  const [user, setUser] = useState<{ email?: string | null } | null>(() => {
     const storedUser = localStorage.getItem("user");
     return storedUser ? JSON.parse(storedUser) : null;
   });
 
   useEffect(() => {
     if (user) {
-      localStorage.setItem("user", JSON.stringify(user));
+      const { email } = user; // Extract email from user
+      localStorage.setItem("user", JSON.stringify({ email })); // Save only the email
     } else {
       localStorage.removeItem("user");
     }
