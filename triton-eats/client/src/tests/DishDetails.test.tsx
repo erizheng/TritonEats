@@ -2,7 +2,7 @@ import React, { act } from 'react';
 import { render, screen, fireEvent, waitFor, cleanup } from '@testing-library/react';
 import { DishDetails } from '../pages/DishDetails'; 
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
-import { DiningHalls, dishItem } from '../types/menuTypes';
+import { dishItem } from '../types/menuTypes';
 import { addReviewAndUpdateDishInformation, fetchDishDetails, fetchReviewsByDishID } from '../utils/dish-details';
 import { API_BASE_URL } from '../constants/menuConstants';
 
@@ -10,7 +10,7 @@ const mockDish =  { food_id: "testID",
     img: "images/placeHolderImage.png", 
     food_name: "a", 
     cost: 1, 
-    location: {name:"Revelle", dining_hall: DiningHalls.sixtyfour, location_id: 1}, 
+    location: {name:"Revelle", dining_hall: "sixtyfour", location_id: 1}, 
     allergens: [], 
     rating: 4, 
     description: "nada", 
