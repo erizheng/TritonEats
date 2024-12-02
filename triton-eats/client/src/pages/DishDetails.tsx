@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import { Review } from '../types/reviewTypes';
 import { Link, useParams } from 'react-router-dom';
-import { DiningHalls, dishItem } from "../types/menuTypes";
+import { dishItem } from "../types/menuTypes";
 import DishDetailsDescription from '../components/DishDetails/DishDetailsDescription';
 import ReviewList from '../components/DishDetails/ReviewList';
 import ReviewForm from '../components/DishDetails/ReviewForm';
