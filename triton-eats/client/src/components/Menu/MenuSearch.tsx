@@ -8,7 +8,8 @@ export const RecommendSearch = () => {
     const { dishes, setDishes,
         arrowCost, setArrowCost,
          arrowName, setArrowName,
-          arrowRate, setArrowRate } = useContext(MenuContext);
+          arrowRate, setArrowRate, 
+           notShown, setNotShown } = useContext(MenuContext);
     const [filteredOut, setFilteredOut] = useState<dishItem[]>([]);
 
 
@@ -28,6 +29,7 @@ export const RecommendSearch = () => {
 
         //setting the values
         setFilteredOut(notSearched);
+        setNotShown(notSearched);
         setDishes(searchFiltered);
     };
 

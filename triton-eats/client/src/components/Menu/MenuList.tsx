@@ -6,7 +6,11 @@ import { fetchDishes } from "../../utils/menu-utils";
 import { mockDishes } from "../../constants/menuConstants";
 
 export const DishList = () => {
-    const { dishes, setDishes } = useContext(MenuContext);
+    const { dishes, setDishes,
+        arrowCost, setArrowCost,
+         arrowName, setArrowName,
+          arrowRate, setArrowRate, 
+           notShown, setNotShown } = useContext(MenuContext);
     
     //uses useEffect to load the Menu from the backend
     useEffect(() => {
@@ -31,7 +35,7 @@ export const DishList = () => {
     
     //returns each item from the menu as a MenuItem through the use of a map
 
-    if (!dishes || dishes.length === 0) {
+    if ((!dishes && !notShown) || (dishes.length === 0 && notShown.length === 0)) {
         return (
             <div data-testid="loading" className="loading">
             <div className="loading-spinner"></div>

@@ -8,9 +8,10 @@ import { SortFunction } from "./SortFunction";
 
 export const MenuSortButtons = () => {
     const { dishes, setDishes,
-         arrowCost, setArrowCost,
-          arrowName, setArrowName,
-           arrowRate, setArrowRate } = useContext(MenuContext);
+        arrowCost, setArrowCost,
+         arrowName, setArrowName,
+          arrowRate, setArrowRate, 
+           notShown, setNotShown } = useContext(MenuContext);
     const [clickCountCost, setClickCountCost] = useState(0);
     const [clickCountName, setClickCountName] = useState(0);
     const [clickCountRate, setClickCountRate] = useState(0);

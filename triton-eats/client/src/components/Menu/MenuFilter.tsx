@@ -10,8 +10,11 @@ export const RecommendFilter = () => {
 
     //tempory for slider
     const [value, setValue] = React.useState<number[]>([0, 30]);
-    const { dishes, setDishes } = useContext(MenuContext);
-    const [filteredOut, setFilteredOut] = useState<dishItem[]>([]);
+    const { dishes, setDishes,
+        arrowCost, setArrowCost,
+         arrowName, setArrowName,
+          arrowRate, setArrowRate, 
+           notShown, setNotShown } = useContext(MenuContext);
 
     const handleChange = (event: Event, newValue: number | number[]) => {
         setValue(newValue as number[]);
@@ -23,12 +26,12 @@ export const RecommendFilter = () => {
     
         //filtering
         let range = newValue as number[];
-        const revertBack = [...dishes, ...filteredOut].sort((a, b) => 
+        const revertBack = [...dishes, ...notShown].sort((a, b) => 
             a.food_name.localeCompare(b.food_name));
 
         const searchFiltered = revertBack.filter(i => i.cost >= range[0] && i.cost <= range[1]);
         const notSearched = revertBack.filter(i => (i.cost < range[0] || i.cost > range[1]));
-        setFilteredOut(notSearched);
+        setNotShown(notSearched);
         setDishes(searchFiltered);
       };
 

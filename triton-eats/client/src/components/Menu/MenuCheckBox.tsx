@@ -11,7 +11,8 @@ export function MenuCheckBox() {
   const { dishes, setDishes,
     arrowCost, setArrowCost,
      arrowName, setArrowName,
-      arrowRate, setArrowRate } = useContext(MenuContext);
+      arrowRate, setArrowRate, 
+       notShown, setNotShown } = useContext(MenuContext);
   const [filteredOut, setFilteredOut] = useState<dishItem[]>([]);
 
     const { name } = useParams();
@@ -43,6 +44,7 @@ export function MenuCheckBox() {
         console.log(notSearched);
 
         setFilteredOut(notSearched);
+        setNotShown(notSearched);
         setDishes(searchFiltered);
      
     }
