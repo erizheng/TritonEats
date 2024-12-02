@@ -1,62 +1,51 @@
 
 import React, { useEffect, useState } from 'react'
-import { FoodReview } from "../components/DishDetails/FoodReview"
-import  NavBar  from '../components/NavBar';
 import { Review } from '../types/reviewTypes';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { DiningHalls, dishItem } from "../types/menuTypes";
 import DishDetailsDescription from '../components/DishDetails/DishDetailsDescription';
 import ReviewList from '../components/DishDetails/ReviewList';
 import ReviewForm from '../components/DishDetails/ReviewForm';
-
+import { addReviewAndUpdateDishInformation, fetchDishDetails, fetchReviewsByDishID }from '../utils/dish-details'
+import Navbar from '../components/NavBar';
 
 export const DishDetails = () => {
 
-    // Use Mocking for now
-    const mockDish: dishItem = {
-        food_id: 0,
-        img: "/images/placeHolderImage.png",
-        food_name: "something",
-        cost: 1,
-        location: { name: "Revelle", dining_hall: DiningHalls.sixtyfour, location_id: 1 },
-        allergens: [],
-        rating: 3.25,
-        description: "something made with a bit of something cooked in a something topped with something with a side of something",
-        numReviews: 0,
-        numRecommend: 0,
-    };
-
-
-
-
-    const { dish_id } = useParams(); 
-    const [dish, setDish] = useState<dishItem>(mockDish); // null
-    const [reviews, setReviews] = useState<Review[]>([]); // empty array
+    // states to hold dish, reviews, and the current sort option
+    const { dish_id } = useParams();
+    const [dish, setDish] = useState<dishItem>();
+    const [reviews, setReviews] = useState<Review[]>([]); 
     const [sortOption, setSortOption] = useState("mostRecent");
-
-
-
-    /** 
-      
-        TODO: IMPLEMENT BACKEND LOGIC TO FETCH CORRECT DISH BASED ON THE DISH_ID PASSED 
-
+    
+ 
+    // Upon loading the page, fetch the dish and reviews associated with dish_id using API calls
     useEffect(() => {
-
         if (dish_id) {
-            fetchDishDetails(dish_id).then((data) => setDish(data));  <--- implement fetchDishDetails on the backend and fetching from db 
-            fetchReviews(dish_id).then((data) => setReviews(data));   <--- implement fetchReviews on the backend and fetching from db 
+            fetchDishDetails(dish_id) // API call
+            .then((data) => setDish(data))
+            .catch((err) => console.error(err));
+
+            fetchReviewsByDishID(dish_id)
+            .then((data) => setReviews(data)) // API call
+            .catch((err) => console.error(err));
         }
+        
     }, [dish_id]);
-    */
-   
+
+    
+    
+    // Alt. screen to show when API calls being made
+    if (!dish) {
+        return <div>Loading Dish Details...</div>
+    }
 
 
     // Handle submitting the review and add it to the reviews list/db
-    const handleReviewSubmit = (reviewData: any) => {
+    const handleReviewSubmit = async (reviewData: any) => {
 
         const newReview = {
             datetime: new Date(),
-            food_id: dish_id ? parseInt(dish_id, 10) : 0, // food_id needs to be valid
+            food_id: dish_id || "", 
             img: "img.png", // Edit Image Upload later
             location: dish.location,
             rating: reviewData.rating,
@@ -65,7 +54,13 @@ export const DishDetails = () => {
             food_name: dish.food_name,
             cost: dish.cost,
         };
-        
+
+        if (dish_id === "") {
+            // Handle the case when dish_id is an empty string
+            console.error("Error: dish_id is nonexistent");
+            return;
+        }
+    
 
         const updatedDish = { ...dish };
 
@@ -74,21 +69,26 @@ export const DishDetails = () => {
             updatedDish.numRecommend += 1;
         }
 
+        // Recalculate Rating
         const totalRating = (updatedDish.rating * updatedDish.numReviews + reviewData.rating) / (updatedDish.numReviews + 1);
         updatedDish.rating = parseFloat(totalRating.toFixed(2)); 
         updatedDish.numReviews += 1;
-
+        
+        // Update Reviews/Dishes locally
         setDish(updatedDish)
-        // updateDishDB(updatedDish); TODO: IMPLEMENT BACKEND LOGIC TO UPDATE REVIEW DB
         setReviews([newReview, ...reviews]);
-        // updateReviewDB(newReview); TODO: IMPLEMENT BACKEND LOGIC TO UPDATE REVIEW DB
+
+        // API call to update database
+        await addReviewAndUpdateDishInformation(updatedDish, newReview);
     };
 
     return (
         
         <div>
-            <NavBar selected="Reviews"/>{/**<NavBar selected='DishDetails OR Reviews'/> */}
+            <Navbar selected='Menu'/>
+
             <div className="dishDetailsPage">
+
                 {/** SECTION ONE - BASIC DISH INFORMATION*/}
                 <DishDetailsDescription 
                     dish={dish} 

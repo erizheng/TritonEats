@@ -26,7 +26,7 @@ const Navbar: React.FC<NavbarProps> = ({ selected }) => {
     <nav className="navbar">
       <div className="navbar-logo">
         <Link to="/">
-          <img src={ "images/logo.png" } alt="Triton Eats Logo" className="logo-icon" />
+          <img src={ "/images/logo.png" } alt="Triton Eats Logo" className="logo-icon" />
         </Link>
       </div>
       <div className="navbar-links">
