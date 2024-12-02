@@ -93,6 +93,7 @@ export const MenuItems = (currentDish: dishItem) => {
         //             {currentDish.rating}
         //         </div>
         //    </div>
+
            
             
         // </div>
