@@ -50,7 +50,7 @@ export const FoodReview = ({ review }: FoodReviewProps) => {
                     <h3>Anonymous User</h3>
 
                     
-                    <p>{renderStars(review.rating)}</p>
+                    <div>{renderStars(review.rating)}</div>
                     <p>Would Recommend: {review.recommend ? "Yes" : "No"}</p>
                     <p>Posted on: {formatDate(review.datetime)}</p>
 
