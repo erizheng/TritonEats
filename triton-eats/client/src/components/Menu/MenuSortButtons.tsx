@@ -1,15 +1,16 @@
 import React, { useState, useContext, useEffect } from "react";
 import { MenuContext } from "../../context/MenuContext";
 import { dishItem, sortArrows } from "../../types/menuTypes";
-// import { SortButtonCostAscend } from "./Buttons";
-import { sortDishes, fetchDishes } from '../../utils/menu-utils';
+import { SortFunction } from "./SortFunction";
 
-
+//This component handles the sorting of the menu items, with 3 different sorting methods
+//
 export const MenuSortButtons = () => {
     const { dishes, setDishes,
-         arrowCost, setArrowCost,
-          arrowName, setArrowName,
-           arrowRate, setArrowRate } = useContext(MenuContext);
+        arrowCost, setArrowCost,
+         arrowName, setArrowName,
+          arrowRate, setArrowRate, 
+           notShown, setNotShown } = useContext(MenuContext);
     const [clickCountCost, setClickCountCost] = useState(0);
     const [clickCountName, setClickCountName] = useState(0);
     const [clickCountRate, setClickCountRate] = useState(0);
@@ -22,16 +23,14 @@ export const MenuSortButtons = () => {
         setArrowName(sortArrows.empty.sym);
         setArrowRate(sortArrows.empty.sym);
         if (clickCountCost % 2 === 0) {
-            const sortedListByCost = [...dishes].sort((a, b) => 
-                a.cost - b.cost); // Sort in ascending order;
-            //sortDishes(sortedListByCost);
-            setDishes(sortedListByCost);
+            const sortedList =  SortFunction(dishes, "price", 0); // Sort in ascending order;
+            
+            setDishes(sortedList);
             setArrowCost(sortArrows.down.sym);
         } else {
-            const sortedListByCost = [...dishes].sort((a, b) => 
-                b.cost - a.cost); // Sort in decending order;
-            //sortDishes(sortedListByCost);
-            setDishes(sortedListByCost);
+            const sortedList =  SortFunction(dishes, "price", 1); // Sort in decending order;
+            
+            setDishes(sortedList);
             setArrowCost(sortArrows.up.sym);
 
         }
@@ -45,17 +44,16 @@ export const MenuSortButtons = () => {
         setArrowName(sortArrows.empty.sym);
         setArrowCost(sortArrows.empty.sym);
         if (clickCountRate % 2 === 0) {
-            const sortedListByCost = [...dishes].sort((a, b) => 
-                a.rating - b.rating); // Sort in ascending order;
-            //sortDishes(sortedListByCost);
-            setDishes(sortedListByCost);
+            const sortedList =  SortFunction(dishes, "rate", 0); // Sort in ascending order;
+            
+            setDishes(sortedList);
             setArrowRate(sortArrows.down.sym);
         } else {
-            const sortedListByCost = [...dishes].sort((a, b) => 
-                b.rating - a.rating); // Sort in decending order;
-            //sortDishes(sortedListByCost);
-            setDishes(sortedListByCost);
+            const sortedList =  SortFunction(dishes, "rate", 1); // Sort in decending order;
+            
+            setDishes(sortedList);
             setArrowRate(sortArrows.up.sym);
+
         }
     };
 
@@ -67,17 +65,16 @@ export const MenuSortButtons = () => {
         setArrowCost(sortArrows.empty.sym);
         setArrowRate(sortArrows.empty.sym);
         if (clickCountName % 2 === 0) {
-            const sortedListByCost = [...dishes].sort((a, b) => 
-                a.food_name.localeCompare(b.food_name)); // Sort in ascending order;
-            //sortDishes(sortedListByCost);
-            setDishes(sortedListByCost);
+            const sortedList =  SortFunction(dishes, "name", 0); // Sort in ascending order;
+            
+            setDishes(sortedList);
             setArrowName(sortArrows.down.sym);
         } else {
-            const sortedListByCost = [...dishes].sort((a, b) => 
-                b.food_name.localeCompare(a.food_name)); // Sort in descending order;
-            //sortDishes(sortedListByCost);
-            setDishes(sortedListByCost);
+            const sortedList =  SortFunction(dishes, "name", 1); // Sort in decending order;
+            
+            setDishes(sortedList);
             setArrowName(sortArrows.up.sym);
+
         }
         
     };

@@ -1,25 +1,38 @@
 import React, { useState, useContext } from "react";
 import { MenuContext } from "../../context/MenuContext";
 import { dishItem } from "../../types/menuTypes";
+import { SearchSort } from "./SortFunction";
 
+
+//This component handles the searching function for the Menu
 export const RecommendSearch = () => {
-    const [searchItem, setSearchItem] = useState('');
-    const { dishes, setDishes } = useContext(MenuContext);
+    //const [searchItem, setSearchItem] = useState('');
+    const { dishes, setDishes,
+        arrowCost, setArrowCost,
+         arrowName, setArrowName,
+          arrowRate, setArrowRate, 
+           notShown, setNotShown } = useContext(MenuContext);
     const [filteredOut, setFilteredOut] = useState<dishItem[]>([]);
 
 
-
+    //handles the filtering process when values are being searched
     const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const revertBack = [...dishes, ...filteredOut].sort((a, b) => 
-            a.food_name.localeCompare(b.food_name));
-        const value = event.target.value;
-        setSearchItem(value);
-        const searchFiltered = revertBack.filter(i => i.food_name.includes(value));
-        const notSearched = revertBack.filter(i => !i.food_name.includes(value));
-        setFilteredOut(notSearched);
-        setDishes(searchFiltered);
+        //the whole list of menu
+        //function used to sort the searched depending on which sort is active, arrow input must be in order of cost, name, and rate
+        const revertBack = SearchSort([...dishes, ...filteredOut], arrowCost, arrowName, arrowRate);
 
-        //console.log(dishes);
+        //set value to what is being searched
+        const value = event.target.value;
+        // setSearchItem(value);
+        // array of the searched items
+        const searchFiltered = revertBack.filter(i => i.food_name.toLowerCase().includes(value.toLowerCase()));
+        //array of the non-searched items
+        const notSearched = revertBack.filter(i => !i.food_name.toLowerCase().includes(value.toLowerCase()));
+
+        //setting the values
+        setFilteredOut(notSearched);
+        setNotShown(notSearched);
+        setDishes(searchFiltered);
     };
 
     return (
@@ -27,7 +40,7 @@ export const RecommendSearch = () => {
             <input 
                 type="text" 
                 placeholder="Search..." 
-                value={searchItem} 
+                // value={searchItem} 
                 onChange={handleSearch} 
             />
         </div>
