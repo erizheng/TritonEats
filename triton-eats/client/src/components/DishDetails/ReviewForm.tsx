@@ -5,9 +5,11 @@ type ReviewFormProps = {
 };
 
 const ReviewForm: React.FC<ReviewFormProps> = ({ onSubmit }) => {
+
     const [rating, setRating] = useState<number>(-1); 
     const [reviewText, setReviewText] = useState<string>(''); 
     const [recommend, setRecommend] = useState<boolean | null>(null); 
+    
     
     const handleStarClick = (star: number) => {
         if (star === rating) {
@@ -37,7 +39,7 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ onSubmit }) => {
             <div className="reviewFormTitle">
                 <h2>Leave a Review</h2>
 
-                {/* Star Rating Section */}
+                {/* Star Rating Section: Click stars to set rating, click the same star to reset to 0, or click a different star to set to that rating */}
                 <div className="starRating">
                     <p className='starRatingText'>Rate out of 5:</p>
                     {[1, 2, 3, 4, 5].map((star) => (

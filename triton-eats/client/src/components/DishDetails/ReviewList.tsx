@@ -28,7 +28,7 @@ const ReviewList: React.FC<ReviewListProps> = ({ reviews, sortOption, setSortOpt
         <div className="reviewList">
             <div className='reviewListTitle'>
                 <h1>Food Reviews</h1>
-                {/** Sort Reviews */}
+                {/** Sort Reviews Section*/}
                 <div className="sortOptions">
                     <label>Sort by:</label>
                     <select aria-label='foodReviewsSortOptions' className='reviewSortChoices' value={sortOption} onChange={(e) => setSortOption(e.target.value)}>
@@ -41,6 +41,7 @@ const ReviewList: React.FC<ReviewListProps> = ({ reviews, sortOption, setSortOpt
             </div>
             
             <div className="reviewListContent">
+                {/** Reviews List */}
 
                 {sortedReviews.length > 0 ? (
                     sortedReviews.map((review, index) => (

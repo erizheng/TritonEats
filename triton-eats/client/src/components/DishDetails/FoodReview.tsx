@@ -8,9 +8,10 @@ type FoodReviewProps = {
 /** Create a Review object based on a dynamic review item */
 export const FoodReview = ({ review }: FoodReviewProps) => {    
 
+    // Return div of stars based on rating
     const renderStars = (rating: number) => {
-        const roundedRating = Math.round(rating); // Round the rating to the nearest integer
-        const fullStars = Math.min(roundedRating, 5); // Cap at 5 stars
+        const roundedRating = Math.round(rating); 
+        const fullStars = Math.min(roundedRating, 5); 
         const emptyStars = 5 - fullStars;
 
         return (
@@ -19,6 +20,16 @@ export const FoodReview = ({ review }: FoodReviewProps) => {
                 {'☆'.repeat(emptyStars)}
             </p>
         );
+    };
+
+    // Format date as "Abbreviated Month Day, Year" (e.g., Sept. 16, 2025)
+    const formatDate = (date: Date) => {
+        const options: Intl.DateTimeFormatOptions = {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+        };
+        return new Date(date).toLocaleDateString('en-US', options);
     };
 
     return (
@@ -33,13 +44,15 @@ export const FoodReview = ({ review }: FoodReviewProps) => {
                 }}
             />
 
+            
             <div className='reviewContent'>
                 <div className='reviewInformation'>
                     <h3>Anonymous User</h3>
 
                     
-                    <p>{renderStars(review.rating)}</p>
+                    <div>{renderStars(review.rating)}</div>
                     <p>Would Recommend: {review.recommend ? "Yes" : "No"}</p>
+                    <p>Posted on: {formatDate(review.datetime)}</p>
 
                 </div>
 

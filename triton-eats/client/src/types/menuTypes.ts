@@ -1,6 +1,6 @@
 
 export type dishItem = {
-    food_id: number;
+    food_id: string;
     img: string;
     food_name: string;
     cost: number;
