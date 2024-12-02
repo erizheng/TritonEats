@@ -52,7 +52,7 @@ export const RecommendFilter = () => {
                     data-testid='slide'
                 />
             </div>
-                <button type="submit" data-testid='subButton'>
+                <button type="submit" data-testid='subButton' className='subButton'>
                 Submit
                 </button>
             </form>
