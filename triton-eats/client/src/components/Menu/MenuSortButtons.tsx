@@ -1,11 +1,10 @@
 import React, { useState, useContext, useEffect } from "react";
 import { MenuContext } from "../../context/MenuContext";
 import { dishItem, sortArrows } from "../../types/menuTypes";
-// import { SortButtonCostAscend } from "./Buttons";
-//import { sortDishes, fetchDishes } from '../../utils/menu-utils';
 import { SortFunction } from "./SortFunction";
 
-
+//This component handles the sorting of the menu items, with 3 different sorting methods
+//
 export const MenuSortButtons = () => {
     const { dishes, setDishes,
         arrowCost, setArrowCost,

@@ -3,6 +3,8 @@ import { MenuContext } from "../../context/MenuContext";
 import { dishItem } from "../../types/menuTypes";
 import { SearchSort } from "./SortFunction";
 
+
+//This component handles the searching function for the Menu
 export const RecommendSearch = () => {
     //const [searchItem, setSearchItem] = useState('');
     const { dishes, setDishes,

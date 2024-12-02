@@ -6,6 +6,7 @@ import { MenuSortButtons } from '../components/Menu/MenuSortButtons'
 import { AppProvider } from '../context/MenuContext';
 import Navbar from '../components/NavBar';
 
+//Where all the menu components are called
 export const Menu = () => {
 
     return (

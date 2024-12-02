@@ -3,10 +3,12 @@ import { useState, useContext } from "react";
 import { MenuContext } from "../../context/MenuContext";
 import { dishItem } from "../../types/menuTypes";
 import { FilterChecks } from "../../types/menuTypes";
-import { dummyCheckList1, dummyCheckList2 } from "../../constants/menuConstants";
+import { dummyCheckList1 } from "../../constants/menuConstants";
 import { useParams } from "react-router-dom";
 import { SearchSort } from "./SortFunction";
 
+//This component handles the location filter with checkboxes for each location
+//All checkboxes are preselected on load, and when clicked will unselect the location and filter out the unchecked location(s)
 export function MenuCheckBox() {
   const { dishes, setDishes,
     arrowCost, setArrowCost,

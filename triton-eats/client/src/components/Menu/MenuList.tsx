@@ -3,8 +3,9 @@ import { MenuContext } from "../../context/MenuContext";
 import { useContext, useEffect } from "react";
 import { dishItem } from "../../types/menuTypes";
 import { fetchDishes } from "../../utils/menu-utils";
-import { mockDishes } from "../../constants/menuConstants";
 
+//This component handles the grid listing of all the menu items
+//It also calls the backend to retrieve the menu items
 export const DishList = () => {
     const { dishes, setDishes,
         arrowCost, setArrowCost,

@@ -6,7 +6,8 @@ import Card from '@mui/joy/Card';
 import Typography from '@mui/joy/Typography';
 import { Link } from 'react-router-dom';
 
-
+//This component is a support component to list all the menu items, each card will represent one menu item.
+//It uses the Card component from Materials joy UI
 export const MenuItems = (currentDish: dishItem) => {
    
     return (

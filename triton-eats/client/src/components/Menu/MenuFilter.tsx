@@ -1,11 +1,12 @@
 import React from 'react'
 import { Slider } from '@mui/material';
 import { MenuCheckBox } from './MenuCheckBox';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { MenuContext } from '../../context/MenuContext';
-import { dishItem } from '../../types/menuTypes';
 import { marks } from '../../constants/menuConstants';
 
+//This component holds the Price filter as well as the location filter
+//Price filter utilizes the Materials UI Slider component to select the price range to filter
 export const RecommendFilter = () => {
 
     //tempory for slider
