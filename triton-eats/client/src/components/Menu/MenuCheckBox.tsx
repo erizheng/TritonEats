@@ -5,9 +5,13 @@ import { dishItem } from "../../types/menuTypes";
 import { FilterChecks } from "../../types/menuTypes";
 import { dummyCheckList1, dummyCheckList2 } from "../../constants/menuConstants";
 import { useParams } from "react-router-dom";
+import { SearchSort } from "./SortFunction";
 
 export function MenuCheckBox() {
-  const { dishes, setDishes } = useContext(MenuContext);
+  const { dishes, setDishes,
+    arrowCost, setArrowCost,
+     arrowName, setArrowName,
+      arrowRate, setArrowRate } = useContext(MenuContext);
   const [filteredOut, setFilteredOut] = useState<dishItem[]>([]);
 
     const { name } = useParams();
@@ -29,8 +33,7 @@ export function MenuCheckBox() {
      
         
         //to filter out
-        const revertBack = [...dishes, ...filteredOut].sort((a, b) => 
-          a.food_name.localeCompare(b.food_name));
+        const revertBack = SearchSort([...dishes, ...filteredOut], arrowCost, arrowName, arrowRate);
         
 
         const searchFiltered = revertBack.filter(i => checkedAdd.includes(i.location.dining_hall));
@@ -49,7 +52,9 @@ export function MenuCheckBox() {
           <div>
             {/* <h1>{name}</h1> */}
             <form action=".">
-              {loc.map((item) => ListItem(item, handleCheckboxClick))}
+              
+              {loc.map((item) => ( ListItem(item, handleCheckboxClick)))}
+              
             </form>
           </div>
         </div>

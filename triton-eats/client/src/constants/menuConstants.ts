@@ -34,7 +34,7 @@ export const dummyCheckList1 = [
      allergens: [], rating: 1, description: "nada", numReviews: 0, numRecommend: 0 },
 
 { food_id: '4', img: "images/placeHolderImage.png", 
-    food_name: "e", cost: 5, location: {name:"Eleanor Roosevelt", dining_hall: 'canyonvista', location_id: 5},
+    food_name: "e", cost: 5.5, location: {name:"Eleanor Roosevelt", dining_hall: 'canyonvista', location_id: 5},
      allergens: [], rating: 0, description: "nada", numReviews: 0, numRecommend: 0 },
 
 { food_id: '5', img: "images/placeHolderImage.png", 
@@ -54,7 +54,7 @@ export const dummyCheckList1 = [
      allergens: [], rating: 1.3, description: "nada", numReviews: 0, numRecommend: 0 },
 
 { food_id: '9', img: "./images/placeHolderImage.png", 
-    food_name: "j", cost: 10, location: {name:"Club Med", dining_hall: 'foodworx', location_id: 10},
+    food_name: "j", cost: 10.5, location: {name:"Club Med", dining_hall: 'foodworx', location_id: 10},
      allergens: [], rating: 0.2, description: "nada", numReviews: 0, numRecommend: 0 },
 
 { food_id: "10", img: "./images/placeHolderImage.png", 
@@ -65,7 +65,12 @@ export const dummyCheckList1 = [
     food_name: "l", cost: 12, location: {name:"Revelle", dining_hall: 'sixtyfour', location_id: 1},
      allergens: [], rating: 2.7, description: "nada", numReviews: 0, numRecommend: 0 },];
 
-
+export const marks = [
+    {value: 0, label: '$0',},
+    {value: 5, label: '$5',},
+    {value: 10, label: '$10',},
+    {value: 15, label: '$15',},
+    {value: 20, label: '$20',},];
 
 //  export const mockDishes = [
 //     {
