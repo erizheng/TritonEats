@@ -13,7 +13,6 @@ import { PreferencesPage } from './pages/PreferencesPage';
 import './CSS/DishDetails.css'
 import FoodReview from './components/DishDetails/FoodReview';
 import { DishDetails } from './pages/DishDetails';
-//import Login from './pages/Login';
 import './CSS/Login.css'
 
 function App() {
@@ -36,8 +35,6 @@ function App() {
         {/*Dish Details Page*/ }
         <Route path="/dish_details/:dish_id" element={<DishDetails />} />
 
-        {/* Login Page */}
-      
         
       </Routes>
     </BrowserRouter>

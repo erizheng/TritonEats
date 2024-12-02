@@ -64,7 +64,7 @@ This section goes over both key design and architecture decisions made throughou
 | **Page**  | **Description**                                |
 |----------------|------------------------------------------------|
 | `Login Page`       | Allows the user to Login    |
-| `Home Page`     | Displays UCSD Dining halls, their current busyness/capacity, and distance from current location.   |
+| `Home Page`     | Displays UCSD Dining halls and their current busyness/capacity.   |
 | `Preferences`  | Allows users to set dietary, busyness, and distance preferences for dining halls and menus.      |
 | `Menu`  | Displays the menu for all UCSD Dining Halls. Allows the user to sort and query by dining hall, price, rating, and name.      |
 | `Dish Details`  | Displays more detailed information about a specific menu item. Allows the user to view and sort existing reviews, as well as leave their own review.      |
@@ -77,5 +77,3 @@ This section goes over both key design and architecture decisions made throughou
 | `GET`      | `/api/dishes/:dish_id`           | Retrieves a dish from the database by ID |
 | `GET`     | `/api/dishes/:dish_id/reviews`     | Retrieves the reviews associated with the dish with dish_id. |
 | `POST`      | `"/api/dishes/:dish_id/review"`     | Adds a review to the database.      |
-
-
