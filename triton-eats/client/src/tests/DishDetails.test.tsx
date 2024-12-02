@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { act } from 'react';
 import { render, screen, fireEvent, waitFor, cleanup } from '@testing-library/react';
 import { DishDetails } from '../pages/DishDetails'; 
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
@@ -29,18 +29,19 @@ jest.mock('../utils/dish-details', () => ({
 }));
 
 
-beforeEach(() => {
+beforeEach(async () => {
 
     (fetchDishDetails as jest.Mock).mockResolvedValue(mockDish);
     (fetchReviewsByDishID as jest.Mock).mockResolvedValue(mockReviews);
-
-    render(
-        <MemoryRouter initialEntries={[`/dish_details/${dish_id}`]}>
-            <Routes>
-                <Route path="/dish_details/:dish_id" element={<DishDetails />} />
-            </Routes>
-        </MemoryRouter>
-    );
+    await act(async () => {
+        render(
+            <MemoryRouter initialEntries={[`/dish_details/${dish_id}`]}>
+                <Routes>
+                    <Route path="/dish_details/:dish_id" element={<DishDetails />} />
+                </Routes>
+            </MemoryRouter>
+        );
+    });
     
 });
 
