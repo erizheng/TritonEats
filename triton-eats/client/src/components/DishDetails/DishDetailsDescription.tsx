@@ -38,15 +38,13 @@ export const DishDetailsDescription = ({ dish }: DishDetailsDescriptionProps) =>
                 />
             </div>
 
-            {/** Dish Information */}
+            {/** Dish Information: Name, Img, Rating, Recommendendation %, # reviews, allergens */}
             <div className='dishInformation'>
 
                 <h2 className='dishName'>{dish.food_name}</h2>
                 <div className="dishRating"> 
                     {renderStars(dish.rating)} 
                     <p className="wordRating">{dish.rating} / 5  ({dish.numReviews} reviews)</p>
-
-                    
                 </div>
                 
                 

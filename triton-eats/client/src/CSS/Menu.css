@@ -20,7 +20,7 @@ body {
 .recPics {
 	border: 3px solid var(--color-0);
 	border-radius: 10px;
-	margin: 5px;
+	width: 100%;
 }
 .MenuFilter {
 	background-color: var(--color-1);
@@ -88,7 +88,7 @@ body {
 	max-width: 70%;
 	grid-template-columns: repeat(2, minmax(60%, 1fr));
 	grid-auto-rows: minmax(auto, auto);
-	column-gap: 140px;
+	column-gap: 70%;
 	row-gap: 5px;
 }
 .DishItem h2,h3,p {
@@ -110,6 +110,8 @@ body {
 	display: flex;
 	flex-direction: column;
 }
+
+
 
 .recNavBar {
 	width: 100vw;
