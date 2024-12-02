@@ -14,7 +14,6 @@ export const PreferencesPage = () => {
                 <head>
                     <title>Preferences</title>
                 </head>
-                <div className='NavBar'><Navbar selected={''} /></div>
                 <div className='NavBar'><Navbar selected='Preferences'/></div>
                 <div className="preferences-page">
                     <Preferences />

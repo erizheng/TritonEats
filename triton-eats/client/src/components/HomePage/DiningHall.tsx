@@ -1,7 +1,9 @@
 import React from 'react';
 import { DiningHall as DiningHallType } from '../../types/homepageTypes';
 
-const DiningHall: React.FC<DiningHallType> = ({ name, distance, busyness, isOpen }) => {
+// Creates a singular dining hall object
+const DiningHall: React.FC<DiningHallType> = ({ name, busyness, isOpen, hourSummary }) => {
+    // Setups progress bar based off busyness
     const getProgressBarClass = (busyness: number) => {
         if (busyness > 75) return 'progress-bar high';
         if (busyness > 50) return 'progress-bar medium';
@@ -11,10 +13,6 @@ const DiningHall: React.FC<DiningHallType> = ({ name, distance, busyness, isOpen
     return (
         <div className="dining-hall-card">
             <h2>{name}</h2>
-            <div className="dining-hall-distance">
-                <img src={"images/distanceIcon.png"} alt="Walking distance icon" />
-                <span>{distance}mi</span>
-            </div>
             {isOpen ? (
                 <div className="busyness-container">
                     <span className="busyness-text">{busyness}% Busy</span>
@@ -23,7 +21,8 @@ const DiningHall: React.FC<DiningHallType> = ({ name, distance, busyness, isOpen
                     </div>
                 </div>
             ) : (
-                <p>{name} is Closed</p>
+                // If dining hall is not open, just return hourSummary
+                <p>{hourSummary}</p>
             )}
         </div>
     );
