@@ -11,7 +11,7 @@ export const HomePage: React.FC = () => {
 
     return (
         <div>
-            <Navbar selected='Homepage' />
+            <Navbar selected='Dining Halls' />
 
              {/** Handles all searching and filtering logic*/}
             <DiningHallSearchSort                
