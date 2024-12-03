@@ -13,6 +13,7 @@
 body {
 	background-color: var(--body-bg-color);
 }
+
 .gridContainer {
 	display: flex;
   	flex-direction: column;
@@ -24,6 +25,7 @@ body {
 	border-radius: 10px;
 	width: 100%;
 }
+
 .MenuFilter {
 	background-color: var(--color-1);
 	position: fixed;
@@ -35,6 +37,7 @@ body {
 	margin-left: 20px;
 	margin-top: 30px;
 }
+
 .slider {
 	margin-left: 10px;
 	margin-right: 10px;
@@ -43,6 +46,7 @@ body {
 .filterAllergens {
 	margin-top: 20px;
 }
+
 .checkBoxLocations {
 	margin-bottom: 5px;
 }
@@ -60,7 +64,6 @@ body {
 	color: var(--color-1);
 	margin-top: 5px;
 }
-
 
 .gridContainer .image-grid {
 	display: grid;
@@ -85,6 +88,7 @@ body {
 	padding: 10px;
 	cursor: pointer;
 }
+
 .DishItem .gridContainer {
 	display: grid;
 	max-width: 70%;
@@ -93,6 +97,7 @@ body {
 	column-gap: 70%;
 	row-gap: 5px;
 }
+
 .DishItem h2,h3,p {
 	padding: 0;
 	margin: 0;
@@ -100,6 +105,7 @@ body {
 	display: flex;
 	flex-direction: column;
 }
+
 .DishItem .recImageText {
 	padding: 0;
 	margin: 0;
@@ -107,6 +113,7 @@ body {
 	display: flex;
 	flex-direction: column;
 }
+
 .DishItem .recImageRating {
 	float: right;
 	display: flex;
@@ -114,13 +121,10 @@ body {
 	text-align: right;
 }
 
-
-
 .recNavBar {
 	width: 100vw;
 	position: fixed;
 }
-
 
 .RecommendSearch input {
 	background-color: var(--color-1);
@@ -180,6 +184,7 @@ body {
     border-radius: 8px; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
     margin: 30px;
+    max-width: 70%;
 
 	column-gap: 50px;
 	row-gap: 55px;
