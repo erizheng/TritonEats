@@ -2,12 +2,14 @@
 
 :root {
 	--body-bg-color: #DFF2C7;
-	--color-0: #77777789;
+	--color-0: #f3edf7d3;
 	--color-1: #F6FBF1;
 	--color-2: #A9C683;
 	--color-3: #6B7D53;
 	--color-4: #E9A125;
+    --color-5: #333;
 }
+
 body {
 	background-color: var(--body-bg-color);
 }
@@ -55,7 +57,7 @@ body {
 
 .filterPref .sortItem {
 	background-color: var(--color-3);
-	color: white;
+	color: var(--color-1);
 	margin-top: 5px;
 }
 
@@ -121,7 +123,7 @@ body {
 
 
 .RecommendSearch input {
-	background-color: white;
+	background-color: var(--color-1);
 	border: 2px solid var(--color-0);
 	border-radius: 25px;
 	margin-left: 22%;
@@ -143,11 +145,11 @@ body {
 
 .sortItem {
 	margin: 0px 15px;
-    color: #333;
+    color: var(--color--5);
     cursor: pointer;
     font-size: 1rem;  
     padding: 5px 10px;
-	background-color: white;
+	background-color: var(--color-1);
 	border: 2px solid var(--color-0);
 	border-radius: 8px;
 	margin-right: 0.5px;
@@ -156,7 +158,7 @@ body {
 
 .subButton {
 	/* margin: 0px 15px; */
-    color: #333;
+    color: var(--color--5);
     cursor: pointer;
     font-size: 1rem;  
     /* padding: 5px 10px; */
@@ -173,7 +175,7 @@ body {
     align-items: center;
     height: 7.5rem; 
     font-size: 1.75rem; 
-    color: #333; 
+    color: var(--color--5); 
     background-color: var(--color-1); 
     border-radius: 8px; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 

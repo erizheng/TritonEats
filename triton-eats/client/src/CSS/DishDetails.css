@@ -5,6 +5,7 @@
 	--color-2: #A9C683;
 	--color-3: #6B7D53;
 	--color-4: #E9A125;
+    --color-5: #333;
 }
 
 body {
@@ -96,7 +97,7 @@ body {
 }
 
 .descriptionContainer{
-    background-color: white;
+    background-color: var(--color-1);
     padding: 15px;
     padding-bottom: 25px;
     border-radius: 10px;
