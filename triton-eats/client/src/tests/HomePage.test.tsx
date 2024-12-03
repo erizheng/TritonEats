@@ -2,6 +2,7 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import HomePage from '../pages/HomePage';
 import { BrowserRouter } from 'react-router-dom';
 import { AppProvider } from '../context/MenuContext';
+import { AuthProvider } from '../context/AuthContext';
 
 // Mock data that simulates the response from the API
 const mockDiningHallsData = [
@@ -18,9 +19,11 @@ beforeEach( async () => {
 
     render(
         <BrowserRouter>
-            <AppProvider>
-                <HomePage />
-            </AppProvider>
+            <AuthProvider>
+                <AppProvider>
+                    <HomePage />
+                </AppProvider>
+            </AuthProvider>
         </BrowserRouter>
     );
     await waitFor(() => {
