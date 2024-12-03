@@ -1,28 +1,49 @@
 import React, { useState } from 'react';
+import { DiningHall } from '../../types/homepageTypes';
 
 interface DiningHallSearchSortProps {
-    onSearch: (searchTerm: string) => void;
-    onSortByDistance: () => void;
-    onSortByBusyness: () => void;
+    filteredHalls: DiningHall[];
+    setFilteredHalls: React.Dispatch<React.SetStateAction<DiningHall[]>>;
+    allHalls: DiningHall[];
 }
 
-const DiningHallSearchSort: React.FC<DiningHallSearchSortProps> = ({ onSearch, onSortByDistance, onSortByBusyness }) => {
+// Handles both search and sorting features
+const DiningHallSearchSort: React.FC<DiningHallSearchSortProps> = ({ 
+    filteredHalls, 
+    setFilteredHalls, 
+    allHalls 
+}) => {
     const [searchItem, setSearchItem] = useState('');
+    const [busynessAsc, setBusynessAsc] = useState(true);
+    const [activeSort, setActiveSort] = useState<'distance' | 'busyness' | null>(null);
 
+    // Looks for any changes in searchbar before calling handleSearch
     const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const value = event.target.value;
         setSearchItem(value);
-        onSearch(value); 
+        handleSearch(value); 
+    };
+    const handleSearch = (searchTerm: string) => {
+        const filtered = allHalls.filter(hall =>
+            hall.name.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+        setFilteredHalls(filtered);
     };
 
-    const handleDistanceSort = () => {
-        onSortByDistance(); 
+    const handleSortByBusyness = () => {
+        const sorted = [...filteredHalls].sort((a, b) => {
+            if (a.isOpen === b.isOpen) {
+                // Checks for ascending vs descending for arrow rendering
+                return busynessAsc ? a.busyness - b.busyness : b.busyness - a.busyness;
+            }
+            return a.isOpen ? -1 : 1;
+        });
+        setFilteredHalls(sorted);
+        setBusynessAsc(!busynessAsc);
+        setActiveSort('busyness');
     };
 
-    const handleBusynessSort = () => {
-        onSortByBusyness(); 
-    };
-
+ 
     return (
         <div className='DiningHallSearchSort'>
             <input 
@@ -32,8 +53,9 @@ const DiningHallSearchSort: React.FC<DiningHallSearchSortProps> = ({ onSearch, o
                 onChange={handleSearchChange} 
             />
             <div className="sort-buttons-container">
-                <button className="sort-button" onClick={handleDistanceSort}>Distance</button>
-                <button className="sort-button" onClick={handleBusynessSort}>Busyness</button>
+                <button className="sort-button" onClick={handleSortByBusyness}>
+                    Busyness {activeSort === 'busyness' && (busynessAsc ? '↑' : '↓')}
+                </button>
             </div>
         </div>
     );

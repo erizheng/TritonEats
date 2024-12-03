@@ -1,6 +1,6 @@
 
 export type dishItem = {
-    food_id: number;
+    food_id: string;
     img: string;
     food_name: string;
     cost: number;
@@ -13,20 +13,20 @@ export type dishItem = {
     numRecommend: number;
 };
 
-export enum DiningHalls {
+// export enum DiningHalls {
 
-    sixtyfour = "64degrees",
-    cafeventanas = "cafeventanas",
-    foodworx = "foodworx",
-    ovt = "ovt",
-    pines = "pines",
-    canyonvista = "canyonvista",
+//     sixtyfour = "64degrees",
+//     cafeventanas = "cafeventanas",
+//     foodworx = "foodworx",
+//     ovt = "ovt",
+//     pines = "pines",
+//     canyonvista = "canyonvista",
 
-}
+// }
 
 export interface location {
     name: string;
-    dining_hall: DiningHalls;
+    dining_hall: string;
     location_id: number;
 }
 
