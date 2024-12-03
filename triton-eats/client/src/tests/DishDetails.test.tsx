@@ -2,15 +2,16 @@ import React, { act } from 'react';
 import { render, screen, fireEvent, waitFor, cleanup } from '@testing-library/react';
 import { DishDetails } from '../pages/DishDetails'; 
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
-import { DiningHalls, dishItem } from '../types/menuTypes';
+import { dishItem } from '../types/menuTypes';
 import { addReviewAndUpdateDishInformation, fetchDishDetails, fetchReviewsByDishID } from '../utils/dish-details';
 import { API_BASE_URL } from '../constants/menuConstants';
+import { AuthProvider } from '../context/AuthContext';
 
 const mockDish =  { food_id: "testID", 
     img: "images/placeHolderImage.png", 
     food_name: "a", 
     cost: 1, 
-    location: {name:"Revelle", dining_hall: DiningHalls.sixtyfour, location_id: 1}, 
+    location: {name:"Revelle", dining_hall: "sixtyfour", location_id: 1}, 
     allergens: [], 
     rating: 4, 
     description: "nada", 
@@ -35,11 +36,13 @@ beforeEach(async () => {
     (fetchReviewsByDishID as jest.Mock).mockResolvedValue(mockReviews);
     await act(async () => {
         render(
-            <MemoryRouter initialEntries={[`/dish_details/${dish_id}`]}>
-                <Routes>
-                    <Route path="/dish_details/:dish_id" element={<DishDetails />} />
-                </Routes>
-            </MemoryRouter>
+            <AuthProvider>
+                <MemoryRouter initialEntries={[`/dish_details/${dish_id}`]}>
+                    <Routes>
+                        <Route path="/dish_details/:dish_id" element={<DishDetails />} />
+                    </Routes>
+                </MemoryRouter>
+            </AuthProvider>
         );
     });
     
@@ -53,8 +56,6 @@ afterEach(() =>{
 
     
 });
-
-
 const reviewFormAlertMessage = "Please rate the dish and indicate whether you recommend it before submitting. If you would like to give the dish 0 stars, please click one of the stars twice.";
 
 
