@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import PreferenceGrid from './PreferenceGrid';
 import { PreferenceProps } from '../../types/preferenceTypes';
+import { useCookies } from 'react-cookie';
+
 
 const Preferences: React.FC = () => {
   const [preferences, setPreferences] = useState<PreferenceProps[]>([
@@ -38,6 +40,9 @@ const Preferences: React.FC = () => {
     { id: 23, name: '1.5+ miles', selected: false },
   ]);
 
+  const [cookies, setCookie] = useCookies(['preferences']); // Use cookies to store preferences
+
+
   const handleSubmit = () => {
     const selectedPreferences = [
       ...preferences.filter((pref) => pref.selected).map((pref) => pref.name),
@@ -45,6 +50,9 @@ const Preferences: React.FC = () => {
       ...time.filter((pref) => pref.selected).map((pref) => pref.name),
       ...distance.filter((pref) => pref.selected).map((pref) => pref.name),
     ];
+
+    setCookie('preferences', selectedPreferences, { path: '/' });
+    console.log("cookies", cookies);
 
     // Check if there are any selected preferences
     if (selectedPreferences.length === 0) {
@@ -54,7 +62,7 @@ const Preferences: React.FC = () => {
     }
   };
 
-  
+
   // Toggle the selection state (selected/unselected) for each section
   const handleSelectionChange = (id: number, section: 'preferences' | 'dietary' | 'time' | 'distance') => {
     switch (section) {
