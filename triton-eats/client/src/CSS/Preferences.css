@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
 	--body-bg-color: #DFF2C7;
@@ -12,7 +12,7 @@
 .preferences-page{
 	background-color: var(--body-bg-color);
     /* #padding: 20px; */
-    padding-left: 20px;
+    /* padding-left: 20px;
     padding-right: 20px;
     font-family: 'Inter', sans-serif;
 
@@ -51,7 +51,7 @@
 .preference:hover {
     background-color: #A9C683;
     /* color: white; */
-  }
+ /* }
 
 .preference:focus {     
     background-color: #6B7D53;
@@ -64,6 +64,174 @@
     width: 200px;     
 }
 .preferences-btn{
+    background: #6B7D53;
+    color: #F6FBF1;
+    padding: 20px;
+    font-family: 'Inter', sans-serif;
+    font-size: large;
+    height: 50px;
+    width: 200px; 
+} */ 
+/* 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    --body-bg-color: #DFF2C7;
+    --color-0: #f3edf7d3;
+    --color-1: #F6FBF1;
+    --color-2: #A9C683;
+    --color-3: #6B7D53;
+    --color-4: #E9A125;
+    --selected-color: #6B7D53;  /* Dark green when selected */
+ /*   --unselected-color: #D3D3D3; /* Light gray when not selected */
+/*}
+
+.preferences-page {
+    background-color: var(--body-bg-color);
+    padding-left: 20px;
+    padding-right: 20px;
+    font-family: 'Inter', sans-serif;
+}
+
+.preference {
+    height: 200px; 
+    width: 200px;
+    background-color: var(--color-1);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.preference.selected {
+    background-color: var(--selected-color);
+}
+
+.preference.unselected {
+    background-color: var(--unselected-color);
+}
+
+.image {
+    display: block;
+    padding-left: 100px;
+    padding-bottom: 20px;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+}
+
+.preferences-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+
+.preference:hover {
+    background-color: var(--color-2);
+}
+
+.preference:focus {     
+    background-color: var(--color-3);
+}
+
+.preferences-grid-btn {
+    background: var(--color-2);
+    display: flex;
+    align-items: center;
+    height: 50px;
+    width: 200px;
+}
+
+.preferences-btn {
+    background: var(--color-3);
+    color: var(--color-1);
+    padding: 20px;
+    font-family: 'Inter', sans-serif;
+    font-size: large;
+    height: 50px;
+    width: 200px;
+    cursor: pointer;
+}
+
+.preferences-btn:active {
+    background-color: var(--color-4);
+} */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+	--body-bg-color: #DFF2C7;
+	--color-0: #f3edf7d3;
+	--color-1: #F6FBF1;
+	--color-2: #A9C683;
+	--color-3: #6B7D53;
+	--color-4: #E9A125;
+}
+
+.preferences-page{
+	background-color: var(--body-bg-color);
+	padding-left: 20px;
+	padding-right: 20px;
+	font-family: 'Inter', sans-serif;
+}
+
+.preference{
+    height: 200px; 
+    width: 200px;
+    background-color: var(--color-1);
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;  
+    padding-left: 20px;
+    transition: background-color 0.3s ease; /* Smooth transition for color change */
+}
+
+.image{
+    display:block;
+    padding-left: 40px;
+    padding-bottom: 20px;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+}
+
+.preferences-grid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+
+.preference.selected {
+    background-color: #6B7D53; /* Dark green when selected */
+    color: white;
+}
+
+.preference.unselected {
+    background-color: #f3edf7d3;; /* Gray when unselected */
+}
+
+/* .preference:hover {
+    background-color: #A9C683;
+} */
+
+.preferences-grid-btn {
+    background: #A9C683;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    width: 200px;     
+}
+
+.preferences-btn {
     background: #6B7D53;
     color: #F6FBF1;
     padding: 20px;
