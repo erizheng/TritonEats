@@ -7,6 +7,7 @@ import { Menu } from '../pages/Menu';
 import { mockDishes } from '../constants/menuConstants';
 import { dishItem } from '../types/menuTypes';
 import { fetchDishes } from '../utils/menu-utils';
+import { AuthProvider } from '../context/AuthContext';
 
 
 // Mock the API calls at the top level of the test file
@@ -19,9 +20,11 @@ beforeEach( async () => {
 
     render(
         <BrowserRouter>
-            <AppProvider>
-                <Menu />
-            </AppProvider>
+            <AuthProvider>
+                <AppProvider>
+                    <Menu />
+                </AppProvider>
+            </AuthProvider>
         </BrowserRouter>
     );
     await waitFor(() => {
