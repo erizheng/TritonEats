@@ -179,6 +179,7 @@
 	padding-left: 20px;
 	padding-right: 20px;
 	font-family: 'Inter', sans-serif;
+    font-size: 20px;
 }
 
 .preference{
@@ -213,10 +214,14 @@
 .preference.selected {
     background-color: #6B7D53; /* Dark green when selected */
     color: white;
+    border: none; 
+    font-size: 20px;
 }
 
 .preference.unselected {
     background-color: #f3edf7d3;; /* Gray when unselected */
+    border: none; 
+    font-size: 20px;
 }
 
 /* .preference:hover {
@@ -224,19 +229,25 @@
 } */
 
 .preferences-grid-btn {
-    background: #A9C683;
+    background:var(--body-bg-color);
     display: flex;
     align-items: center;
-    height: 50px;
-    width: 200px;     
+    height: 150px;
+    width: 200px;  
 }
 
 .preferences-btn {
     background: #6B7D53;
     color: #F6FBF1;
-    padding: 20px;
+    /* padding: 20px; */
     font-family: 'Inter', sans-serif;
-    font-size: large;
-    height: 50px;
+    font-size: 25px;
+    height: 40px;
     width: 200px; 
+    border: none;   
+
+}
+
+.preference-btn:hover {
+    background:#A9C683;
 }

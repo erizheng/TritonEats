@@ -38,6 +38,23 @@ const Preferences: React.FC = () => {
     { id: 23, name: '1.5+ miles', selected: false },
   ]);
 
+  const handleSubmit = () => {
+    const selectedPreferences = [
+      ...preferences.filter((pref) => pref.selected).map((pref) => pref.name),
+      ...dietary.filter((pref) => pref.selected).map((pref) => pref.name),
+      ...time.filter((pref) => pref.selected).map((pref) => pref.name),
+      ...distance.filter((pref) => pref.selected).map((pref) => pref.name),
+    ];
+
+    // Check if there are any selected preferences
+    if (selectedPreferences.length === 0) {
+      alert("No preferences selected.");
+    } else {
+      alert(`Selected Preferences: ${selectedPreferences.join(', ')}`);
+    }
+  };
+
+  
   // Toggle the selection state (selected/unselected) for each section
   const handleSelectionChange = (id: number, section: 'preferences' | 'dietary' | 'time' | 'distance') => {
     switch (section) {
@@ -109,7 +126,7 @@ const Preferences: React.FC = () => {
       </div>
 
       <div className="preferences-grid-btn">
-        <button className="preferences-btn">Submit</button>
+        <button className="preferences-btn" onClick={handleSubmit}>Submit</button>
       </div>
     </div>
   );

@@ -26,7 +26,7 @@ const PreferencesGrid: React.FC<PreferencesGridProps> = ({ preferences, onSelect
                   paddingBottom: '20px',
                   alignItems: 'center',
                   width: '100px',
-                  height: '140px',
+                  height: '100px',
                 }}
               />
             ) : (
