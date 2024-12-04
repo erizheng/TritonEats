@@ -12,21 +12,15 @@ body {
 	background-color: var(--body-bg-color);
 }
 
-
-
-
 .dishDetailsPage {
-    
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    
     margin-left: 5%;
     margin-right: 5%;
     margin-top: 50px;
     margin-bottom: 50px;
-
 }
 
 .dishDetailsDivider {
@@ -38,19 +32,14 @@ body {
 }
 
 /** Dish Details Description CSS*/
-
 .dishDetailsSection{
-
     display: flex;
     flex-direction: row;
     align-items: center;
-    
-
     gap: 50px;
 }
 
 .dishPic{
-
     width: 500px; 
     border-radius: 15px;
     border: 3px solid var(--color-2);
@@ -91,7 +80,6 @@ body {
 }
 
 .likeAndRecommend{
-    
     display: flex;
     flex-direction: row;
 }
@@ -118,12 +106,14 @@ body {
     align-items: center;
 
 }
+
 .reviewListTitle{
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 20px;
 }
+
 .sortOptions{
     height: 22px;
     display: flex;
@@ -147,8 +137,6 @@ body {
     padding-right: 10px; 
 }
 
-
-
 /** Review Form CSS*/
 .reviewForm {
     display: flex;
@@ -162,8 +150,6 @@ body {
     align-items: center;
     justify-content: space-between;
 }
-
-
 
 .starRating {
     display: flex;
