@@ -14,6 +14,11 @@ export const MenuSortButtons = () => {
     const [clickCountCost, setClickCountCost] = useState(0);
     const [clickCountName, setClickCountName] = useState(0);
     const [clickCountRate, setClickCountRate] = useState(0);
+
+    // Set the default arrow for name sorting when the component first loads
+      useEffect(() => {
+        setArrowName(sortArrows.down.sym); 
+    }, [setArrowName]);
     
     //COST SORTING
     const handleCost = () => {
