@@ -14,56 +14,111 @@ body {
 	background-color: var(--body-bg-color);
 }
 
-.gridContainer {
-	display: flex;
-  	flex-direction: column;
-	grid-template-columns: 1fr;
-}
-
-.recPics {
-	border: 3px solid var(--color-0);
-	border-radius: 10px;
-	width: 100%;
-}
-
 .MenuFilter {
-	background-color: var(--color-1);
-	position: fixed;
-	width: 15%;
-	height: 70%;
-	padding: 10px;
-	border: 1px solid var(--color-0);
-	border-radius: 10px;
-	margin-left: 20px;
-	margin-top: 30px;
+    background-color: var(--color-1);
+    position: fixed;
+    width: 15%; 
+    height: auto; 
+    max-height: 80%;
+    padding: 20px;
+    border: 1px solid var(--color-0);
+    border-radius: 8px;
+    margin-left: 20px;
+    margin-top: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    font-family: 'Inter', sans-serif;
+    overflow-y: auto;
+}
+
+.MenuFilter h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--color-5);
+    text-align: center;
+}
+
+
+.MenuFilter .PriceSlider {
+    font-size: 1.75rem;
+    margin-top: 30px;
+    color: var(--color-5);
 }
 
 .slider {
-	margin-left: 10px;
-	margin-right: 10px;
+    color: var(--color-3);
+    padding-left: 5px;
+    margin: 0 5px;
+    margin-top: 5px;
 }
 
-.filterAllergens {
-	margin-top: 20px;
+.filterLocations {
+    margin-top: 30px;
+    font-size: 1.75rem;
+    color: var(--color-5);
+}
+
+.MenuFilter button {
+    background-color: var(--color-2);
+    color: var(--color-5);
+    border: 1px solid var(--color-0);
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%; 
+    margin-top: 10px;
+}
+
+.MenuFilter button:hover {
+    background-color: var(--color-3);
+    color: var(--color-1);
 }
 
 .checkBoxLocations {
-	margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 5px; 
+    font-size: 1.1rem;
+    cursor: pointer;
+    line-height: 1.5;
 }
 
-.filterPref .navbar-links {
-    display: block;
-    list-style: none;
-    margin:0;
-	margin-top: 5px;
-    padding: 0;
+.checkBoxLocations input {
+    margin-right: 10px;
+    transform: scale(1.5); 
+    cursor: pointer;
 }
 
-.filterPref .sortItem {
-	background-color: var(--color-3);
-	color: var(--color-1);
-	margin-top: 5px;
+.checkBoxLocations label {
+    cursor: pointer; 
+    user-select: none; 
 }
+
+@media (max-width: 1000px) {
+    .MenuFilter {
+        width: 80%; 
+        margin: 20px auto; 
+        position: static; 
+    }
+
+    .MenuFilter h1 {
+        font-size: 1.5rem;
+    }
+
+    .MenuFilter .PriceSlider {
+        font-size: 1.25rem;
+    }
+
+    .checkBoxLocations {
+        font-size: 1rem; 
+    }
+
+    .slider {
+        margin: 0; 
+    }
+}
+
 
 .gridContainer .image-grid {
 	display: grid;

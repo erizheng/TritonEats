@@ -23,7 +23,6 @@ export const MenuItems = (currentDish: dishItem) => {
             gridColumn: 'span 2',
             flexDirection: 'row',
             flexWrap: 'wrap',
-            resize: 'horizontal',
             overflow: 'hidden',
             gap: 'clamp(0px, (100% - 360px + 32px) * 999, 16px)',
             transition: 'transform 0.3s, border 0.3s',

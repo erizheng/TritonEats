@@ -93,7 +93,7 @@ export const MenuSortButtons = () => {
 
                 <button className="sortItem" onClick={() => {
                     handleRate()
-                }} data-testid='rateSort'>Rate {arrowRate}</button>{/* Sorts list ascend */}
+                }} data-testid='rateSort'>Rating {arrowRate}</button>{/* Sorts list ascend */}
                 
                 <button className="sortItem" onClick={() => {
                     handleName()

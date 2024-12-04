@@ -39,32 +39,31 @@ export const RecommendFilter = () => {
     return (
         <div className='MenuFilter'>
             <h1>
-                Filter:
+                Filter Items
             </h1>
 
-            <div>Price</div>
-            <form onSubmit={(event) => onSubmit(event, value)}>
-            <div className="slider">
-                <Slider
-                    getAriaLabel={() => 'Cost range'}
-                    value={value}
-                    onChange={handleChange}
-                    valueLabelDisplay="auto"
-                    min={0}
-                    max={20}
-                    marks = {marks}
-                    data-testid='slide'
-                />
+            <div className="PriceSlider"> 
+                Price
+                <form onSubmit={(event) => onSubmit(event, value)}>
+                <div className="slider">
+                    <Slider
+                        getAriaLabel={() => 'Cost range'}
+                        value={value}
+                        onChange={handleChange}
+                        valueLabelDisplay="auto"
+                        min={0}
+                        max={20}
+                        marks = {marks}
+                        data-testid='slide'
+                    />
+                </div>
+                    <button type="submit" data-testid='subButton' className='subButton'>
+                    Submit
+                    </button>
+                </form>
             </div>
-                <button type="submit" data-testid='subButton' className='subButton'>
-                Submit
-                </button>
-            </form>
-
-            
 
             <div className='filterLocations'>Location <MenuCheckBox/></div>
-            <div className='filterAllergens'>Allergens: nothing yet, need to decide on what to include for allergens</div>
 
         </div>
     );
