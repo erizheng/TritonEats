@@ -5,6 +5,7 @@ import Box from '@mui/joy/Box';
 import Card from '@mui/joy/Card';
 import Typography from '@mui/joy/Typography';
 import { Link } from 'react-router-dom';
+import { Tooltip } from '@mui/material';
 
 // Calculate the number of full, half, and empty stars
 const renderStars = (rating: number) => {
@@ -34,6 +35,7 @@ export const MenuItems = (currentDish: dishItem) => {
         //Edit give_your_path to make it go to where you need
         <Link to={`/dish_details/${currentDish.food_id}`} style={{ textDecoration: 'none' }}>  {/* Remove underline from Link */}
             <Box sx={{ minHeight: 350 }}>
+            <Tooltip title="Click for Reviews" arrow disableInteractive>
                 <Card
                     variant="outlined"
                     sx={(theme) => ({
@@ -44,10 +46,12 @@ export const MenuItems = (currentDish: dishItem) => {
                         flexWrap: 'wrap',
                         overflow: 'hidden',
                         gap: 'clamp(0px, (100% - 360px + 32px) * 999, 16px)',
-                        transition: 'transform 0.3s, border 0.3s',
+                        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+                        transition: 'transform 0.3s, border 0.3s, box-shadow 0.3s',  
                         '&:hover': {
                             borderColor: theme.vars.palette.primary.outlinedHoverBorder,
-                            transform: 'translateY(-2px)',
+                            transform: 'translateY(-5px) scale(1.05)',
+                            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)', 
                         },
                         '& > *': { minWidth: 'clamp(0px, (360px - 100%) * 999,100%)' },
                     })}
@@ -116,6 +120,7 @@ export const MenuItems = (currentDish: dishItem) => {
                         </Box>
                     </Box>
                 </Card>
+                </Tooltip>
             </Box>
         </Link>
     );
