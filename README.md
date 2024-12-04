@@ -14,7 +14,7 @@
 ## **Project Overview**
 *Triton Eats* aims to enhance the UCSD dining experience by allowing users to:
 - View a collection of detailed dining hall menus.
-- Recieve live updates on the busyness and distance of dining halls. 
+- Receive live updates on the busyness and distance of dining halls. 
 - Query menu choices by allergen, distance, and wait time preferences. 
 - Set and save dietary preferences.
 - Share and read reviews of dining hall food.
