@@ -9,7 +9,10 @@
 }
 
 body {
-	background-color: var(--body-bg-color);
+    background-color: var(--body-bg-color);
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
 }
 
 /* Layout */
@@ -240,24 +243,9 @@ textarea {
     max-width: 100%;
 }
 
-.FoodReview {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 20px;
-    border: 1px solid var(--color-0);
-    border-radius: 10px;
-    width: 100%; 
-    box-sizing: border-box; 
-}
-
-.reviewText {
-    word-wrap: break-word; 
-    overflow-wrap: break-word;
-}
 
 /* Responsive Design */
-@media (max-width: 1200px) {
+@media (max-width: 1000px) {
     .dishDetailsSection {
         flex-direction: column;
         align-items: center;
@@ -275,23 +263,5 @@ textarea {
     .submitReview {
         width: 100%;
         margin: 10px;
-    }
-
-    .FoodReview {
-        flex-direction: column;
-        align-items: center;
-        padding: 15px; 
-    }
-
-    .reviewContent {
-        align-items: center;
-        text-align: center;
-        padding: 10px; 
-        width: 100%; 
-    }
-
-    .reviewText {
-        word-break: break-word; 
-        width: 100%; 
     }
 }
