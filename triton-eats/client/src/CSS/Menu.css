@@ -96,30 +96,6 @@ body {
     user-select: none; 
 }
 
-@media (max-width: 1000px) {
-    .MenuFilter {
-        width: 80%; 
-        margin: 20px auto; 
-        position: static; 
-    }
-
-    .MenuFilter h1 {
-        font-size: 1.5rem;
-    }
-
-    .MenuFilter .PriceSlider {
-        font-size: 1.25rem;
-    }
-
-    .checkBoxLocations {
-        font-size: 1rem; 
-    }
-
-    .slider {
-        margin: 0; 
-    }
-}
-
 /* Search and Sort */
 .RecommendSearch input {
 	background-color: var(--color-1);
@@ -137,8 +113,11 @@ body {
 .sortFilter {
 	width: fit-content;
 	height: 40px;
-	margin-left: 72.5%;     /* Adjust for sort position*/
+	margin-left: auto;
+    margin-right: 5.5%;
 	margin-top: -45px;
+    display: flex;  
+    justify-content: flex-start; 
 }
 
 .sortItem {
@@ -162,34 +141,12 @@ body {
 .gridContainer .image-grid {
 	display: grid;
 	max-width: 70%;
-	grid-template-columns: repeat(3, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 	grid-auto-rows: minmax(400px, auto);
 	column-gap: 50px;
 	row-gap: 55px;
 	margin-left: 22%;
-	margin-top: 40px; 
-}
-
-.DishItem {
-	background-color: var(--color-1);
-	width: 100%;
-	height: fit-content;
-	padding: 5px;
-	border: 1px solid var(--color-0);
-	border-radius: 10px;
-	display: flex;
-	flex-direction: column;
-	padding: 10px;
-	cursor: pointer;
-}
-
-.DishItem .gridContainer {
-	display: grid;
-	max-width: 70%;
-	grid-template-columns: repeat(2, minmax(60%, 1fr));
-	grid-auto-rows: minmax(auto, auto);
-	column-gap: 70%;
-	row-gap: 5px;
+	margin-top: 40px;
 }
 
 .DishItem h2,h3,p {
@@ -198,21 +155,6 @@ body {
 	float: left;
 	display: flex;
 	flex-direction: column;
-}
-
-.DishItem .recImageText {
-	padding: 0;
-	margin: 0;
-	float: left;
-	display: flex;
-	flex-direction: column;
-}
-
-.DishItem .recImageRating {
-	float: right;
-	display: flex;
-	flex-direction: column;
-	text-align: right;
 }
 
 /* Loading Bar */
@@ -227,7 +169,7 @@ body {
     border-radius: 8px; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
     margin: 30px;
-    max-width: 70%;
+    max-width: 68.5%;
 
 	column-gap: 50px;
 	row-gap: 55px;
@@ -251,5 +193,55 @@ body {
     }
     100% {
         transform: rotate(360deg);
+    }
+}
+
+@media (max-width: 1000px) {
+    /* Adjust filter sidebar for smaller screens */
+    .MenuFilter {
+        width: 80%; 
+        margin: 20px auto; 
+        position: static; 
+    }
+
+    .MenuFilter h1 {
+        font-size: 1.5rem;
+    }
+
+    .MenuFilter .PriceSlider {
+        font-size: 1.25rem;
+    }
+
+    .checkBoxLocations {
+        font-size: 1rem; 
+    }
+
+    .slider {
+        margin: 0; 
+    }
+
+    /* Update grid to display 1 item per row on smaller screens */
+    .gridContainer .image-grid {
+        margin-left: 5%;  
+        margin: 40px auto 0 auto; /* Center the grid */
+    }
+
+    /* Adjust the search input */
+    .RecommendSearch input {
+        width: 90%;  
+        margin: 10px;
+    }
+
+    /* Adjust sorting button for better alignment */
+    .sortFilter {
+        display: flex;  
+        justify-content: flex-start; 
+        gap: 10px; 
+        margin: 1px auto 0 auto;
+    }
+
+    .sortItem {
+        width: auto; 
+        width: 100px;
     }
 }

@@ -46,8 +46,6 @@ export const DishList = () => {
     }
 
     return (
-        
-
         <div className="image-grid">
             {dishes.map((dish: dishItem) => (
             <div data-testid={`dish-${dish.food_id}`}>
