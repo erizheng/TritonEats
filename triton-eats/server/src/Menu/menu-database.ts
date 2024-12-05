@@ -32,7 +32,7 @@ export const getIdByName = async (newDish: dishItem) => {
     console.log("Finding dish with name:", dish_name);
     const collectionRef = collection(db, "dishes");
     // find the document with the right name property
-    const q = query(collectionRef, where("food_name", "==", dish_name));
+    const q = query(collectionRef, where(newDish.food_name, "==", dish_name));
     const snapshot = await getDocs(q);
     
     if(snapshot.size === 0) {

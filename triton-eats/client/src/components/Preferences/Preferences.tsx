@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import PreferenceGrid from './PreferenceGrid';
 import { PreferenceProps } from '../../types/preferenceTypes';
+import { useCookies } from 'react-cookie';
 
 
 const Preferences: React.FC = () => {
-  // Manage the preferences state in the parent (Preferences component)
   const [preferences, setPreferences] = useState<PreferenceProps[]>([
     { id: 1, name: 'Dairy', selected: false },
     { id: 2, name: 'Tree Nuts', selected: false },
@@ -19,76 +19,126 @@ const Preferences: React.FC = () => {
   ]);
 
   const [dietary, setDietary] = useState<PreferenceProps[]>([
-    { id: 11, name: 'Vegeterian', selected: false },
+    { id: 11, name: 'Vegetarian', selected: false },
     { id: 12, name: 'Vegan', selected: false },
     { id: 13, name: 'Wellness', selected: false },
     { id: 14, name: 'Sustainability', selected: false },
   ]);
 
   const [time, setTime] = useState<PreferenceProps[]>([
-    { id: 15, name: '>5 min', selected: false },
-    { id: 16, name: '5-10 min', selected: false },
-    { id: 17, name: '10-20 min', selected: false },
-    { id: 18, name: '20-30 min', selected: false },
-    { id: 19, name: '30-45 min', selected: false },
+    { id: 15, name: '0 - 5 min', selected: false },
+    { id: 16, name: '5 - 10 min', selected: false },
+    { id: 17, name: '10 - 20 min', selected: false },
+    { id: 18, name: '20 - 30 min', selected: false },
+    { id: 19, name: '30 - 45 min', selected: false },
   ]);
 
   const [distance, setDistance] = useState<PreferenceProps[]>([
-    { id: 20, name: '30-45 min', selected: false },
-    { id: 21, name: '30-45 min', selected: false },
-
+    { id: 20, name: '0 - 0.5 miles', selected: false },
+    { id: 21, name: '0.5 - 1 miles', selected: false },
+    { id: 22, name: '1 - 1.5 miles', selected: false },
+    { id: 23, name: '1.5+ miles', selected: false },
   ]);
 
-  // Handle the preferences selection change
-  const handleSelectionChange = (id: number) => {
-    setPreferences((prevPreferences) =>
-      prevPreferences.map((pref) =>
-        pref.id === id ? { ...pref, selected: !pref.selected } : pref
-      )
-    );
+  const [cookies, setCookie] = useCookies(['preferences']); // Use cookies to store preferences
+
+
+  const handleSubmit = () => {
+    const selectedPreferences = [
+      ...preferences.filter((pref) => pref.selected).map((pref) => pref.name),
+      ...dietary.filter((pref) => pref.selected).map((pref) => pref.name),
+      ...time.filter((pref) => pref.selected).map((pref) => pref.name),
+      ...distance.filter((pref) => pref.selected).map((pref) => pref.name),
+    ];
+
+    setCookie('preferences', selectedPreferences, { path: '/' });
+    console.log("cookies", cookies);
+
+    // Check if there are any selected preferences
+    if (selectedPreferences.length === 0) {
+      alert("No preferences selected.");
+    } else {
+      alert(`Selected Preferences: ${selectedPreferences.join(', ')}`);
+    }
+  };
+
+
+  // Toggle the selection state (selected/unselected) for each section
+  const handleSelectionChange = (id: number, section: 'preferences' | 'dietary' | 'time' | 'distance') => {
+    switch (section) {
+      case 'preferences':
+        setPreferences((prevPreferences) =>
+          prevPreferences.map((pref) =>
+            pref.id === id ? { ...pref, selected: !pref.selected } : pref
+          )
+        );
+        break;
+      case 'dietary':
+        setDietary((prevDietary) =>
+          prevDietary.map((pref) =>
+            pref.id === id ? { ...pref, selected: !pref.selected } : pref
+          )
+        );
+        break;
+      case 'time':
+        setTime((prevTime) =>
+          prevTime.map((pref) =>
+            pref.id === id ? { ...pref, selected: !pref.selected } : pref
+          )
+        );
+        break;
+      case 'distance':
+        setDistance((prevDistance) =>
+          prevDistance.map((pref) =>
+            pref.id === id ? { ...pref, selected: !pref.selected } : pref
+          )
+        );
+        break;
+      default:
+        break;
+    }
   };
 
   return (
-    <div>
-      {/* <h1>Preferences</h1> */}
+    <div className="preferences-page">
       <h2>Allergens:</h2>
-      <div className='preferences-grid'>
-      {/* Pass preferences and the handler to PreferencesGrid */}
-      <PreferenceGrid 
-        preferences={preferences}
-        onSelectionChange={handleSelectionChange}
-      />
-      </div>
-      {/* <div className="selected-preferences">
-        <h2>Selected Preferences:</h2>
-        <ul>
-          {preferences
-            .filter((pref) => pref.selected)
-            .map((pref) => (
-              <li key={pref.id}>{pref.name}</li>
-            ))}
-        </ul>
-      </div> */}
-      <h2>Dietary Restrictions:</h2>
-      <div className = 'preferences-grid'>
-      <PreferenceGrid 
-        preferences={dietary}
-        onSelectionChange={handleSelectionChange}
-      />
-      </div>
-      <div>
-      <div><h2>Time:</h2></div>
-      <div className = 'preferences-grid'>
-        <PreferenceGrid 
-          preferences={time}
-          onSelectionChange={handleSelectionChange}
+      <div className="preferences-grid">
+        <PreferenceGrid
+          preferences={preferences}
+          onSelectionChange={(id) => handleSelectionChange(id, 'preferences')} // Pass section name
         />
       </div>
-      <div><h2>Distance:</h2></div>
 
+      <h2>Dietary Restrictions:</h2>
+      <div className="preferences-grid">
+        <PreferenceGrid
+          preferences={dietary}
+          onSelectionChange={(id) => handleSelectionChange(id, 'dietary')} // Pass section name
+        />
+      </div>
+
+      <h2>Time:</h2>
+      <div className="preferences-grid">
+        <PreferenceGrid
+          preferences={time}
+          onSelectionChange={(id) => handleSelectionChange(id, 'time')} // Pass section name
+        />
+      </div>
+
+      <h2>Distance:</h2>
+      <div className="preferences-grid">
+        <PreferenceGrid
+          preferences={distance}
+          onSelectionChange={(id) => handleSelectionChange(id, 'distance')} // Pass section name
+        />
+      </div>
+
+      <div className="preferences-grid-btn">
+        <button className="preferences-btn" onClick={handleSubmit}>Submit</button>
       </div>
     </div>
   );
 };
 
 export default Preferences;
+

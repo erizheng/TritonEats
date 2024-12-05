@@ -1,51 +1,58 @@
 import React from 'react';
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor, cleanup } from "@testing-library/react";
 import { BrowserRouter } from 'react-router-dom';
 import { AppProvider } from '../context/MenuContext';
 import App from '../App';
 import { Menu } from '../pages/Menu';
+import { mockDishes } from '../constants/menuConstants';
+import { dishItem } from '../types/menuTypes';
+import { fetchDishes } from '../utils/menu-utils';
+import { AuthProvider } from '../context/AuthContext';
 
-describe("Menu CSS", () => {
-    test("Search Bar exists", () => {
-        render(<BrowserRouter>
+
+// Mock the API calls at the top level of the test file
+jest.mock('../utils/menu-utils', () => ({
+    fetchDishes: jest.fn(),
+}));
+
+beforeEach( async () => {
+    (fetchDishes as jest.Mock).mockResolvedValue(mockDishes);
+
+    render(
+        <BrowserRouter>
+            <AuthProvider>
                 <AppProvider>
                     <Menu />
                 </AppProvider>
-                </BrowserRouter>);
-   
+            </AuthProvider>
+        </BrowserRouter>
+    );
+    await waitFor(() => {
+        expect(screen.getByTestId('dish-0')).toBeInTheDocument();
+    });
+});
+afterEach(() => {
+    cleanup();
+    jest.clearAllMocks();
+});
+
+describe("Menu CSS", () => {
+    test("Search Bar exists", () => {
         const searchBar = screen.getByPlaceholderText("Search...");
         expect(searchBar).toBeInTheDocument();
     });
 
     test("navBar exists", () => {
-        render(<BrowserRouter>
-            <AppProvider>
-                <Menu />
-            </AppProvider>
-            </BrowserRouter>);
-   
         const navBar = screen.getByText("Name");
         expect(navBar).toBeInTheDocument();
     });
 
     test("Sorting Buttons exists", () => {
-        render(<BrowserRouter>
-            <AppProvider>
-                <Menu />
-            </AppProvider>
-            </BrowserRouter>);
-   
         const sortButtons = screen.getByText("Rate");
         expect(sortButtons).toBeInTheDocument();
     });
 
     test("Filter Box exists", () => {
-        render(<BrowserRouter>
-            <AppProvider>
-                <Menu />
-            </AppProvider>
-            </BrowserRouter>);
-   
         const filterBox = screen.getByText("Location");
         expect(filterBox).toBeInTheDocument();
     });
@@ -53,26 +60,20 @@ describe("Menu CSS", () => {
 
 describe("Menu Sorting", () => {
     test("Sorts by price descend", () => {
-        render(<BrowserRouter>
-                <AppProvider>
-                    <Menu />
-                </AppProvider>
-                </BrowserRouter>);
-   
         //getting the buttons
         const price = screen.getByTestId("priceSort");
-        const item1 = screen.getByText('$1');
-        const item2 = screen.getByText('$2');
-        const item3 = screen.getByText('$3');
-        const item4 = screen.getByText('$4');
-        const item5 = screen.getByText('$5');
-        const item6 = screen.getByText('$6');
-        const item7 = screen.getByText('$7');
-        const item8 = screen.getByText('$8');
-        const item9 = screen.getByText('$9');
-        const item10 = screen.getByText('$10');
-        const item11 = screen.getByText('$11');
-        const item12 = screen.getByText('$12');
+        const item1 = screen.getByTestId('dish-0');
+        const item2 = screen.getByTestId('dish-1');
+        const item3 = screen.getByTestId('dish-2');
+        const item4 = screen.getByTestId('dish-3');
+        const item5 = screen.getByTestId('dish-4');
+        const item6 = screen.getByTestId('dish-5');
+        const item7 = screen.getByTestId('dish-6');
+        const item8 = screen.getByTestId('dish-7');
+        const item9 = screen.getByTestId('dish-8');
+        const item10 = screen.getByTestId('dish-9');
+        const item11 = screen.getByTestId('dish-10');
+        const item12 = screen.getByTestId('dish-11');
 
         //first click to check descending
         fireEvent.click(price);
@@ -91,31 +92,24 @@ describe("Menu Sorting", () => {
         expect(item11.compareDocumentPosition(item12)).toBe(4);
     });
     test("Sorts by price ascend", () => {
-        render(<BrowserRouter>
-                <AppProvider>
-                    <Menu />
-                </AppProvider>
-                </BrowserRouter>);
-
         //getting the buttons
         const price = screen.getByTestId("priceSort");
         //two clicks to check ascend
         fireEvent.click(price),
         fireEvent.click(price);
    
-        
-        const item1 = screen.getByText('$1');
-        const item2 = screen.getByText('$2');
-        const item3 = screen.getByText('$3');
-        const item4 = screen.getByText('$4');
-        const item5 = screen.getByText('$5');
-        const item6 = screen.getByText('$6');
-        const item7 = screen.getByText('$7');
-        const item8 = screen.getByText('$8');
-        const item9 = screen.getByText('$9');
-        const item10 = screen.getByText('$10');
-        const item11 = screen.getByText('$11');
-        const item12 = screen.getByText('$12');
+        const item1 = screen.getByTestId('dish-0');
+        const item2 = screen.getByTestId('dish-1');
+        const item3 = screen.getByTestId('dish-2');
+        const item4 = screen.getByTestId('dish-3');
+        const item5 = screen.getByTestId('dish-4');
+        const item6 = screen.getByTestId('dish-5');
+        const item7 = screen.getByTestId('dish-6');
+        const item8 = screen.getByTestId('dish-7');
+        const item9 = screen.getByTestId('dish-8');
+        const item10 = screen.getByTestId('dish-9');
+        const item11 = screen.getByTestId('dish-10');
+        const item12 = screen.getByTestId('dish-11');
         
             //Node.DOCUMENT_POSITION_PRECEDING (2)
             //Node.DOCUMENT_POSITION_FOLLOWING (4)
@@ -132,30 +126,24 @@ describe("Menu Sorting", () => {
         expect(item11.compareDocumentPosition(item12)).toBe(2);
     });
     test("Sorts by name descend", () => {
-        render(<BrowserRouter>
-                <AppProvider>
-                    <Menu />
-                </AppProvider>
-                </BrowserRouter>);
-   
         //getting the buttons
         const name = screen.getByTestId("nameSort");
 
         //first click to check descending
         fireEvent.click(name);
 
-        const item1 = screen.getByText('a');
-        const item2 = screen.getByText('b');
-        const item3 = screen.getByText('c');
-        const item4 = screen.getByText('d');
-        const item5 = screen.getByText('e');
-        const item6 = screen.getByText('f');
-        const item7 = screen.getByText('g');
-        const item8 = screen.getByText('h');
-        const item9 = screen.getByText('i');
-        const item10 = screen.getByText('j');
-        const item11 = screen.getByText('k');
-        const item12 = screen.getByText('l');
+        const item1 = screen.getByTestId('dish-0');
+        const item2 = screen.getByTestId('dish-1');
+        const item3 = screen.getByTestId('dish-2');
+        const item4 = screen.getByTestId('dish-3');
+        const item5 = screen.getByTestId('dish-4');
+        const item6 = screen.getByTestId('dish-5');
+        const item7 = screen.getByTestId('dish-6');
+        const item8 = screen.getByTestId('dish-7');
+        const item9 = screen.getByTestId('dish-8');
+        const item10 = screen.getByTestId('dish-9');
+        const item11 = screen.getByTestId('dish-10');
+        const item12 = screen.getByTestId('dish-11');
 
             //Node.DOCUMENT_POSITION_PRECEDING (2)
             //Node.DOCUMENT_POSITION_FOLLOWING (4)
@@ -172,12 +160,6 @@ describe("Menu Sorting", () => {
         expect(item11.compareDocumentPosition(item12)).toBe(4);
     });
     test("Sorts by name ascend", () => {
-        render(<BrowserRouter>
-                <AppProvider>
-                    <Menu />
-                </AppProvider>
-                </BrowserRouter>);
-   
         //getting the buttons
         const name = screen.getByTestId("nameSort");
 
@@ -185,18 +167,19 @@ describe("Menu Sorting", () => {
         fireEvent.click(name),
         fireEvent.click(name);
 
-        const item1 = screen.getByText('a');
-        const item2 = screen.getByText('b');
-        const item3 = screen.getByText('c');
-        const item4 = screen.getByText('d');
-        const item5 = screen.getByText('e');
-        const item6 = screen.getByText('f');
-        const item7 = screen.getByText('g');
-        const item8 = screen.getByText('h');
-        const item9 = screen.getByText('i');
-        const item10 = screen.getByText('j');
-        const item11 = screen.getByText('k');
-        const item12 = screen.getByText('l');
+        
+        const item1 = screen.getByTestId('dish-0');
+        const item2 = screen.getByTestId('dish-1');
+        const item3 = screen.getByTestId('dish-2');
+        const item4 = screen.getByTestId('dish-3');
+        const item5 = screen.getByTestId('dish-4');
+        const item6 = screen.getByTestId('dish-5');
+        const item7 = screen.getByTestId('dish-6');
+        const item8 = screen.getByTestId('dish-7');
+        const item9 = screen.getByTestId('dish-8');
+        const item10 = screen.getByTestId('dish-9');
+        const item11 = screen.getByTestId('dish-10');
+        const item12 = screen.getByTestId('dish-11');
 
             //Node.DOCUMENT_POSITION_PRECEDING (2)
             //Node.DOCUMENT_POSITION_FOLLOWING (4)
@@ -213,42 +196,64 @@ describe("Menu Sorting", () => {
         expect(item11.compareDocumentPosition(item12)).toBe(2);
     });
     test("Sorts by name descend", () => {
-        render(<BrowserRouter>
-                <AppProvider>
-                    <Menu />
-                </AppProvider>
-                </BrowserRouter>);
-   
         //getting the buttons
         const rate = screen.getByTestId("rateSort");
 
         //first click to check descending
+        fireEvent.click(rate),
         fireEvent.click(rate);
 
-        const item2 = screen.getByText('0.2');
-        const item4 = screen.getByText('1.3');
-        const item6 = screen.getByText('2.7');
-        const item8 = screen.getByText('3.8');
-        const item10 = screen.getByText('4.4');
-        const item11 = screen.getByText('4.9');
-        const item12 = screen.getByText('5');
+        const item1 = screen.getByTestId('dish-0');
+        const item2 = screen.getByTestId('dish-1');
+        const item3 = screen.getByTestId('dish-2');
+        const item4 = screen.getByTestId('dish-3');
+        const item5 = screen.getByTestId('dish-4');
+        const item6 = screen.getByTestId('dish-5');
+        const item7 = screen.getByTestId('dish-6');
+        const item8 = screen.getByTestId('dish-7');
+        const item9 = screen.getByTestId('dish-8');
+        const item10 = screen.getByTestId('dish-9');
+        const item11 = screen.getByTestId('dish-10');
+        const item12 = screen.getByTestId('dish-11');
 
             //Node.DOCUMENT_POSITION_PRECEDING (2)
             //Node.DOCUMENT_POSITION_FOLLOWING (4)
         expect(item2.compareDocumentPosition(item4)).toBe(4),
-        expect(item4.compareDocumentPosition(item6)).toBe(4),
         expect(item6.compareDocumentPosition(item8)).toBe(4),
         expect(item8.compareDocumentPosition(item10)).toBe(4),
-        expect(item10.compareDocumentPosition(item11)).toBe(4),
         expect(item11.compareDocumentPosition(item12)).toBe(4);
     });
     test("Sorts by rate ascend", () => {
-        render(<BrowserRouter>
-                <AppProvider>
-                    <Menu />
-                </AppProvider>
-                </BrowserRouter>);
-   
+        //getting the buttons
+        const rate = screen.getByTestId("rateSort");
+
+        //two clicks to check ascend
+        fireEvent.click(rate);
+
+        
+        const item1 = screen.getByTestId('dish-0');
+        const item2 = screen.getByTestId('dish-1');
+        const item3 = screen.getByTestId('dish-2');
+        const item4 = screen.getByTestId('dish-3');
+        const item5 = screen.getByTestId('dish-4');
+        const item6 = screen.getByTestId('dish-5');
+        const item7 = screen.getByTestId('dish-6');
+        const item8 = screen.getByTestId('dish-7');
+        const item9 = screen.getByTestId('dish-8');
+        const item10 = screen.getByTestId('dish-9');
+        const item11 = screen.getByTestId('dish-10');
+        const item12 = screen.getByTestId('dish-11');
+
+            //Node.DOCUMENT_POSITION_PRECEDING (2)
+            //Node.DOCUMENT_POSITION_FOLLOWING (4)
+        expect(item2.compareDocumentPosition(item4)).toBe(2),
+        expect(item4.compareDocumentPosition(item6)).toBe(4),
+        expect(item6.compareDocumentPosition(item8)).toBe(2),
+        expect(item8.compareDocumentPosition(item10)).toBe(2),
+        expect(item10.compareDocumentPosition(item11)).toBe(4),
+        expect(item11.compareDocumentPosition(item12)).toBe(2);
+    });
+    test("Sorts by rate ascend", () => {
         //getting the buttons
         const rate = screen.getByTestId("rateSort");
 
@@ -256,76 +261,143 @@ describe("Menu Sorting", () => {
         fireEvent.click(rate),
         fireEvent.click(rate);
 
-        const item2 = screen.getByText('0.2');
-        const item4 = screen.getByText('1.3');
-        const item6 = screen.getByText('2.7');
-        const item8 = screen.getByText('3.8');
-        const item10 = screen.getByText('4.4');
-        const item11 = screen.getByText('4.9');
-        const item12 = screen.getByText('5');
+        
+        const item1 = screen.getByTestId('dish-0');
+        const item2 = screen.getByTestId('dish-1');
+        const item3 = screen.getByTestId('dish-2');
+        const item4 = screen.getByTestId('dish-3');
+        const item5 = screen.getByTestId('dish-4');
+        const item6 = screen.getByTestId('dish-5');
+        const item7 = screen.getByTestId('dish-6');
+        const item8 = screen.getByTestId('dish-7');
+        const item9 = screen.getByTestId('dish-8');
+        const item10 = screen.getByTestId('dish-9');
+        const item11 = screen.getByTestId('dish-10');
+        const item12 = screen.getByTestId('dish-11');
 
             //Node.DOCUMENT_POSITION_PRECEDING (2)
             //Node.DOCUMENT_POSITION_FOLLOWING (4)
-        expect(item2.compareDocumentPosition(item4)).toBe(2),
+        expect(item2.compareDocumentPosition(item4)).toBe(4),
         expect(item4.compareDocumentPosition(item6)).toBe(2),
-        expect(item6.compareDocumentPosition(item8)).toBe(2),
-        expect(item8.compareDocumentPosition(item10)).toBe(2),
+        expect(item6.compareDocumentPosition(item8)).toBe(4),
+        expect(item8.compareDocumentPosition(item10)).toBe(4),
         expect(item10.compareDocumentPosition(item11)).toBe(2),
-        expect(item11.compareDocumentPosition(item12)).toBe(2);
+        expect(item11.compareDocumentPosition(item12)).toBe(4);
     });
 }),
 
 describe("Menu Searching", () => {
     test("Search a works", () => {
-        render(<BrowserRouter>
-                <AppProvider>
-                    <Menu />
-                </AppProvider>
-                </BrowserRouter>);
-   
             //get searchbar
         const searchBar = screen.getByPlaceholderText("Search...");
             //get item we want to search for
-        const item1 = screen.getByText('$1');//same box with the 'a' name
+        const item0 = screen.getByTestId('dish-0');//same box with the 'a' name
             //get item that shouldn't exist
-        const item2 = screen.getByText('$2');//same box with the 'b' name
-        const item3 = screen.getByText('$3');//same box with the 'c' name
-        const item4 = screen.getByText('$4');//same box with the 'd' name
-        const item5 = screen.getByText('$5');//same box with the 'e' name
+        const item1 = screen.getByTestId('dish-1');//same box with the 'b' name
+        const item2 = screen.getByTestId('dish-2');//same box with the 'c' name
+        const item3 = screen.getByTestId('dish-3');//same box with the 'd' name
+        const item4 = screen.getByTestId('dish-4');//same box with the 'e' name
         //change content in searchBar
         fireEvent.change(searchBar, { target: { value: "a" } });
         
 
-        expect(item1).toBeInTheDocument(),
+        expect(item0).toBeInTheDocument(),
+        expect(item1).not.toBeInTheDocument(),
         expect(item2).not.toBeInTheDocument(),
         expect(item3).not.toBeInTheDocument(),
-        expect(item4).not.toBeInTheDocument(),
-        expect(item5).not.toBeInTheDocument();
+        expect(item4).not.toBeInTheDocument();
     });
     test("Search blabla works", () => {
-        render(<BrowserRouter>
-                <AppProvider>
-                    <Menu />
-                </AppProvider>
-                </BrowserRouter>);
-   
             //get searchbar
         const searchBar = screen.getByPlaceholderText("Search...");
             //get item that shouldn't exist
-        const item1 = screen.getByText('$1');//same box with the 'a' name
-        const item2 = screen.getByText('$2');//same box with the 'b' name
-        const item3 = screen.getByText('$3');//same box with the 'c' name
-        const item4 = screen.getByText('$4');//same box with the 'd' name
-        const item5 = screen.getByText('$5');//same box with the 'e' name
+        const item0 = screen.getByTestId('dish-0');//same box with the 'a' name
+        const item1 = screen.getByTestId('dish-1');//same box with the 'b' name
+        const item2 = screen.getByTestId('dish-2');//same box with the 'c' name
+        const item3 = screen.getByTestId('dish-3');//same box with the 'd' name
+        const item4 = screen.getByTestId('dish-4');//same box with the 'e' name
         //change content in searchBar
         fireEvent.change(searchBar, { target: { value: "blabla" } });
         
 
+        expect(item0).not.toBeInTheDocument(),
         expect(item1).not.toBeInTheDocument(),
         expect(item2).not.toBeInTheDocument(),
         expect(item3).not.toBeInTheDocument(),
-        expect(item4).not.toBeInTheDocument(),
-        expect(item5).not.toBeInTheDocument();
+        expect(item4).not.toBeInTheDocument();
     });
     
+}),
+
+describe("Menu Filter Location", () => {
+    test("None", () => {
+        //get loc check boxes
+        const sixFour = screen.getByTestId('64degrees');
+        const cafV = screen.getByTestId('cafeventanas');
+        const cV = screen.getByTestId('canyonvista');
+        const foodworx = screen.getByTestId('foodworx');
+        const pines = screen.getByTestId('pines');
+        const ovt = screen.getByTestId('ovt');
+        //get item from each
+        const item64 = screen.getByTestId('dish-0');
+        const itemCafe = screen.getByTestId('dish-6');
+        const itemCV = screen.getByTestId('dish-3');
+        const itemFW = screen.getByTestId('dish-10');
+        const itemP = screen.getByTestId('dish-1');
+        const itemOVT = screen.getByTestId('dish-2');
+
+        //select the ones I want gone
+        fireEvent.click(sixFour),
+        fireEvent.click(cafV),
+        fireEvent.click(cV),
+        fireEvent.click(foodworx),
+        fireEvent.click(pines),
+        fireEvent.click(ovt);
+
+        expect(item64).not.toBeInTheDocument();
+        expect(itemCafe).not.toBeInTheDocument();
+        expect(itemCV).not.toBeInTheDocument();
+        expect(itemFW).not.toBeInTheDocument();
+        expect(itemP).not.toBeInTheDocument();
+        expect(itemOVT).not.toBeInTheDocument();
+        cleanup();
+    });
+    test("No 64 and ovt", () => {
+        //get loc check boxes
+        const sixFour = screen.getByTestId('64degrees');
+        const cafV = screen.getByTestId('cafeventanas');
+        const cV = screen.getByTestId('canyonvista');
+        const foodworx = screen.getByTestId('foodworx');
+        const pines = screen.getByTestId('pines');
+        const ovt = screen.getByTestId('ovt');
+        //get item from each
+        const item64 = screen.getByTestId('dish-0');
+        const itemCafe = screen.getByTestId('dish-6');
+        const itemCV = screen.getByTestId('dish-3');
+        const itemFW = screen.getByTestId('dish-10');
+        const itemP = screen.getByTestId('dish-1');
+        const itemOVT = screen.getByTestId('dish-2');
+
+        //select the ones I want gone
+        fireEvent.click(sixFour),
+        fireEvent.click(ovt);
+
+        expect(item64).not.toBeInTheDocument();
+        expect(itemOVT).not.toBeInTheDocument();
+        cleanup();
+    });
+
+    
 });
+
+// describe("Menu Filter Price", () => {
+//     test("Range from 0 to 1", () => {
+//         const subBut = screen.getByTestId('subButton');
+//         fireEvent.change(screen.getByTestId(`slide`), { target: { value: [0, 1] } });
+
+//         expect(subBut).toBeInTheDocument();
+
+//     });
+
+    
+// });
