@@ -1,7 +1,7 @@
 import * as cheerio from 'cheerio';
 
-import { DiningHalls, dishItem, location } from './types';
-import { HDHEndpoints } from './constants';
+import { DiningHalls, dishItem, location, Allergens } from './types';
+import { HDHEndpoints, LocationImages } from './constants';
 import { findDish, updateDishDB, addDishToDB } from './menu-database';
 
 function parseMenuItems(diningHall: DiningHalls, dom: cheerio.Root, restaurantElement: cheerio.Cheerio) {
@@ -20,18 +20,22 @@ function parseMenuItems(diningHall: DiningHalls, dom: cheerio.Root, restaurantEl
             if(!name || !price || !description) {
                 return [];
             }
+    
+        const allergens = dom(item).find('img').toArray().map(img => {
+            return <Allergens> dom(img).attr('title');
+        });
 
-            return mockDishItem(name, price, description, diningHall, restaurant);
+            return mockDishItem(name, price, description, diningHall, restaurant, allergens);
     });
 
     return items;
 
 }
 
-function mockDishItem(food_name: string, cost: number, description: string, diningHall: DiningHalls, restaurant: string) {
+function mockDishItem(food_name: string, cost: number, description: string, diningHall: DiningHalls, restaurant: string, allergens: Allergens[]) {
     
     const location = <location> { name: restaurant, dining_hall: diningHall, location_id: 0 };
-    return <dishItem> { food_id: "0", img: '/images/placeHolderImage.png', food_name, cost, location, allergens: [], rating: 5, description, numReviews: 0, numRecommend: 0 };
+    return <dishItem> { food_id: "0", img: LocationImages[diningHall], food_name, cost, location, allergens, rating: 5, description, numReviews: 0, numRecommend: 0 };
 
 }
 
