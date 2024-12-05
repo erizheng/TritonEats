@@ -21,6 +21,8 @@ export enum DiningHalls {
     ovt = "ovt",
     pines = "pines",
     canyonvista = "canyonvista",
+    bistro = "bistro",
+    sixth = "sixth"
 
 }
 
@@ -43,4 +45,20 @@ export interface Review {
     recommend: boolean;
 
     //reviewer_id: number; ---> When we include user accounts, add this to track who reviews what
+}
+
+export enum Allergens {
+
+    vegetarian = "Vegetarian",
+    vegan = "Vegan",
+    dairy = "Contains Dairy",
+    soy = "Contains Soy",
+    eggs = "Contains Eggs",
+    wheat = "Contains Wheat",
+    gluten = "Contains Gluten",
+    sesame = "Contains Sesame",
+    fish = "Contains Fish",
+    shellfish = "Contains Shellfish",
+    treenuts = "Contains TreeNuts",
+    
 }

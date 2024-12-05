@@ -48,5 +48,20 @@ export const HDHEndpoints: { [key in DiningHalls]: string } = {
     [DiningHalls.ovt]: "https://hdh-web.ucsd.edu/dining/apps/diningservices/Restaurants/Venue_V3?locId=05&subLocNum=00&locDetID=4&dayNum=0",
     [DiningHalls.pines]: "https://hdh-web.ucsd.edu/dining/apps/diningservices/Restaurants/Venue_V3?locId=01&subLocNum=00&locDetID=1&dayNum=0",
     [DiningHalls.canyonvista]: "https://hdh-web.ucsd.edu/dining/apps/diningservices/Restaurants/Venue_V3?locId=24&subLocNum=00&locDetID=11&dayNum=0",
+    [DiningHalls.bistro]: "https://hdh-web.ucsd.edu/dining/apps/diningservices/Restaurants/Venue_V3?locId=27&subLocNum=00&locDetID=13&dayNum=0",
+    [DiningHalls.sixth]: "https://hdh-web.ucsd.edu/dining/apps/diningservices/Restaurants/Venue_V3?locId=37&subLocNum=00&locDetID=24&dayNum=0"
+
+};
+
+export const LocationImages: { [key in DiningHalls]: string } = {
+
+    [DiningHalls.sixtyfour]: "https://www.studioearchitects.com/wp-content/uploads/2016/05/UCSD-64-Degrees-33.jpg",
+    [DiningHalls.cafeventanas]: "https://live.staticflickr.com/8345/8248473348_3048ef1673_c.jpg",
+    [DiningHalls.foodworx]: "https://hdh-web.ucsd.edu/images/Dining/foodworx/facility-Foodworx.jpg",
+    [DiningHalls.ovt]: "https://live.staticflickr.com/8480/8249527389_419ca01b6f_c.jpg",
+    [DiningHalls.pines]: "https://media.cbs8.com/assets/KFMB/images/b39e1eda-15b0-4aab-903d-30fa4b58fd26/b39e1eda-15b0-4aab-903d-30fa4b58fd26_1140x641.jpeg",
+    [DiningHalls.canyonvista]: "https://lgdusa.com/images/gallery/UCSD%20Canyon%20Vista/UCSD_Canyon_Vista_Dining_Hall_Renovation_N35.jpg",
+    [DiningHalls.bistro]: "https://live.staticflickr.com/8195/8080265876_c446890366_c.jpg",
+    [DiningHalls.sixth]: "https://images.rsmdesign.com/f19b4ab1-6b34-4a8e-826e-18f1b546d0e2.jpg"
 
 };
