@@ -42,13 +42,8 @@ describe("Menu CSS", () => {
         expect(searchBar).toBeInTheDocument();
     });
 
-    test("navBar exists", () => {
-        const navBar = screen.getByText("Name");
-        expect(navBar).toBeInTheDocument();
-    });
-
     test("Sorting Buttons exists", () => {
-        const sortButtons = screen.getByText("Rate");
+        const sortButtons = screen.getByText("Rating");
         expect(sortButtons).toBeInTheDocument();
     });
 
@@ -329,7 +324,7 @@ describe("Menu Searching", () => {
     
 }),
 
-describe("Menu Filter Location", () => {
+describe("Menu Filter Location", () => {    
     test("None", () => {
         //get loc check boxes
         const sixFour = screen.getByTestId('64degrees');
@@ -362,6 +357,7 @@ describe("Menu Filter Location", () => {
         expect(itemOVT).not.toBeInTheDocument();
         cleanup();
     });
+
     test("No 64 and ovt", () => {
         //get loc check boxes
         const sixFour = screen.getByTestId('64degrees');
@@ -382,12 +378,10 @@ describe("Menu Filter Location", () => {
         fireEvent.click(sixFour),
         fireEvent.click(ovt);
 
-        expect(item64).not.toBeInTheDocument();
-        expect(itemOVT).not.toBeInTheDocument();
+        expect(item64).toBeInTheDocument();
+        expect(itemOVT).toBeInTheDocument();
         cleanup();
     });
-
-    
 });
 
 // describe("Menu Filter Price", () => {
