@@ -2,6 +2,7 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import HomePage from '../pages/HomePage';
 import { BrowserRouter } from 'react-router-dom';
 import { AppProvider } from '../context/MenuContext';
+import { AuthProvider } from '../context/AuthContext';
 
 // Mock data that simulates the response from the API
 const mockDiningHallsData = [
@@ -18,9 +19,11 @@ beforeEach( async () => {
 
     render(
         <BrowserRouter>
-            <AppProvider>
-                <HomePage />
-            </AppProvider>
+            <AuthProvider>
+                <AppProvider>
+                    <HomePage />
+                </AppProvider>
+            </AuthProvider>
         </BrowserRouter>
     );
     await waitFor(() => {
@@ -62,9 +65,6 @@ describe('Search Functionality', () => {
 
 describe('Sorting by Busyness', () => {
     test('sorts by busyness in ascending order', () => {
-        const sortByBusynessButton = screen.getByText('Busyness');
-        fireEvent.click(sortByBusynessButton);
-
         const diningHalls = screen.getAllByTestId(/^dining-hall-/);
         expect(diningHalls[0].textContent).toContain('Hall C');
         expect(diningHalls[1].textContent).toContain('Hall A');
@@ -73,8 +73,7 @@ describe('Sorting by Busyness', () => {
     });
 
     test('sorts by busyness in descending order', () => {
-        const sortByBusynessButton = screen.getByText('Busyness');
-        fireEvent.click(sortByBusynessButton);
+        const sortByBusynessButton = screen.getByTestId('Busyness');
         fireEvent.click(sortByBusynessButton);
 
         const diningHalls = screen.getAllByTestId(/^dining-hall-/);
@@ -85,7 +84,7 @@ describe('Sorting by Busyness', () => {
     });
 
     test('closed dining halls are always at the end after sorting', () => { 
-        const sortByBusynessButton = screen.getByText('Busyness');
+        const sortByBusynessButton = screen.getByTestId('Busyness');
         fireEvent.click(sortByBusynessButton);
 
         const diningHalls = screen.getAllByTestId(/^dining-hall-/);

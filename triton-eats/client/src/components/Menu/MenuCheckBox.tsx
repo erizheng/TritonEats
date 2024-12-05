@@ -1,5 +1,4 @@
-import React, { ChangeEventHandler } from "react";
-import { useState, useContext } from "react";
+import React, { ChangeEventHandler, useState, useContext } from "react";
 import { MenuContext } from "../../context/MenuContext";
 import { dishItem } from "../../types/menuTypes";
 import { FilterChecks } from "../../types/menuTypes";
@@ -7,79 +6,78 @@ import { dummyCheckList1 } from "../../constants/menuConstants";
 import { useParams } from "react-router-dom";
 import { SearchSort } from "./SortFunction";
 
-//This component handles the location filter with checkboxes for each location
-//All checkboxes are preselected on load, and when clicked will unselect the location and filter out the unchecked location(s)
 export function MenuCheckBox() {
-  const { dishes, setDishes,
-    arrowCost, setArrowCost,
-     arrowName, setArrowName,
-      arrowRate, setArrowRate, 
-       notShown, setNotShown } = useContext(MenuContext);
+  const { dishes, setDishes, arrowCost, arrowName, arrowRate, setNotShown } = useContext(MenuContext);
   const [filteredOut, setFilteredOut] = useState<dishItem[]>([]);
+  const [loc, setLoc] = useState(dummyCheckList1);
 
-    const { name } = useParams();
+  const { name } = useParams();
 
-    let [loc, setLoc] = useState(dummyCheckList1);
+  function handleCheckboxClick(e: React.ChangeEvent<HTMLInputElement>) {
+    const checkbox = e.target as HTMLInputElement;
+    const itemName = checkbox.name;
 
-    function handleCheckboxClick(e: React.ChangeEvent<HTMLInputElement>) {
-        const checkbox: HTMLInputElement = e.target as HTMLInputElement;
-     
-        const itemName = checkbox.name;
-     
-        const itemIndex = loc.findIndex((item) => item.name === itemName);
-        loc[itemIndex] = { name: itemName, checked: checkbox.checked };
-
-        const checkedItems = loc.filter((item) => item.checked);
-        const checkedAdd:string[] = [];
-        checkedItems.map(i => checkedAdd.push(i.name));
-        console.log(checkedAdd);
-     
-        
-        //to filter out
-        const revertBack = SearchSort([...dishes, ...filteredOut], arrowCost, arrowName, arrowRate);
-        
-
-        const searchFiltered = revertBack.filter(i => checkedAdd.includes(i.location.dining_hall));
-        const notSearched = revertBack.filter(i => !checkedAdd.includes(i.location.dining_hall));
-      
-        console.log(searchFiltered);
-        console.log(notSearched);
-
-        setFilteredOut(notSearched);
-        setNotShown(notSearched);
-        setDishes(searchFiltered);
-     
-    }
-
-    return (
-        <div>
-          <div>
-            {/* <h1>{name}</h1> */}
-            <form action=".">
-              
-              {loc.map((item) => ( ListItem(item, handleCheckboxClick)))}
-              
-            </form>
-          </div>
-        </div>
+    const updatedLoc = loc.map((item) =>
+      item.name === itemName ? { ...item, checked: checkbox.checked } : item
     );
+    setLoc(updatedLoc);
 
+    updateFilteredDishes(updatedLoc);
+  }
 
+  function updateFilteredDishes(updatedLoc: FilterChecks[]) {
+    const checkedItems = updatedLoc.filter((item) => item.checked).map((i) => i.name);
+    const revertBack = SearchSort([...dishes, ...filteredOut], arrowCost, arrowName, arrowRate);
+
+    const searchFiltered = revertBack.filter((i) => checkedItems.includes(i.location.dining_hall));
+    const notSearched = revertBack.filter((i) => !checkedItems.includes(i.location.dining_hall));
+
+    setFilteredOut(notSearched);
+    setNotShown(notSearched);
+    setDishes(searchFiltered);
+  }
+
+  function handleCheckAll() {
+    const updatedLoc = loc.map((item) => ({ ...item, checked: true }));
+    setLoc(updatedLoc);
+    updateFilteredDishes(updatedLoc);
+  }
+
+  function handleUncheckAll() {
+    const updatedLoc = loc.map((item) => ({ ...item, checked: false }));
+    setLoc(updatedLoc);
+    updateFilteredDishes(updatedLoc);
+  }
+
+  return (
+    <div>
+        <form action=".">
+            {loc.map((item) => ListItem(item, handleCheckboxClick))}
+        </form>
+        <div className = "checkAll">
+        <button type="button" onClick={handleCheckAll} data-testid="check-all">
+            Check All
+        </button>
+        <button type="button" onClick={handleUncheckAll} data-testid="uncheck-all">
+            Uncheck All
+        </button>
+        </div>
+    
+    </div>
+  );
 }
 
 function ListItem(item: FilterChecks, changeHandler: ChangeEventHandler) {
     return (
-      <div className="checkBoxLocations">
-        <input
-          type="checkbox"
-          onChange={changeHandler}
-          checked={item.checked}
-          name={item.name}
-          data-testid={item.name}
-          
-        />
-        {item.name}
-      </div>
+        <label className="checkBoxLocations">
+            <input
+                type="checkbox"
+                onChange={changeHandler}
+                checked={item.checked}
+                name={item.name}
+                data-testid={item.name}
+            />
+            {item.name}
+        </label>
     );
 }
-

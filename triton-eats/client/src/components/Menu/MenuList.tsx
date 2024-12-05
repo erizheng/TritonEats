@@ -28,7 +28,7 @@ export const DishList = () => {
             setDishes(dishList);
             console.log("after this");
             console.log("dishList value", dishList);
-            //console.log(dishList);
+            console.log(dishList);
         } catch (err: any) {
             console.log(err.message);
         }
@@ -46,8 +46,6 @@ export const DishList = () => {
     }
 
     return (
-        
-
         <div className="image-grid">
             {dishes.map((dish: dishItem) => (
             <div data-testid={`dish-${dish.food_id}`}>

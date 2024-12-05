@@ -5,6 +5,7 @@ import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { dishItem } from '../types/menuTypes';
 import { addReviewAndUpdateDishInformation, fetchDishDetails, fetchReviewsByDishID } from '../utils/dish-details';
 import { API_BASE_URL } from '../constants/menuConstants';
+import { AuthProvider } from '../context/AuthContext';
 
 const mockDish =  { food_id: "testID", 
     img: "images/placeHolderImage.png", 
@@ -35,11 +36,13 @@ beforeEach(async () => {
     (fetchReviewsByDishID as jest.Mock).mockResolvedValue(mockReviews);
     await act(async () => {
         render(
-            <MemoryRouter initialEntries={[`/dish_details/${dish_id}`]}>
-                <Routes>
-                    <Route path="/dish_details/:dish_id" element={<DishDetails />} />
-                </Routes>
-            </MemoryRouter>
+            <AuthProvider>
+                <MemoryRouter initialEntries={[`/dish_details/${dish_id}`]}>
+                    <Routes>
+                        <Route path="/dish_details/:dish_id" element={<DishDetails />} />
+                    </Routes>
+                </MemoryRouter>
+            </AuthProvider>
         );
     });
     
