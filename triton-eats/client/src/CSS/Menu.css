@@ -2,126 +2,103 @@
 
 :root {
 	--body-bg-color: #DFF2C7;
-	--color-0: #77777789;
+	--color-0: #f3edf7d3;
 	--color-1: #F6FBF1;
 	--color-2: #A9C683;
 	--color-3: #6B7D53;
 	--color-4: #E9A125;
+    --color-5: #333;
 }
+
 body {
 	background-color: var(--body-bg-color);
 }
-.gridContainer {
-	display: flex;
-  	flex-direction: column;
-	grid-template-columns: 1fr;
-}
 
-.recPics {
-	border: 3px solid var(--color-0);
-	border-radius: 10px;
-	width: 100%;
-}
+/* Filter Sidebar */
 .MenuFilter {
-	background-color: var(--color-1);
-	position: fixed;
-	width: 15%;
-	height: 70%;
-	padding: 10px;
-	border: 1px solid var(--color-0);
-	border-radius: 10px;
-	margin-left: 20px;
-	margin-top: 30px;
+    background-color: var(--color-1);
+    position: fixed;
+    width: 15%; 
+    height: auto; 
+    max-height: 80%;
+    padding: 20px;
+    border: 1px solid var(--color-0);
+    border-radius: 8px;
+    margin-left: 20px;
+    margin-top: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    font-family: 'Inter', sans-serif;
+    overflow-y: auto;
 }
+
+.MenuFilter h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--color-5);
+    text-align: center;
+}
+
+
+.MenuFilter .PriceSlider {
+    font-size: 1.75rem;
+    margin-top: 30px;
+    color: var(--color-5);
+}
+
 .slider {
-	margin-left: 10px;
-	margin-right: 10px;
+    color: var(--color-3);
+    padding-left: 5px;
+    margin: 0 5px;
+    margin-top: 5px;
 }
 
-.filterAllergens {
-	margin-top: 20px;
+.filterLocations {
+    margin-top: 30px;
+    font-size: 1.75rem;
+    color: var(--color-5);
 }
+
+.MenuFilter button {
+    background-color: var(--color-2);
+    color: var(--color-5);
+    border: 1px solid var(--color-0);
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%; 
+    margin-top: 10px;
+}
+
+.MenuFilter button:hover {
+    background-color: var(--color-3);
+    color: var(--color-1);
+}
+
 .checkBoxLocations {
-	margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 5px; 
+    font-size: 1.1rem;
+    cursor: pointer;
+    line-height: 1.5;
 }
 
-.filterPref .navbar-links {
-    display: block;
-    list-style: none;
-    margin:0;
-	margin-top: 5px;
-    padding: 0;
+.checkBoxLocations input {
+    margin-right: 10px;
+    transform: scale(1.5); 
+    cursor: pointer;
 }
 
-.filterPref .sortItem {
-	background-color: var(--color-3);
-	color: white;
-	margin-top: 5px;
+.checkBoxLocations label {
+    cursor: pointer; 
+    user-select: none; 
 }
 
-
-.gridContainer .image-grid {
-	display: grid;
-	max-width: 70%;
-	grid-template-columns: repeat(3, minmax(250px, 1fr));
-	grid-auto-rows: minmax(400px, auto);
-	column-gap: 50px;
-	row-gap: 55px;
-	margin-left: 22%;
-	margin-top: 40px; 
-}
-
-.DishItem {
-	background-color: var(--color-1);
-	width: 100%;
-	height: fit-content;
-	padding: 5px;
-	border: 1px solid var(--color-0);
-	border-radius: 10px;
-	display: flex;
-	flex-direction: column;
-	padding: 10px;
-	cursor: pointer;
-}
-.DishItem .gridContainer {
-	display: grid;
-	max-width: 70%;
-	grid-template-columns: repeat(2, minmax(60%, 1fr));
-	grid-auto-rows: minmax(auto, auto);
-	column-gap: 70%;
-	row-gap: 5px;
-}
-.DishItem h2,h3,p {
-	padding: 0;
-	margin: 0;
-	float: left;
-	display: flex;
-	flex-direction: column;
-}
-.DishItem .recImageText {
-	padding: 0;
-	margin: 0;
-	float: left;
-	display: flex;
-	flex-direction: column;
-}
-.DishItem .recImageRating {
-	float: right;
-	display: flex;
-	flex-direction: column;
-	text-align: right;
-}
-
-
-
-.recNavBar {
-	width: 100vw;
-	position: fixed;
-}
-
-
+/* Search and Sort */
 .RecommendSearch input {
-	background-color: white;
+	background-color: var(--color-1);
 	border: 2px solid var(--color-0);
 	border-radius: 25px;
 	margin-left: 22%;
@@ -130,69 +107,72 @@ body {
 	height: 40px;
 	font-family: 'Inter', sans-serif;
 	padding-left: 20px;
+    font-size: 1.2rem;
 }
 
 .sortFilter {
 	width: fit-content;
 	height: 40px;
-	margin-left: 69%;
+	margin-left: auto;
+    margin-right: 5.5%;
 	margin-top: -45px;
-	/* padding: 1px 3px; */
-
+    display: flex;  
+    justify-content: flex-start; 
 }
 
 .sortItem {
-	margin: 0px 15px;
-    color: #333;
+    color: var(--color--5);
     cursor: pointer;
-    font-size: 1rem;  
+    font-size: 1.2rem;  
     padding: 5px 10px;
-	background-color: white;
+	background-color: var(--color-1);
 	border: 2px solid var(--color-0);
 	border-radius: 8px;
-	margin-right: 0.5px;
+	margin-right: 15px;
 	width: fit-content;
+    min-width: 75px;
 }
 
-.subButton {
-	/* margin: 0px 15px; */
-    color: #333;
-    cursor: pointer;
-    font-size: 1rem;  
-    /* padding: 5px 10px; */
-	background-color: var(--color-2);
-	border: 2px solid var(--color-0);
-	border-radius: 8px;
-	margin-right: 0.5px;
-	width: fit-content;
+.sortItem:hover {
+    background-color: var(--color-0);
 }
 
-.loading {
+/* Item Grid */
+.gridContainer .image-grid {
+	display: grid;
+	max-width: 70%;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	grid-auto-rows: minmax(400px, auto);
+	column-gap: 50px;
+	row-gap: 55px;
+	margin-left: 22%;
+	margin-top: 40px;
+}
+
+.DishItem h2,h3,p {
+	padding: 0;
+	margin: 0;
+	float: left;
+	display: flex;
+	flex-direction: column;
+}
+
+/* Loading Bar */
+.gridContainer .loading {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 7.5rem; 
     font-size: 1.75rem; 
-    color: #333; 
+    color: var(--color--5); 
     background-color: var(--color-1); 
     border-radius: 8px; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
-    margin: 30px;
-
+    
+    max-width: 71.5%;
 	column-gap: 50px;
 	row-gap: 55px;
 	margin-left: 22%;
-	margin-top: 40px; 
-}
-
-.loading-spinner {
-    width: 40px;
-    height: 40px;
-    border: 4px solid var(--color-0); 
-    border-top: 4px solid var(--color-4); 
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin-right: 10px; 
 }
 
 @keyframes spin {
@@ -201,5 +181,61 @@ body {
     }
     100% {
         transform: rotate(360deg);
+    }
+}
+
+@media (max-width: 1000px) {
+    /* Adjust filter sidebar for smaller screens */
+    .MenuFilter {
+        width: 80%; 
+        margin: 20px auto; 
+        position: static; 
+    }
+
+    .MenuFilter h1 {
+        font-size: 1.5rem;
+    }
+
+    .MenuFilter .PriceSlider {
+        font-size: 1.25rem;
+    }
+
+    .checkBoxLocations {
+        font-size: 1rem; 
+    }
+
+    .slider {
+        margin: 0; 
+    }
+
+    /* Update grid to display 1 item per row on smaller screens */
+    .gridContainer .image-grid {
+        margin-left: 5%;  
+        margin: 40px auto 0 auto; /* Center the grid */
+    }
+
+    /* Adjust the search input */
+    .RecommendSearch input {
+        width: 90%;  
+        margin: 10px;
+    }
+
+    /* Adjust sorting button for better alignment */
+    .sortFilter {
+        display: flex;  
+        justify-content: flex-start; 
+        gap: 10px; 
+        margin: 1px auto 0 auto;
+    }
+
+    .sortItem {
+        width: auto; 
+        width: 100px;
+    }
+
+    .gridContainer .loading {
+        margin-left: 10px;
+        margin-right: 10px;
+        max-width: 100%;
     }
 }

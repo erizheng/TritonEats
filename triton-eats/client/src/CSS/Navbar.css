@@ -1,86 +1,65 @@
 /* Navbar.css */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
+:root {
+	--body-bg-color: #DFF2C7;
+	--color-0: #f3edf7d3;
+	--color-1: #F6FBF1;
+	--color-2: #A9C683;
+	--color-3: #6B7D53;
+	--color-4: #E9A125;
+    --color-5: #333;
+}
+
 .navbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #A9C683; /* Light green */
+    background-color: var(--color-2);
     padding: 10px 30px;
     font-family: 'Inter', sans-serif;
-  }
+    flex-wrap: wrap; /* Allows items to wrap if space is constrained */
+}
   
-  .navbar-logo {
-    display: flex;
-    align-items: center;
-  }
-  
-  .logo-icon {
+.logo-icon {
     width: 310px;
     height: 75px;
-    margin-right: 80px;
-  }
+}
   
-  .navbar-links {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .navbar-item {
-    margin: 0px 15px;
-    color: #333;
+.navbar-item {
+    margin: 0px 10px;
     cursor: pointer;
-    font-size: 1rem;  
-    padding: 5px 0;
     text-decoration: none;
-  }
-  
-  .navbar-item.selected {
-    background-color: #fff;
     padding: 5px 10px;
-    border-radius: 5px;
-  }
+    border-radius: 8px;
+    color: var(--color--5);
+    font-size: 1.2rem;  
+}
+
+.navbar-item:hover {
+    background-color: var(--color-1);
+}
   
-  .navbar-auth {
+.navbar-item.selected {
+    background-color: var(--color-1);
+}
+  
+.navbar-auth {
     display: flex;
     gap: 10px;
+}
+
+.logout-btn {
+    padding: 5px 15px;
+    margin: 10px;
+    cursor: pointer;
+    background-color: var(--color-1);
+    border: 2px solid var(--color-0);
+    border-radius: 8px;
+    color: var(--color--5);
+    font-size: 1.2rem;  
   }
 
-  .logout-btn {
-    padding: 5px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    font-family: 'Inter', sans-serif;
-  }
-  
-  .logout-btn {
-    background-color: #f2f2f2;
-    color: #333;
-    border: 1px solid #333;
-  }
-  
-  /* .signin-btn,
-  .register-btn {
-    padding: 5px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    font-family: 'Inter', sans-serif;
-  }
-  
-  .signin-btn {
-    background-color: #f2f2f2;
-    color: #333;
-    border: 1px solid #333;
-  }
-  
-  .register-btn {
-    background-color: #333;
-    color: #fff;
-  } */
-  
+.logout-btn:hover {
+    background-color: var(--color-0);
+}

@@ -13,7 +13,7 @@ const DiningHallsGrid: React.FC<DiningHallsGridProps> = ({ diningHalls }) => {
         return (
             <div data-testid="loading" className="loading">
                 <div className="loading-spinner"></div>
-                Loading dining halls...
+                Loading Dining Halls...
             </div>
         )
     }
