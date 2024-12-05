@@ -50,7 +50,7 @@ const DiningHallSearchSort: React.FC<DiningHallSearchSortProps> = ({
                 onChange={handleSearchChange} 
             />
             <div className="sort-buttons-container">
-                <button className="sort-button" onClick={handleSortByBusyness}>
+                <button className="sort-button" onClick={handleSortByBusyness} data-testid={`Busyness`}>
                     Busyness {(busynessAsc ? '↑' : '↓')}
                 </button>
             </div>

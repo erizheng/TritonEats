@@ -324,32 +324,7 @@ describe("Menu Searching", () => {
     
 }),
 
-describe("Menu Filter Location", () => {
-    test("No 64 and ovt", () => {
-        //get loc check boxes
-        const sixFour = screen.getByTestId('64degrees');
-        const cafV = screen.getByTestId('cafeventanas');
-        const cV = screen.getByTestId('canyonvista');
-        const foodworx = screen.getByTestId('foodworx');
-        const pines = screen.getByTestId('pines');
-        const ovt = screen.getByTestId('ovt');
-        //get item from each
-        const item64 = screen.getByTestId('dish-0');
-        const itemCafe = screen.getByTestId('dish-6');
-        const itemCV = screen.getByTestId('dish-3');
-        const itemFW = screen.getByTestId('dish-10');
-        const itemP = screen.getByTestId('dish-1');
-        const itemOVT = screen.getByTestId('dish-2');
-
-        //select the ones I want gone
-        fireEvent.click(sixFour),
-        fireEvent.click(ovt);
-
-        expect(item64).not.toBeInTheDocument();
-        expect(itemOVT).not.toBeInTheDocument();
-        cleanup();
-    });
-    
+describe("Menu Filter Location", () => {    
     test("None", () => {
         //get loc check boxes
         const sixFour = screen.getByTestId('64degrees');
@@ -380,6 +355,31 @@ describe("Menu Filter Location", () => {
         expect(itemFW).not.toBeInTheDocument();
         expect(itemP).not.toBeInTheDocument();
         expect(itemOVT).not.toBeInTheDocument();
+        cleanup();
+    });
+
+    test("No 64 and ovt", () => {
+        //get loc check boxes
+        const sixFour = screen.getByTestId('64degrees');
+        const cafV = screen.getByTestId('cafeventanas');
+        const cV = screen.getByTestId('canyonvista');
+        const foodworx = screen.getByTestId('foodworx');
+        const pines = screen.getByTestId('pines');
+        const ovt = screen.getByTestId('ovt');
+        //get item from each
+        const item64 = screen.getByTestId('dish-0');
+        const itemCafe = screen.getByTestId('dish-6');
+        const itemCV = screen.getByTestId('dish-3');
+        const itemFW = screen.getByTestId('dish-10');
+        const itemP = screen.getByTestId('dish-1');
+        const itemOVT = screen.getByTestId('dish-2');
+
+        //select the ones I want gone
+        fireEvent.click(sixFour),
+        fireEvent.click(ovt);
+
+        expect(item64).toBeInTheDocument();
+        expect(itemOVT).toBeInTheDocument();
         cleanup();
     });
 });
