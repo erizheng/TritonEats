@@ -74,7 +74,7 @@ export const MenuItems = (currentDish: dishItem) => {
                                 level="body-md"
                                 sx={{
                                     position: 'absolute',
-                                    top: 0,
+                                    top: 45,
                                     right: 0,
                                     marginTop: '0.5rem',
                                     marginRight: '0.5rem',
