@@ -11,7 +11,7 @@ const Navbar: React.FC<NavbarProps> = ({ selected }) => {
   const navigate = useNavigate();
   
   const navbarItems = [
-    {name: 'Homepage', path: '/'},
+    {name: 'Dining Halls', path: '/'},
     {name: 'Menu', path: '/menu'},
     // {name: 'Reviews', path: '/review'},
     {name: 'Preferences', path: '/preferences/'}

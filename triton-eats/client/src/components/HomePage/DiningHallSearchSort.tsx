@@ -14,8 +14,7 @@ const DiningHallSearchSort: React.FC<DiningHallSearchSortProps> = ({
     allHalls 
 }) => {
     const [searchItem, setSearchItem] = useState('');
-    const [busynessAsc, setBusynessAsc] = useState(true);
-    const [activeSort, setActiveSort] = useState<'distance' | 'busyness' | null>(null);
+    const [busynessAsc, setBusynessAsc] = useState(false);
 
     // Looks for any changes in searchbar before calling handleSearch
     const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -40,10 +39,8 @@ const DiningHallSearchSort: React.FC<DiningHallSearchSortProps> = ({
         });
         setFilteredHalls(sorted);
         setBusynessAsc(!busynessAsc);
-        setActiveSort('busyness');
     };
 
- 
     return (
         <div className='DiningHallSearchSort'>
             <input 
@@ -53,8 +50,8 @@ const DiningHallSearchSort: React.FC<DiningHallSearchSortProps> = ({
                 onChange={handleSearchChange} 
             />
             <div className="sort-buttons-container">
-                <button className="sort-button" onClick={handleSortByBusyness}>
-                    Busyness {activeSort === 'busyness' && (busynessAsc ? '↑' : '↓')}
+                <button className="sort-button" onClick={handleSortByBusyness} data-testid={`Busyness`}>
+                    Busyness {(busynessAsc ? '↑' : '↓')}
                 </button>
             </div>
         </div>

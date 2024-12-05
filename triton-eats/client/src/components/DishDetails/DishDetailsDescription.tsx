@@ -42,14 +42,11 @@ export const DishDetailsDescription = ({ dish }: DishDetailsDescriptionProps) =>
             <div className='dishInformation'>
 
                 <h2 className='dishName'>{dish.food_name}</h2>
+                <p className='dishLocation'>{dish.location.name}</p>
                 <div className="dishRating"> 
                     {renderStars(dish.rating)} 
                     <p className="wordRating">{dish.rating} / 5  ({dish.numReviews} reviews)</p>
                 </div>
-                
-                
-
-                <p className='dishLocation'>{dish.location.name}</p>
 
                 <h1 className='dishPrice'>
                     <sup className='dollarSign'>$</sup>{dish.cost}

@@ -22,7 +22,7 @@ describe('render tests', () => {
     render(<AuthProvider><AppProvider><App /></AppProvider></AuthProvider>);
 
     expect(screen.getByRole('link', { name: /Triton Eats Logo/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: 'Homepage' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Dining Halls' })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Menu' })).toBeInTheDocument();
     // expect(screen.getByRole('link', { name: 'Reviews' })).toBeInTheDocument();
   });
@@ -51,7 +51,7 @@ describe('navigation tests', () => {
 
     render(<AuthProvider><AppProvider><App /></AppProvider></AuthProvider>);
 
-    const menuLink = screen.getByRole('link', { name: 'Homepage' });
+    const menuLink = screen.getByRole('link', { name: 'Dining Halls' });
     fireEvent.click(menuLink);
 
     expect(window.location.pathname).toBe('/');
@@ -104,10 +104,10 @@ describe('active link tests', () => {
 
     render(<AuthProvider><AppProvider><App /></AppProvider></AuthProvider>);
 
-    const menuLink = screen.getByRole('link', { name: 'Homepage' });
+    const menuLink = screen.getByRole('link', { name: 'Dining Halls' });
     fireEvent.click(menuLink);
 
-    expect(screen.getByRole('link', { name: 'Homepage' })).toHaveClass('selected');
+    expect(screen.getByRole('link', { name: 'Dining Halls' })).toHaveClass('selected');
   });
 
   test('check menu', () => {
