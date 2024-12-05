@@ -5,52 +5,35 @@
 	--color-2: #A9C683;
 	--color-3: #6B7D53;
 	--color-4: #E9A125;
+    --color-5: #333;
 }
 
 body {
-	background-color: var(--body-bg-color);
+    background-color: var(--body-bg-color);
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
 }
 
-
-
-
+/* Layout */
 .dishDetailsPage {
-    
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-top: 50px;
-    margin-bottom: 50px;
-
-}
-
-.dishDetailsDivider {
-    height: 5px; 
-    background: linear-gradient(to top, rgba(255, 165, 0, 0), rgba(255, 165, 0, 1), rgba(255, 165, 0, 0)); 
-    margin: 20px 0; 
-    border: none; 
-    width: 100%; 
+    margin: 50px 5%;
 }
 
 /** Dish Details Description CSS*/
-
 .dishDetailsSection{
-
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    
-
-    gap: 50px;
+    flex-direction: center;
+    align-items: flex-start;
+    gap: 40px;
+    color: var(--color-5)
 }
 
-.dishPic{
-
-    width: 500px; 
+.dishPic {
+    max-width: 500px; 
     border-radius: 15px;
     border: 3px solid var(--color-2);
 }
@@ -60,115 +43,86 @@ body {
     flex-direction: column;
 }
 
-.dishIdentifier{
+.dishIdentifier {
     display: flex;
-    flex-direction: row;
     align-items: center;
     gap: 5px;
+}
+
+.dishName{
+    margin-bottom: 0px;
+    font-size: 2rem;
+}
+
+.dishLocation {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.dishRating {
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem;
+}
+
+.wordRating {
+    padding-left: 5px;
 }
 
 .dollarSign{
     font-size: 20px;
 }
 
-.dishName{
-    margin-bottom: 0px;
-}
-
-.dishRating{
-    padding-top: 3px;    
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.wordRating{
-    color: rgb(121, 121, 121);
-    padding-top: 4px;
-    padding-left: 5px;
-}
-
-.likeAndRecommend{
-    
-    display: flex;
-    flex-direction: row;
-}
-
-.descriptionContainer{
-    background-color: white;
-    padding: 15px;
-    padding-bottom: 25px;
-    border-radius: 10px;
-    border: 0.5px dotted grey;
-    max-height: 200px;
-    overflow-y: auto;
+.dishPrice {
+    margin: 15px 0px;
 }
 
 .descriptionTitle{
-    margin-top: 10px;
+    margin-top: 0px;
     margin-bottom: 10px;
 }
 
-/** Review List CSS*/
-.reviewList{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-}
-.reviewListTitle{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-}
-.sortOptions{
-    height: 22px;
-    display: flex;
-    flex-direction: row;
-    gap: 5px;
-    justify-self: right;
-    padding: 10px;
-    background-color: var(--color-2);
-    border-radius: 5px;
-}
-
-.reviewSortChoices{
-    margin-top: 3px;
-    border: 0.5px dotted grey;
-    border-radius: 3px;
-}
-
-.reviewListContent {
-    max-height: 1000px; 
+.descriptionContainer {
+    background-color: var(--color-1);
+    padding: 15px 20px;
+    border-radius: 10px;
+    border: 0.5px var(--color-0);
+    max-height: 200px;
     overflow-y: auto;
-    padding-right: 10px; 
+    font-size: 1rem;
 }
 
+.likeAndRecommend{
+    font-size: 1.2rem;
+    margin: 10px;
+}
 
+/** Divider */
+.dishDetailsDivider {
+    height: 5px; 
+    background: linear-gradient(to top, rgba(255, 165, 0, 0), rgba(255, 165, 0, 1), rgba(255, 165, 0, 0)); 
+    margin: 20px 0; 
+    border: none; 
+    width: 100%; 
+}
 
 /** Review Form CSS*/
 .reviewForm {
     display: flex;
     flex-direction: column;
     width: 100%;
+    color: var(--color-5)
 }
 
-.reviewFormTitle{
+.reviewFormTitle {
     display: flex;
-    flex-direction: row;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
 }
-
-
 
 .starRating {
     display: flex;
-    justify-content: center;
     align-items: center;
-
 }
 
 .starRatingText{
@@ -200,9 +154,10 @@ body {
 textarea {
     padding: 10px;
     font-size: 16px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--color-0);
     border-radius: 5px;
-    margin-bottom: 20px;
+    width: 100%;
+    resize: vertical;
 }
 
 .recLikeButton {
@@ -238,8 +193,75 @@ textarea {
     width: 500px;
     align-items: center;
     margin: 0 auto; 
+    font-size: 1.5rem;
 }
 
 .submitReview:hover {
     background-color: var(--color-3);
+}
+
+/** Divider */
+
+/** Review List CSS*/
+.reviewList{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+}
+
+.reviewListTitle{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+}
+
+.sortOptions{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    justify-self: right;
+    padding: 10px;
+    background-color: var(--color-2);
+    border-radius: 5px;
+}
+
+.reviewSortChoices{
+    margin-top: 3px;
+    border: 0.5px dotted grey;
+    border-radius: 3px;
+}
+
+.reviewListContent {
+    max-height: 1000px;
+    overflow-y: auto;
+    padding-right: 10px;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+}
+
+
+/* Responsive Design */
+@media (max-width: 1000px) {
+    .dishDetailsSection {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    textarea {
+        width: 95%;
+    }
+
+    .dishPic, .dishInformation {
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .submitReview {
+        width: 100%;
+        margin: 10px;
+    }
 }

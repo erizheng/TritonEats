@@ -36,15 +36,16 @@ export const useFetchDiningHalls = () => {
             setAllHalls(sortedHalls);
             setFilteredHalls(sortedHalls);
 
-            // CONSTANTS TESTING
-            // const sortedHalls2 = diningHalls.sort((a, b) => {
-            //     if (a.isOpen === b.isOpen) {
-            //         return a.busyness - b.busyness;
-            //     }
-            //     return a.isOpen ? -1 : 1;
-            // });
-            // setFilteredHalls(sortedHalls2);
-            // setAllHalls(sortedHalls2);
+            // CONSTANTS FOR TESTING
+                // const sortedHalls2 = diningHalls.sort((a, b) => {
+                //     if (a.isOpen === b.isOpen) {
+                //         return a.busyness - b.busyness;
+                //     }
+                //     return a.isOpen ? -1 : 1;
+                // });
+                // setFilteredHalls(sortedHalls2);
+                // setAllHalls(sortedHalls2);
+
         } catch (error) {
             console.error('Error fetching dining hall data:', error);
         }
