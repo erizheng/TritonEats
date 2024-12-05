@@ -37,7 +37,15 @@ export const DishDetails = () => {
     
     // Alt. screen to show when API calls being made
     if (!dish) {
-        return <div>Loading Dish Details...</div>
+        return (
+            <div>
+            <Navbar selected='Menu'/>
+                <div className ="loading">
+                    <div className="loading-spinner"></div>
+                    Loading Dish Details...
+                </div>
+            </div>
+        )
     }
 
 
