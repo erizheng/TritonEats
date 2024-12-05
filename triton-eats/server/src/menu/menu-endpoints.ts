@@ -15,7 +15,8 @@ export async function createDishEndpoints(app: any) {
     });
 
     app.get('/dishes', async (req: any, res: any) => {
-        res.send(items);
+        let item = await fetchAllDishes();
+        res.send(item);
     });
 
 }
