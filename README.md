@@ -7,7 +7,7 @@
 1. [Project Overview](#project-overview)
 2. [Features](#features)
 3. [Tech Stack](#tech-stack)
-4. [Archiecture and Design](#key-design-decisions)
+4. [Architecture and Design](#architecture-and-design)
 
 
 
@@ -39,6 +39,11 @@
 This section goes over both key design and architecture decisions made throughout the development of this project. 
 
 ### **Architecture**
+
+
+![Architecture Diagram](Architecture%20Diagram%20TritonEats%20.png)
+
+
 - **Client-Server Architecture was chosen primarily because**:
   - **Separation of Concerns**: Client-server architecture  divides responsibilities between the two, with the client handling frontend user interaction and the server handling data processing and storage.
   - **Scalability and Flexibility**: The server can be scaled independently of the client due to this modular design.
