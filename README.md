@@ -77,3 +77,5 @@ This section goes over both key design and architecture decisions made throughou
 | `GET`      | `/api/dishes/:dish_id`           | Retrieves a dish from the database by ID |
 | `GET`     | `/api/dishes/:dish_id/reviews`     | Retrieves the reviews associated with the dish with dish_id. |
 | `POST`      | `"/api/dishes/:dish_id/review"`     | Adds a review to the database.      |
+| `GET` | `/api/location?lat=:Latitude&lng=:Longitude` | Fetches the distance from the given coordinate to all dining halls | 
+| `GET` | `/api/location/:diningHall?lat=:Latitude&lng=:Longitude` | Fetches the distance from the given coordinate to a specified dining hall |
